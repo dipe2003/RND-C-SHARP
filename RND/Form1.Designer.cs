@@ -23,6 +23,7 @@
         /// el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkOrdenados = new System.Windows.Forms.CheckBox();
@@ -85,6 +86,7 @@
             this.chkOrdenados.TabIndex = 5;
             this.chkOrdenados.Text = "Numeros Ordenados";
             this.chkOrdenados.UseVisualStyleBackColor = true;
+            this.chkOrdenados.CheckedChanged += new System.EventHandler(this.chkOrdenados_CheckedChanged);
             // 
             // chkDuplicados
             // 
@@ -304,6 +306,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inicio";
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);

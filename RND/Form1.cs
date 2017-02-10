@@ -55,17 +55,7 @@ namespace RND {
                 List<int> sorteo = new List<int>();
                 // si no se selecciono sorteo de generica
                 if(!radioGenerica.Checked) {
-                    if(!duplicado) {
-                        for(int i = 0; i < cantidad; i++) {
-                            int numero;
-                            do {
-                                numero = SortearNumero(inicio, tope);
-                            } while(sorteo.Contains(numero));
-                            sorteo.Add(numero);
-                        }
-                    } else {
-                        sorteo = SortearNumero(inicio, tope, cantidad);
-                    }
+                    sorteo = SortearNumero(inicio, tope, cantidad, duplicado);
                 } else {
                     if(radioGenerica.Checked) {
                         if(tope / 300 > 1 && (tope / 300 / (int)tope / 300) > 0) {
@@ -83,51 +73,70 @@ namespace RND {
                         }
                         this.txtCantidad.Text = cantidad.ToString();
                     }
-                    for(int i = 0; i < cantidad; i++) {
-                        int numero;
-                        do {
-                            numero = SortearNumero(inicio, tope);
-                        } while(sorteo.Contains(numero));
-                        sorteo.Add(numero);
-                    }
+                    // sortear por intervalo 1-300 / 301 - 600 / 601 - xxx
+                    sorteo = SortearNumero(inicio, tope, cantidad, duplicado);
                 }
-                MostrarResultado(sorteo);
+                MostrarResultado(sorteo, ordenado);
             }
         }
 
 
-        private List<int> SortearNumero(int min, int max, int Cantidad) {
+        private List<int> SortearNumero(int min, int max, int Cantidad, bool duplicado) {
             Random aleatorio = new Random();
-            List<int> sorteo = new List<int> ();
-            for(int i = 0; i < cantidad; i++) {
-                int numero = aleatorio.Next((max - min + 1)) + min;
-                sorteo.Add(numero);
+            List<int> sorteo = new List<int>();
+            if(!duplicado) {
+                for(int i = 0; i < cantidad; i++) {
+                    int numero;
+                    do {
+                        numero = aleatorio.Next((max - min + 1)) + min;
+                    } while(sorteo.Contains(numero));
+                    sorteo.Add(numero);
+                }
+            } else {
+                for(int i = 0; i < cantidad; i++) {
+                    int numero = aleatorio.Next((max - min + 1)) + min;
+                    sorteo.Add(numero);
+                }
             }
             return sorteo;
         }
 
-        private int SortearNumero(int min, int max) {
-            Random aleatorio = new Random();
-            return aleatorio.Next((max - min + 1)) + min;
-        }
-
-        private void MostrarResultado(List<int> Resultado) {
+        private void MostrarResultado(List<int> Resultado, bool ordenados) {
             string resultado = "";
-            for(int i = 0; i < Resultado.Count; i++) {
-                resultado = resultado + Resultado.ElementAt(i).ToString();
+            int[] arr = new int[Resultado.Count];
+            arr = Resultado.ToArray();
+
+            if(ordenados) {
+                int pos;
+                int num;
+                for(int i = 0; i < arr.Length; i++) {
+                    num = arr[i];
+                    pos = i;
+
+                    while(pos > 0 && arr[pos - 1] > num) {
+                        arr[pos] = arr[pos - 1];
+                        pos = pos - 1;
+                    }
+                    arr[pos] = num;
+                }
+            }
+            for(int i = 0; i < arr.Length; i++) {
+                resultado = resultado + arr[i].ToString();
                 int sig = i + 1;
-                if(sig >= Resultado.Count) {
+                if(sig >= arr.Length) {
                     resultado = resultado + ".";
                 } else {
                     resultado = resultado + ", ";
                 }
             }
+
             this.txtResultado.Text = resultado;
         }
 
         private void radioCloracion_CheckedChanged(object sender, EventArgs e) {
             this.txtInicio.Text = "0";
-            this.txtCantidad.Text = "12";
+            this.txtCantidad.Text = "6";
+            this.txtCantidad.Enabled = true;
             this.txtResultado.Text = "";
             this.txtInicio.Enabled = false;
         }
@@ -209,10 +218,18 @@ namespace RND {
         private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
             if(duplicado) {
                 duplicado = false;
-            }else {
+            } else {
                 duplicado = true;
             }
         }
+
+        private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
+            if(ordenado) {
+                ordenado = false;
+            } else {
+                ordenado = true;
+            }
+        }
     }
-    
-    }
+
+}
