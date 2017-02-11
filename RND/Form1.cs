@@ -58,29 +58,32 @@ namespace RND {
                     sorteo = SortearNumero(inicio, tope, cantidad, duplicado);
                 } else {
                     if(radioGenerica.Checked) {
-                        if(tope / 300 > 1 && (tope / 300 / (int)tope / 300) > 0) {
-                            cantidad = (int)tope / 300 + tope % 300;
-                        } else {
-                            if(tope / 300 < 1) {
-                                cantidad = 1;
-                            } else {
-                                if(tope / 300 >= 1 && tope % 300 == 0) {
-                                    cantidad = (int)tope / 300;
-                                } else {
-                                    cantidad = (int)tope / 300 + 1;
-                                }
-                            }
-                        }
+                        /*
+                         * cociente = tope / rango
+                         * la parte entera del cociente es el primer numero de la cantidad
+                         * la parte decimal si > 0 se suma a cantidad
+                         */
+                        double cociente;
+                        double rango = 300;
+                        cociente = tope / rango;                        
+                        cantidad = (int)cociente;
+                        double resto = (cociente - (int)cociente);
+                        if(resto > 0) cantidad++;
                         this.txtCantidad.Text = cantidad.ToString();
                     }
                     // sortear por intervalo 1-300 / 301 - 600 / 601 - xxx
-                    sorteo = SortearNumero(inicio, tope, cantidad, duplicado);
+                    for(int i = 0; i < cantidad; i++) {
+                        int nuevoTope = i * 300;
+                        nuevoTope = Math.Abs(tope - nuevoTope);
+                        sorteo.AddRange(SortearNumero(inicio, nuevoTope, 1, false));
+                        inicio += 300;
+                    }
                 }
                 MostrarResultado(sorteo, ordenado);
             }
         }
 
-
+         
         private List<int> SortearNumero(int min, int max, int Cantidad, bool duplicado) {
             Random aleatorio = new Random();
             List<int> sorteo = new List<int>();
