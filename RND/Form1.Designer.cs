@@ -27,6 +27,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkOrdenados = new System.Windows.Forms.CheckBox();
+            this.chkRango = new System.Windows.Forms.CheckBox();
             this.chkDuplicados = new System.Windows.Forms.CheckBox();
             this.grupoTipoSorteo = new System.Windows.Forms.GroupBox();
             this.radioDiaSemana = new System.Windows.Forms.RadioButton();
@@ -36,8 +37,10 @@
             this.radioUE = new System.Windows.Forms.RadioButton();
             this.radioCloracion = new System.Windows.Forms.RadioButton();
             this.radioGenerica = new System.Windows.Forms.RadioButton();
+            this.txtRango = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.txtTope = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtInicio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,9 +50,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -63,15 +68,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.chkOrdenados);
-            this.panel1.Controls.Add(this.chkDuplicados);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.grupoTipoSorteo);
-            this.panel1.Controls.Add(this.txtCantidad);
-            this.panel1.Controls.Add(this.txtTope);
-            this.panel1.Controls.Add(this.txtInicio);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(26, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(228, 409);
@@ -80,7 +78,7 @@
             // chkOrdenados
             // 
             this.chkOrdenados.AutoSize = true;
-            this.chkOrdenados.Location = new System.Drawing.Point(74, 131);
+            this.chkOrdenados.Location = new System.Drawing.Point(57, 157);
             this.chkOrdenados.Name = "chkOrdenados";
             this.chkOrdenados.Size = new System.Drawing.Size(123, 17);
             this.chkOrdenados.TabIndex = 5;
@@ -88,10 +86,21 @@
             this.chkOrdenados.UseVisualStyleBackColor = true;
             this.chkOrdenados.CheckedChanged += new System.EventHandler(this.chkOrdenados_CheckedChanged);
             // 
+            // chkRango
+            // 
+            this.chkRango.AutoSize = true;
+            this.chkRango.Location = new System.Drawing.Point(57, 112);
+            this.chkRango.Name = "chkRango";
+            this.chkRango.Size = new System.Drawing.Size(92, 17);
+            this.chkRango.TabIndex = 4;
+            this.chkRango.Text = "Utilizar Rango";
+            this.chkRango.UseVisualStyleBackColor = true;
+            this.chkRango.CheckedChanged += new System.EventHandler(this.chkRango_CheckedChanged);
+            // 
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
-            this.chkDuplicados.Location = new System.Drawing.Point(74, 107);
+            this.chkDuplicados.Location = new System.Drawing.Point(57, 133);
             this.chkDuplicados.Name = "chkDuplicados";
             this.chkDuplicados.Size = new System.Drawing.Size(116, 17);
             this.chkDuplicados.TabIndex = 4;
@@ -110,7 +119,7 @@
             this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
             this.grupoTipoSorteo.Location = new System.Drawing.Point(18, 205);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(194, 189);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(200, 189);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
             this.grupoTipoSorteo.Text = "Sorteos";
@@ -199,23 +208,39 @@
             this.radioGenerica.UseVisualStyleBackColor = true;
             this.radioGenerica.CheckedChanged += new System.EventHandler(this.radioGenerica_CheckedChanged);
             // 
+            // txtRango
+            // 
+            this.txtRango.Location = new System.Drawing.Point(57, 86);
+            this.txtRango.Name = "txtRango";
+            this.txtRango.Size = new System.Drawing.Size(137, 20);
+            this.txtRango.TabIndex = 3;
+            // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(74, 80);
+            this.txtCantidad.Location = new System.Drawing.Point(57, 59);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(137, 20);
             this.txtCantidad.TabIndex = 3;
             // 
             // txtTope
             // 
-            this.txtTope.Location = new System.Drawing.Point(74, 54);
+            this.txtTope.Location = new System.Drawing.Point(57, 33);
             this.txtTope.Name = "txtTope";
             this.txtTope.Size = new System.Drawing.Size(137, 20);
             this.txtTope.TabIndex = 2;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Rango";
+            // 
             // txtInicio
             // 
-            this.txtInicio.Location = new System.Drawing.Point(74, 28);
+            this.txtInicio.Location = new System.Drawing.Point(57, 7);
             this.txtInicio.Name = "txtInicio";
             this.txtInicio.Size = new System.Drawing.Size(137, 20);
             this.txtInicio.TabIndex = 1;
@@ -223,7 +248,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 83);
+            this.label4.Location = new System.Drawing.Point(2, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 0;
@@ -233,7 +258,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(36, 57);
+            this.label3.Location = new System.Drawing.Point(19, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 0;
@@ -242,7 +267,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 31);
+            this.label1.Location = new System.Drawing.Point(19, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 0;
@@ -295,26 +320,46 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtInicio);
+            this.panel2.Controls.Add(this.chkOrdenados);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.chkRango);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.chkDuplicados);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.txtRango);
+            this.panel2.Controls.Add(this.txtTope);
+            this.panel2.Controls.Add(this.txtCantidad);
+            this.panel2.Location = new System.Drawing.Point(18, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 182);
+            this.panel2.TabIndex = 6;
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 524);
+            this.ClientSize = new System.Drawing.Size(538, 523);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Inicio";
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.grupoTipoSorteo.ResumeLayout(false);
             this.grupoTipoSorteo.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +389,10 @@
         private System.Windows.Forms.RadioButton radioLado;
         private System.Windows.Forms.CheckBox chkOrdenados;
         private System.Windows.Forms.CheckBox chkDuplicados;
+        private System.Windows.Forms.CheckBox chkRango;
+        private System.Windows.Forms.TextBox txtRango;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

@@ -10,14 +10,17 @@ namespace RND {
             InitializeComponent();
         }
 
-        private static double rangoGenerica = 300;
+        private static Random aleatorio = new Random();
+
+        private double valorRango;
 
         private int inicio;
         private int tope;
         private int cantidad;
 
-        private bool ordenado = false;
-        private bool duplicado = false;
+        private bool mostrarOrdenados = false;
+        private bool permitirDuplicados = false;
+        private bool utilizarRango = false;
 
         private void button2_Click(object sender, EventArgs e) {
             this.Close();
@@ -36,6 +39,11 @@ namespace RND {
             this.chkDuplicados.Enabled = false;
             this.chkOrdenados.Enabled = false;
             this.chkOrdenados.Checked = true;
+
+            this.chkRango.Checked = true;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "300";
+            this.txtRango.Enabled = false;
         }
 
         private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
@@ -49,6 +57,13 @@ namespace RND {
             this.txtTope.Enabled = true;
             this.chkDuplicados.Enabled = true;
             this.chkOrdenados.Enabled = true;
+            this.chkOrdenados.Checked = false;
+            this.chkDuplicados.Checked = false;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = true;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private void btnGenerar_Click(object sender, EventArgs e) {
@@ -57,39 +72,39 @@ namespace RND {
             } else {
                 List<int> sorteo = new List<int>();
                 // si no se selecciono sorteo de generica
-                if(!radioGenerica.Checked) {
-                    sorteo = SortearNumero(inicio, tope, cantidad, duplicado);
+                if(!radioGenerica.Checked && !chkRango.Checked) {
+                    sorteo = SortearNumero(inicio, tope, cantidad, permitirDuplicados);
                 } else {
-                    if(radioGenerica.Checked) {
-                        /*
-                         * cociente = tope / rango
-                         * la parte entera del cociente es el primer numero de la cantidad
-                         * la parte decimal si > 0 se suma a cantidad
-                         */
-                        double cociente;
-                        cociente = tope / rangoGenerica;
-                        cantidad = (int)cociente;
-                        double resto = (cociente - (int)cociente);
-                        if(resto > 0) cantidad++;
-                        this.txtCantidad.Text = cantidad.ToString();
-                    }
+                    /*
+                     * cociente = tope / rango
+                     * la parte entera del cociente es el primer numero de la cantidad
+                     * la parte decimal si > 0 se suma a cantidad
+                     */
+                    double cociente;
+                    cociente = tope / valorRango;
+                    cantidad = (int)cociente;
+                    double resto = (cociente - (int)cociente);
+                    if(resto > 0) cantidad++;
+                    this.txtCantidad.Text = cantidad.ToString();
+
                     // sortear por intervalo 1-300 / 301 - 600 / 601 - xxx
                     for(int i = 1; i <= cantidad; i++) {
-                        inicio = (i - 1) * (int)rangoGenerica + 1;
-                        if(tope < i * (int)rangoGenerica) {
-                            sorteo.AddRange(SortearNumero(inicio, tope, 1, false));
+                        inicio = (i - 1) * (int)valorRango + 1;
+                        if(tope < i * (int)valorRango) {
+                            sorteo.AddRange(SortearNumero(inicio, tope, 1, permitirDuplicados));
                         } else {
-                            sorteo.AddRange(SortearNumero(inicio, (i * (int)rangoGenerica), 1, false));
+                            sorteo.AddRange(SortearNumero(inicio, (i * (int)valorRango), 1, permitirDuplicados));
                         }
                     }
+
+
                 }
-                MostrarResultado(sorteo, ordenado);
+                MostrarResultado(sorteo, mostrarOrdenados);
             }
         }
 
 
         private List<int> SortearNumero(int min, int max, int Cantidad, bool duplicado) {
-            Random aleatorio = new Random();
             List<int> sorteo = new List<int>();
             if(!duplicado) {
                 for(int i = 0; i < Cantidad; i++) {
@@ -128,7 +143,7 @@ namespace RND {
                 }
             }
             for(int i = 0; i < arr.Length; i++) {
-                resultado = resultado + arr[i].ToString();
+                resultado = resultado + (i + 1) + ": " + arr[i].ToString();
                 int sig = i + 1;
                 if(sig >= arr.Length) {
                     resultado = resultado + ".";
@@ -146,6 +161,11 @@ namespace RND {
             this.txtCantidad.Enabled = true;
             this.txtResultado.Text = "";
             this.txtInicio.Enabled = false;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private void radioUE_CheckedChanged(object sender, EventArgs e) {
@@ -157,7 +177,12 @@ namespace RND {
             this.txtCantidad.Enabled = true;
             this.txtTope.Enabled = true;
             this.chkDuplicados.Enabled = false;
-            this.duplicado = false;
+            this.permitirDuplicados = false;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private void radioLado_CheckedChanged(object sender, EventArgs e) {
@@ -165,14 +190,19 @@ namespace RND {
             this.txtCantidad.Text = "1";
             this.txtTope.Text = "2";
             this.txtResultado.Text = "";
-            this.duplicado = false;
-            this.ordenado = false;
+            this.permitirDuplicados = false;
+            this.mostrarOrdenados = false;
 
             this.txtCantidad.Enabled = false;
             this.txtInicio.Enabled = false;
             this.txtTope.Enabled = false;
             this.chkDuplicados.Enabled = false;
             this.chkOrdenados.Enabled = false;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private void radioMes_CheckedChanged(object sender, EventArgs e) {
@@ -185,6 +215,11 @@ namespace RND {
             this.txtTope.Enabled = false;
             this.chkDuplicados.Enabled = true;
             this.chkOrdenados.Enabled = true;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private void radioDiaSemana_CheckedChanged(object sender, EventArgs e) {
@@ -197,6 +232,11 @@ namespace RND {
             this.txtTope.Enabled = false;
             this.chkDuplicados.Enabled = true;
             this.chkOrdenados.Enabled = true;
+
+            this.chkRango.Checked = false;
+            this.chkRango.Enabled = false;
+            this.txtRango.Text = "-";
+            this.txtRango.Enabled = false;
         }
 
         private bool ComprobarDatosIngresados() {
@@ -207,9 +247,16 @@ namespace RND {
                 try {
                     inicio = int.Parse(this.txtInicio.Text);
                     tope = int.Parse(this.txtTope.Text);
-                    cantidad = int.Parse(this.txtCantidad.Text);
-                    if(inicio < 0 || tope < 0 || tope < inicio || cantidad < 0 || inicio == tope) {
-                        return false;
+                    if(!chkRango.Checked) {
+                        cantidad = int.Parse(this.txtCantidad.Text);
+                        if(inicio < 0 || tope < 0 || tope < inicio || cantidad < 0 || inicio == tope) {
+                            return false;
+                        }
+                    } else {
+                        valorRango = double.Parse(this.txtRango.Text);
+                        if(inicio < 0 || tope < 0 || tope < inicio || inicio == tope || valorRango <= 0) {
+                            return false;
+                        }
                     }
                 } catch(FormatException ex) {
                     System.Console.WriteLine("Error: " + ex.Message);
@@ -223,18 +270,32 @@ namespace RND {
         }
 
         private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
-            if(duplicado) {
-                duplicado = false;
+            if(permitirDuplicados) {
+                permitirDuplicados = false;
             } else {
-                duplicado = true;
+                permitirDuplicados = true;
             }
         }
 
         private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
-            if(ordenado) {
-                ordenado = false;
+            if(mostrarOrdenados) {
+                mostrarOrdenados = false;
             } else {
-                ordenado = true;
+                mostrarOrdenados = true;
+            }
+        }
+
+        private void chkRango_CheckedChanged(object sender, EventArgs e) {
+            if(utilizarRango) {
+                utilizarRango = false;
+                this.txtRango.Enabled = false;
+                this.txtCantidad.Enabled = true;
+                this.txtCantidad.Text = "0";
+            } else {
+                utilizarRango = true;
+                this.txtRango.Enabled = true;
+                this.txtCantidad.Enabled = false;
+                this.txtCantidad.Text = "-";
             }
         }
     }
