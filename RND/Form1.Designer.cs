@@ -26,9 +26,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtInicio = new System.Windows.Forms.TextBox();
             this.chkOrdenados = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkRango = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.chkDuplicados = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRango = new System.Windows.Forms.TextBox();
+            this.txtTope = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
             this.grupoTipoSorteo = new System.Windows.Forms.GroupBox();
             this.radioDiaSemana = new System.Windows.Forms.RadioButton();
             this.radioMes = new System.Windows.Forms.RadioButton();
@@ -37,24 +46,15 @@
             this.radioUE = new System.Windows.Forms.RadioButton();
             this.radioCloracion = new System.Windows.Forms.RadioButton();
             this.radioGenerica = new System.Windows.Forms.RadioButton();
-            this.txtRango = new System.Windows.Forms.TextBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.txtTope = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtInicio = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtResultado = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -75,6 +75,31 @@
             this.panel1.Size = new System.Drawing.Size(228, 409);
             this.panel1.TabIndex = 2;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtInicio);
+            this.panel2.Controls.Add(this.chkOrdenados);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.chkRango);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.chkDuplicados);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.txtRango);
+            this.panel2.Controls.Add(this.txtTope);
+            this.panel2.Controls.Add(this.txtCantidad);
+            this.panel2.Location = new System.Drawing.Point(18, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 182);
+            this.panel2.TabIndex = 6;
+            // 
+            // txtInicio
+            // 
+            this.txtInicio.Location = new System.Drawing.Point(57, 7);
+            this.txtInicio.Name = "txtInicio";
+            this.txtInicio.Size = new System.Drawing.Size(137, 20);
+            this.txtInicio.TabIndex = 1;
+            // 
             // chkOrdenados
             // 
             this.chkOrdenados.AutoSize = true;
@@ -85,6 +110,15 @@
             this.chkOrdenados.Text = "Numeros Ordenados";
             this.chkOrdenados.UseVisualStyleBackColor = true;
             this.chkOrdenados.CheckedChanged += new System.EventHandler(this.chkOrdenados_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Inicio";
             // 
             // chkRango
             // 
@@ -97,6 +131,16 @@
             this.chkRango.UseVisualStyleBackColor = true;
             this.chkRango.CheckedChanged += new System.EventHandler(this.chkRango_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(19, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Tope";
+            // 
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
@@ -107,6 +151,45 @@
             this.chkDuplicados.Text = "Permitir Duplicados";
             this.chkDuplicados.UseVisualStyleBackColor = true;
             this.chkDuplicados.CheckedChanged += new System.EventHandler(this.chkDuplicados_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Cantidad";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(2, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Rango";
+            // 
+            // txtRango
+            // 
+            this.txtRango.Location = new System.Drawing.Point(57, 86);
+            this.txtRango.Name = "txtRango";
+            this.txtRango.Size = new System.Drawing.Size(137, 20);
+            this.txtRango.TabIndex = 3;
+            // 
+            // txtTope
+            // 
+            this.txtTope.Location = new System.Drawing.Point(57, 33);
+            this.txtTope.Name = "txtTope";
+            this.txtTope.Size = new System.Drawing.Size(137, 20);
+            this.txtTope.TabIndex = 2;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(57, 59);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(137, 20);
+            this.txtCantidad.TabIndex = 3;
             // 
             // grupoTipoSorteo
             // 
@@ -208,71 +291,6 @@
             this.radioGenerica.UseVisualStyleBackColor = true;
             this.radioGenerica.CheckedChanged += new System.EventHandler(this.radioGenerica_CheckedChanged);
             // 
-            // txtRango
-            // 
-            this.txtRango.Location = new System.Drawing.Point(57, 86);
-            this.txtRango.Name = "txtRango";
-            this.txtRango.Size = new System.Drawing.Size(137, 20);
-            this.txtRango.TabIndex = 3;
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(57, 59);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(137, 20);
-            this.txtCantidad.TabIndex = 3;
-            // 
-            // txtTope
-            // 
-            this.txtTope.Location = new System.Drawing.Point(57, 33);
-            this.txtTope.Name = "txtTope";
-            this.txtTope.Size = new System.Drawing.Size(137, 20);
-            this.txtTope.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 89);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Rango";
-            // 
-            // txtInicio
-            // 
-            this.txtInicio.Location = new System.Drawing.Point(57, 7);
-            this.txtInicio.Name = "txtInicio";
-            this.txtInicio.Size = new System.Drawing.Size(137, 20);
-            this.txtInicio.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Cantidad";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(19, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Tope";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Inicio";
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.txtResultado);
@@ -284,11 +302,11 @@
             // txtResultado
             // 
             this.txtResultado.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResultado.Location = new System.Drawing.Point(22, 29);
+            this.txtResultado.Location = new System.Drawing.Point(22, 17);
             this.txtResultado.Multiline = true;
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(182, 365);
+            this.txtResultado.Size = new System.Drawing.Size(182, 377);
             this.txtResultado.TabIndex = 0;
             // 
             // label6
@@ -310,40 +328,22 @@
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
-            // button2
+            // btnSalir
             // 
-            this.button2.Location = new System.Drawing.Point(278, 470);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Salir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtInicio);
-            this.panel2.Controls.Add(this.chkOrdenados);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.chkRango);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.chkDuplicados);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.txtRango);
-            this.panel2.Controls.Add(this.txtTope);
-            this.panel2.Controls.Add(this.txtCantidad);
-            this.panel2.Location = new System.Drawing.Point(18, 17);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 182);
-            this.panel2.TabIndex = 6;
+            this.btnSalir.Location = new System.Drawing.Point(278, 470);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(100, 28);
+            this.btnSalir.TabIndex = 8;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 523);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
@@ -354,12 +354,12 @@
             this.Name = "Inicio";
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.grupoTipoSorteo.ResumeLayout(false);
             this.grupoTipoSorteo.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +383,7 @@
         private System.Windows.Forms.TextBox txtResultado;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.RadioButton radioDiaSemana;
         private System.Windows.Forms.RadioButton radioMes;
         private System.Windows.Forms.RadioButton radioLado;
