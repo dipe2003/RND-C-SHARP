@@ -10,6 +10,8 @@ namespace RND {
             InitializeComponent();
         }
 
+        private static double rangoGenerica = 300;
+
         private int inicio;
         private int tope;
         private int cantidad;
@@ -33,6 +35,7 @@ namespace RND {
 
             this.chkDuplicados.Enabled = false;
             this.chkOrdenados.Enabled = false;
+            this.chkOrdenados.Checked = true;
         }
 
         private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
@@ -64,31 +67,32 @@ namespace RND {
                          * la parte decimal si > 0 se suma a cantidad
                          */
                         double cociente;
-                        double rango = 300;
-                        cociente = tope / rango;                        
+                        cociente = tope / rangoGenerica;
                         cantidad = (int)cociente;
                         double resto = (cociente - (int)cociente);
                         if(resto > 0) cantidad++;
                         this.txtCantidad.Text = cantidad.ToString();
                     }
                     // sortear por intervalo 1-300 / 301 - 600 / 601 - xxx
-                    for(int i = 0; i < cantidad; i++) {
-                        int nuevoTope = i * 300;
-                        nuevoTope = Math.Abs(tope - nuevoTope);
-                        sorteo.AddRange(SortearNumero(inicio, nuevoTope, 1, false));
-                        inicio += 300;
+                    for(int i = 1; i <= cantidad; i++) {
+                        inicio = (i - 1) * (int)rangoGenerica + 1;
+                        if(tope < i * (int)rangoGenerica) {
+                            sorteo.AddRange(SortearNumero(inicio, tope, 1, false));
+                        } else {
+                            sorteo.AddRange(SortearNumero(inicio, (i * (int)rangoGenerica), 1, false));
+                        }
                     }
                 }
                 MostrarResultado(sorteo, ordenado);
             }
         }
 
-         
+
         private List<int> SortearNumero(int min, int max, int Cantidad, bool duplicado) {
             Random aleatorio = new Random();
             List<int> sorteo = new List<int>();
             if(!duplicado) {
-                for(int i = 0; i < cantidad; i++) {
+                for(int i = 0; i < Cantidad; i++) {
                     int numero;
                     do {
                         numero = aleatorio.Next((max - min + 1)) + min;
@@ -96,7 +100,7 @@ namespace RND {
                     sorteo.Add(numero);
                 }
             } else {
-                for(int i = 0; i < cantidad; i++) {
+                for(int i = 0; i < Cantidad; i++) {
                     int numero = aleatorio.Next((max - min + 1)) + min;
                     sorteo.Add(numero);
                 }
