@@ -4,25 +4,34 @@ using System.Linq;
 using System.Text;
 
 namespace RND.Clases {
-    class Sorteo {
-        public DateTime Fecha { get; set; }
+    abstract class Sorteo {
+
+        protected static Random Aleatorio = new Random();
+
+        public  DateTime Fecha { get; set; }
         public int Inicio { get; set; }
-        public int Tope { get; set; }
-        public int Cantidad { get; set; }
-        public HashSet<int> Resultado { get; set; }
-        public HashSet<string> Opciones { get; set; }
+        public int Tope { get; set; }       
+
+        public bool PermitirDuplicados { get; set; }
+
+        public List<int> Resultado { get; set; }
 
         // constructores
         public Sorteo() { }
-        public Sorteo(DateTime Fecha, int Inicio, int Tope, int Cantidad) {
+        public Sorteo(DateTime Fecha, int Inicio, int Tope) {
             this.Fecha = Fecha;
             this.Inicio = Inicio;
             this.Tope = Tope;
-            this.Cantidad = Cantidad;
-            this.Resultado = new HashSet<int>();
-            this.Opciones = new HashSet<string>();
+            this.Resultado = new List<int>();
         }
-        
+
+        // metodos
+        public abstract void SortearNumeros();
+
+        protected int sortearNumero(int min, int max) {
+            return Aleatorio.Next((max - min + 1)) + max;
+        }
+
 
     }
 }
