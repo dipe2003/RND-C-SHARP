@@ -17,19 +17,23 @@ namespace RND.Clases {
 
         // metodos
         private int CalcularFrecuencia() {
-            return (int)(Math.Round(Tope / (double)Cantidad, 0, MidpointRounding.AwayFromZero));
+            return (int)(Math.Round(Tope / (double)Cantidad, 0, MidpointRounding.ToEven));
         }
 
         override
             public void SortearNumeros() {
+            if(Tope < 0 || Tope < Cantidad || Tope < Inicio || Inicio < 0 || Cantidad < 0 || Cantidad > Tope) {
+                throw new ArgumentException("Existen errores en los parametros del sorteo.");
+            }
             Rango = CalcularFrecuencia();
             int inicio;
             for(int i = 1; i <= Cantidad; i++) {
                 inicio = (i - 1) * (int)Rango + 1;
-                if(Tope < i * (int)Rango) {
-                    Resultado.Add(sortearNumero(inicio, Tope));
+                int topeRango = i * (int)Rango;
+                if(Tope > topeRango) {
+                    Resultado.Add(sortearNumero(inicio, topeRango));
                 } else {
-                    Resultado.Add(sortearNumero(inicio, (i * (int)Rango)));
+                    Resultado.Add(sortearNumero(inicio, Tope));
                 }
             }
         }
@@ -38,13 +42,17 @@ namespace RND.Clases {
         /// Genera numeros aleatorios desde una lista de enteros.
         /// </summary>
         public void SortearNumerosVerificacion() {
+            if(CantidadVerificacion > Cantidad || CantidadVerificacion > Tope) {
+                throw new ArgumentException("Existen errores en los parametros del sorteo.");
+            }
             int numeroSorteo;
             int numeroVerif;
-            for(int i = 0; i < Resultado.Count; i++) {
+            for(int i = 0; i < CantidadVerificacion; i++) {
                 do {
                     numeroVerif = sortearNumero(0, Resultado.Count);
                     numeroSorteo = Resultado.ElementAt(numeroVerif);
                 } while(ResultadoVerificacion.Contains(numeroSorteo));
+                ResultadoVerificacion.Add(numeroSorteo);
             }
         }
     }

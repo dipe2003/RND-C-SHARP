@@ -12,12 +12,12 @@ namespace RND.Clases {
         public int Inicio { get; set; }
         public int Tope { get; set; }       
 
-        public bool PermitirDuplicados { get; set; }
-
         public List<int> Resultado { get; set; }
 
         // constructores
-        public Sorteo() { }
+        public Sorteo() {
+            this.Resultado = new List<int>();
+        }
         public Sorteo(DateTime Fecha, int Inicio, int Tope) {
             this.Fecha = Fecha;
             this.Inicio = Inicio;
@@ -26,10 +26,13 @@ namespace RND.Clases {
         }
 
         // metodos
+        /// <summary>
+        /// <exception cref="ArgumentException">Si los valores no permiten la generacion de numeros aleatorios.</exception>
+        /// </summary>
         public abstract void SortearNumeros();
 
         protected int sortearNumero(int min, int max) {
-            return Aleatorio.Next((max - min + 1)) + max;
+            return Aleatorio.Next((max - min + 1)) + min;
         }
 
 

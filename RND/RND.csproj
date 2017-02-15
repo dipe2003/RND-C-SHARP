@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\EnumSorteo.cs" />
     <Compile Include="Clases\Generica.cs" />
     <Compile Include="Clases\Haccp.cs" />
     <Compile Include="Clases\Opcion.cs" />

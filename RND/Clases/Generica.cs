@@ -46,16 +46,20 @@ namespace RND.Clases {
 
         override
             public void SortearNumeros() {
+            if(Tope < 0 || Tope < cantidad || Tope < Inicio || Inicio < 0 || cantidad < 0 || cantidad > Tope || Rango <0 ) {
+                throw new ArgumentException("Existen errores en los parametros del sorteo.");
+            }
             int inicio;
-            for(int i = 1; i <= Cantidad; i++) {
+            for(int i = 1; i <= cantidad; i++) {
                 inicio = (i - 1) * (int)Rango + 1;
-                if(Tope < i * (int)Rango) {
-                    Resultado.Add(sortearNumero(inicio, Tope));
+                int topeRango = i * (int)Rango;
+                if(Tope > topeRango) {
+                    Resultado.Add(sortearNumero(inicio, topeRango));
                 } else {
-                    Resultado.Add(sortearNumero(inicio, (i * (int)Rango)));
+                    Resultado.Add(sortearNumero(inicio, Tope));
                 }
             }
         }
     }
-        
+
 }
