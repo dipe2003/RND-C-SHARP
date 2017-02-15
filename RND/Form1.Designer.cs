@@ -46,7 +46,6 @@
             this.radioMes = new System.Windows.Forms.RadioButton();
             this.radioLado = new System.Windows.Forms.RadioButton();
             this.radioPersonalizado = new System.Windows.Forms.RadioButton();
-            this.radioHACCP = new System.Windows.Forms.RadioButton();
             this.radioUE = new System.Windows.Forms.RadioButton();
             this.radioCloracion = new System.Windows.Forms.RadioButton();
             this.radioGenerica = new System.Windows.Forms.RadioButton();
@@ -78,7 +77,7 @@
             this.panel1.Controls.Add(this.grupoTipoSorteo);
             this.panel1.Location = new System.Drawing.Point(26, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 480);
+            this.panel1.Size = new System.Drawing.Size(228, 452);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -235,13 +234,12 @@
             this.grupoTipoSorteo.Controls.Add(this.radioMes);
             this.grupoTipoSorteo.Controls.Add(this.radioLado);
             this.grupoTipoSorteo.Controls.Add(this.radioPersonalizado);
-            this.grupoTipoSorteo.Controls.Add(this.radioHACCP);
             this.grupoTipoSorteo.Controls.Add(this.radioUE);
             this.grupoTipoSorteo.Controls.Add(this.radioCloracion);
             this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
             this.grupoTipoSorteo.Location = new System.Drawing.Point(18, 250);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(200, 218);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(200, 192);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
             this.grupoTipoSorteo.Text = "Sorteos";
@@ -283,7 +281,7 @@
             // 
             this.radioPersonalizado.AutoSize = true;
             this.radioPersonalizado.Checked = true;
-            this.radioPersonalizado.Location = new System.Drawing.Point(17, 189);
+            this.radioPersonalizado.Location = new System.Drawing.Point(17, 168);
             this.radioPersonalizado.Name = "radioPersonalizado";
             this.radioPersonalizado.Size = new System.Drawing.Size(91, 17);
             this.radioPersonalizado.TabIndex = 0;
@@ -291,17 +289,6 @@
             this.radioPersonalizado.Text = "Personalizado";
             this.radioPersonalizado.UseVisualStyleBackColor = true;
             this.radioPersonalizado.CheckedChanged += new System.EventHandler(this.radioPersonalizado_CheckedChanged);
-            // 
-            // radioHACCP
-            // 
-            this.radioHACCP.AutoSize = true;
-            this.radioHACCP.Location = new System.Drawing.Point(17, 166);
-            this.radioHACCP.Name = "radioHACCP";
-            this.radioHACCP.Size = new System.Drawing.Size(61, 17);
-            this.radioHACCP.TabIndex = 0;
-            this.radioHACCP.Text = "HACCP";
-            this.radioHACCP.UseVisualStyleBackColor = true;
-            this.radioHACCP.CheckedChanged += new System.EventHandler(this.radioHACCP_CheckedChanged);
             // 
             // radioUE
             // 
@@ -343,13 +330,13 @@
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(277, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(220, 442);
+            this.panel3.Size = new System.Drawing.Size(220, 409);
             this.panel3.TabIndex = 5;
             // 
             // txtResultadoVerificacion
             // 
             this.txtResultadoVerificacion.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResultadoVerificacion.Location = new System.Drawing.Point(14, 320);
+            this.txtResultadoVerificacion.Location = new System.Drawing.Point(14, 283);
             this.txtResultadoVerificacion.Multiline = true;
             this.txtResultadoVerificacion.Name = "txtResultadoVerificacion";
             this.txtResultadoVerificacion.ReadOnly = true;
@@ -363,13 +350,13 @@
             this.txtResultado.Multiline = true;
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(190, 278);
+            this.txtResultado.Size = new System.Drawing.Size(190, 246);
             this.txtResultado.TabIndex = 0;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 300);
+            this.label8.Location = new System.Drawing.Point(11, 263);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 1;
@@ -386,9 +373,9 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(397, 479);
+            this.btnGenerar.Location = new System.Drawing.Point(397, 443);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(100, 28);
+            this.btnGenerar.Size = new System.Drawing.Size(84, 28);
             this.btnGenerar.TabIndex = 7;
             this.btnGenerar.Text = "Generar";
             this.btnGenerar.UseVisualStyleBackColor = true;
@@ -396,9 +383,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(278, 479);
+            this.btnSalir.Location = new System.Drawing.Point(291, 445);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(100, 28);
+            this.btnSalir.Size = new System.Drawing.Size(86, 28);
             this.btnSalir.TabIndex = 8;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -408,7 +395,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 523);
+            this.ClientSize = new System.Drawing.Size(519, 494);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.label6);
@@ -441,7 +428,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grupoTipoSorteo;
-        private System.Windows.Forms.RadioButton radioHACCP;
         private System.Windows.Forms.RadioButton radioUE;
         private System.Windows.Forms.RadioButton radioCloracion;
         private System.Windows.Forms.RadioButton radioGenerica;

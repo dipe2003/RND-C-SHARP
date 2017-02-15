@@ -28,30 +28,11 @@ namespace RND {
         }
 
         private void btnGenerar_Click(object sender, EventArgs e) {
+            // vaciar los cuadros de resultados
+            this.txtResultado.Clear();
+            this.txtResultadoVerificacion.Clear();
             //Sorteo sorteo;
             switch(SorteoPredefinido) {
-                case EnumSorteo.HACCP:
-                    try {
-                        Haccp SorteoHaccp = new Haccp();
-                        SorteoHaccp.Inicio = int.Parse(this.txtInicio.Text);
-                        SorteoHaccp.Tope = int.Parse(this.txtTope.Text);
-                        SorteoHaccp.Cantidad = int.Parse(this.txtCantidad.Text);
-                        SorteoHaccp.SortearNumeros();
-                        MostrarResultado(SorteoHaccp.Resultado, OrdenarResultado, this.txtResultado);
-                        SorteoHaccp.CantidadVerificacion = int.Parse(this.txtCantVerificacion.Text);
-                        SorteoHaccp.SortearNumerosVerificacion();
-                        MostrarResultado(SorteoHaccp.ResultadoVerificacion, OrdenarResultado, this.txtResultadoVerificacion);
-                    } catch(FormatException ex) {
-                        MessageBox.Show("Faltan datos o los valores ingresados no son correctos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        System.Console.WriteLine("Error: " + ex.Message);
-                    } catch(NullReferenceException ex) {
-                        MessageBox.Show("Faltan datos o los valores ingresados no son correctos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        System.Console.WriteLine("Error: " + ex.Message);
-                    } catch(ArgumentException ex) {
-                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        System.Console.WriteLine("Error: " + ex.Message + ex.InnerException);
-                    }
-                    break;
                 case EnumSorteo.GENERICA:
                     try {
                         Generica SorteoGenerica = new Generica();
@@ -185,258 +166,255 @@ namespace RND {
          */
 
         private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.PERSONALIZADO;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = true;
-            this.txtTope.Enabled = true;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioPersonalizado.Checked) {
+                this.SorteoPredefinido = EnumSorteo.PERSONALIZADO;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = true;
-            this.chkOrdenados.Enabled = true;
-            this.chkRango.Enabled = true;
-            this.chkVerificacion.Enabled = true;
+                // radio buttons
+                this.chkDuplicados.Checked = false;
+                this.chkOrdenados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = string.Empty;
-            this.txtTope.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                this.chkDuplicados.Enabled = true;
+                this.chkOrdenados.Enabled = true;
+                this.chkVerificacion.Enabled = true;
+                this.chkRango.Enabled = true;
+
+                // valores predefinidos
+                this.txtInicio.Text = string.Empty;
+                this.txtTope.Text = string.Empty;
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
+
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = true;
+                this.txtTope.Enabled = true;
+                this.txtCantidad.Enabled = true;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
+            }
         }
 
-        private void radioHACCP_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.HACCP;
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
-
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
-
-            // checks predefinidos
-            this.chkOrdenados.Checked = true;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = true;
-            this.chkVerificacion.Checked = true;
-
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = true;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = true;
-        }
 
         private void radioDiaSemana_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.DIA_SEMANA;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = false;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioDiaSemana.Checked) {
+                this.SorteoPredefinido = EnumSorteo.DIA_SEMANA;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = false;
+                this.txtCantidad.Enabled = true;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons
+                this.chkOrdenados.Enabled = false;
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = "7";
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "1";
+                this.txtTope.Text = "7";
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = false;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = false;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = false;
+                this.chkDuplicados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         private void radioMes_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.MES_ANIO;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = false;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioMes.Checked) {
+                this.SorteoPredefinido = EnumSorteo.MES_ANIO;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = false;
+                this.txtCantidad.Enabled = true;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons                
+                this.chkOrdenados.Enabled = false;
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = "12";
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "1";
+                this.txtTope.Text = "12";
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = false;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = false;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = false;
+                this.chkDuplicados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         private void radioLado_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.LADO;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = false;
-            this.txtCantidad.Enabled = false;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioLado.Checked) {
+                this.SorteoPredefinido = EnumSorteo.LADO;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = false;
+                this.txtCantidad.Enabled = false;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons
+                this.chkOrdenados.Enabled = false;
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = "2";
-            this.txtCantidad.Text = "1";
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "1";
+                this.txtTope.Text = "2";
+                this.txtCantidad.Text = "1";
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = false;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = false;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = false;
+                this.chkDuplicados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         private void radioUE_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.UE;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = true;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioUE.Checked) {
+                this.SorteoPredefinido = EnumSorteo.UE;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = true;
+                this.txtCantidad.Enabled = true;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons                
+                this.chkOrdenados.Enabled = false;
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "1";
+                this.txtTope.Text = string.Empty;
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = true;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = false;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = true;
+                this.chkDuplicados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         private void radioCloracion_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.CLORACION;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = true;
-            this.txtCantidad.Enabled = true;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioCloracion.Checked) {
+                this.SorteoPredefinido = EnumSorteo.CLORACION;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = true;
+                this.txtCantidad.Enabled = true;
+                this.txtRango.Enabled = false;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons
+                this.chkOrdenados.Enabled = false;
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "0";
-            this.txtTope.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "0";
+                this.txtTope.Text = string.Empty;
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = false;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = false;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = false;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = false;
+                this.chkDuplicados.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         private void radioGenerica_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.GENERICA;
-            // habiilitar/deshabilitar controles
-            // campos de ingreso de texto
-            this.txtInicio.Enabled = false;
-            this.txtTope.Enabled = true;
-            this.txtCantidad.Enabled = false;
-            this.txtRango.Enabled = false;
-            this.txtCantVerificacion.Enabled = false;
+            if(this.radioGenerica.Checked) {
+                this.SorteoPredefinido = EnumSorteo.GENERICA;
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                this.txtInicio.Enabled = false;
+                this.txtTope.Enabled = true;
+                this.txtCantidad.Enabled = false;
+                this.txtRango.Enabled = true;
+                this.txtCantVerificacion.Enabled = false;
 
-            // radio buttons
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-            this.chkRango.Enabled = false;
-            this.chkVerificacion.Enabled = false;
+                // radio buttons
+                this.chkVerificacion.Enabled = false;
+                this.chkRango.Enabled = false;
+                this.chkOrdenados.Enabled = false;
 
-            // valores predefinidos
-            this.txtInicio.Text = "1";
-            this.txtTope.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtRango.Text = string.Empty;
-            this.txtCantVerificacion.Text = string.Empty;
+                // valores predefinidos
+                this.txtInicio.Text = "1";
+                this.txtTope.Text = string.Empty;
+                this.txtCantidad.Text = string.Empty;
+                this.txtRango.Text = string.Empty;
+                this.txtCantVerificacion.Text = string.Empty;
 
-            // checks predefinidos
-            this.chkOrdenados.Checked = true;
-            this.chkDuplicados.Checked = false;
-            this.chkRango.Checked = true;
-            this.chkVerificacion.Checked = false;
+                // checks predefinidos
+                this.chkOrdenados.Checked = true;
+                this.chkVerificacion.Checked = false;
+                this.chkRango.Checked = true;
+                this.chkDuplicados.Checked = false;
+
+                this.chkDuplicados.Enabled = false;
+            }
         }
 
         /*
          * Botones de Opcion (check buttons): habilita opciones adicionales para sorteos.
          */
         private void chkRango_CheckedChanged(object sender, EventArgs e) {
-            if(UtilizarRango) {
+            if(!this.chkRango.Checked) {
                 UtilizarRango = false;
                 this.txtRango.Enabled = false;
                 this.chkDuplicados.Enabled = true;
-                this.chkDuplicados.Checked = true;
+                this.txtCantidad.Enabled = true;
             } else {
                 UtilizarRango = true;
                 this.txtRango.Enabled = true;
                 this.chkDuplicados.Enabled = false;
-                this.chkDuplicados.Checked = false;
+                this.txtCantidad.Enabled = false;
             }
         }
 
         private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
-            if(PermitirDuplicados) {
+            if(!this.chkDuplicados.Checked) {
                 PermitirDuplicados = false;
             } else {
                 PermitirDuplicados = true;
@@ -444,7 +422,7 @@ namespace RND {
         }
 
         private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
-            if(OrdenarResultado) {
+            if(!this.chkOrdenados.Checked) {
                 OrdenarResultado = false;
             } else {
                 OrdenarResultado = true;
@@ -452,7 +430,7 @@ namespace RND {
         }
 
         private void chkVerificacion_CheckedChanged(object sender, EventArgs e) {
-            if(IncluirVerificacion) {
+            if(!this.chkVerificacion.Checked) {
                 IncluirVerificacion = false;
                 this.txtCantVerificacion.Enabled = false;
             } else {
