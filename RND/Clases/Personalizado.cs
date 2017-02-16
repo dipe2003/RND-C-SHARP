@@ -53,9 +53,7 @@ namespace RND.Clases {
                     if(Cantidad == 0) {
                         Cantidad = CalcularCantidad();
                     }
-                } else {
-                    Rango = CalcularFrecuencia();
-                }
+                } 
                 int inicio;
                 for(int i = 1; i <= Cantidad; i++) {
                     inicio = (i - 1) * (int)Rango + 1;
@@ -89,13 +87,13 @@ namespace RND.Clases {
         /// </summary>
         public void SortearNumerosVerificacion() {
             if(CantidadVerificacion > Cantidad || CantidadVerificacion > Tope) {
-                throw new ArgumentException("Existen errores en los parametros del sorteo.");
+                throw new ArgumentException("La cantidad a verificar no puede ser mayor que el tope o la cantidad sorteada.");
             }
             int numeroSorteo;
             int numeroVerif;
             for(int i = 0; i < CantidadVerificacion; i++) {
                 do {
-                    numeroVerif = sortearNumero(0, Resultado.Count);
+                    numeroVerif = sortearNumero(0, Resultado.Count -1);
                     numeroSorteo = Resultado.ElementAt(numeroVerif);
                 } while(ResultadoVerificacion.Contains(numeroSorteo));
                 ResultadoVerificacion.Add(numeroSorteo);

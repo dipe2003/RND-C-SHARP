@@ -56,16 +56,30 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.barraMenu = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sorteosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemPersonalizado = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemGenerica = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemCloracion = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemUE = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemLado = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemMes = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemDiaSemana = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemNuevo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.barraMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 15);
+            this.label2.Location = new System.Drawing.Point(41, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 1;
@@ -75,7 +89,7 @@
             // 
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.grupoTipoSorteo);
-            this.panel1.Location = new System.Drawing.Point(26, 31);
+            this.panel1.Location = new System.Drawing.Point(26, 48);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(228, 452);
             this.panel1.TabIndex = 2;
@@ -328,7 +342,7 @@
             this.panel3.Controls.Add(this.txtResultadoVerificacion);
             this.panel3.Controls.Add(this.txtResultado);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(277, 31);
+            this.panel3.Location = new System.Drawing.Point(277, 48);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(220, 409);
             this.panel3.TabIndex = 5;
@@ -365,7 +379,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(288, 14);
+            this.label6.Location = new System.Drawing.Point(288, 31);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 13);
             this.label6.TabIndex = 6;
@@ -373,7 +387,7 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(397, 443);
+            this.btnGenerar.Location = new System.Drawing.Point(397, 460);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(84, 28);
             this.btnGenerar.TabIndex = 7;
@@ -383,7 +397,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(291, 445);
+            this.btnSalir.Location = new System.Drawing.Point(291, 462);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(86, 28);
             this.btnSalir.TabIndex = 8;
@@ -391,19 +405,127 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // barraMenu
+            // 
+            this.barraMenu.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.barraMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.sorteosToolStripMenuItem});
+            this.barraMenu.Location = new System.Drawing.Point(0, 0);
+            this.barraMenu.Name = "barraMenu";
+            this.barraMenu.Size = new System.Drawing.Size(519, 27);
+            this.barraMenu.TabIndex = 9;
+            this.barraMenu.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemNuevo,
+            this.toolStripSeparator1,
+            this.salirToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(67, 23);
+            this.archivoToolStripMenuItem.Text = "&Archivo";
+            this.archivoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
+            this.salirToolStripMenuItem.Text = "&Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // sorteosToolStripMenuItem
+            // 
+            this.sorteosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.itemPersonalizado,
+            this.itemGenerica,
+            this.itemCloracion,
+            this.itemUE,
+            this.ItemLado,
+            this.ItemMes,
+            this.itemDiaSemana});
+            this.sorteosToolStripMenuItem.Name = "sorteosToolStripMenuItem";
+            this.sorteosToolStripMenuItem.Size = new System.Drawing.Size(67, 23);
+            this.sorteosToolStripMenuItem.Text = "&Sorteos";
+            this.sorteosToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // itemPersonalizado
+            // 
+            this.itemPersonalizado.Name = "itemPersonalizado";
+            this.itemPersonalizado.Size = new System.Drawing.Size(213, 24);
+            this.itemPersonalizado.Text = "&Personalizado";
+            this.itemPersonalizado.Click += new System.EventHandler(this.itemPersonalizado_Click);
+            // 
+            // itemGenerica
+            // 
+            this.itemGenerica.Name = "itemGenerica";
+            this.itemGenerica.Size = new System.Drawing.Size(213, 24);
+            this.itemGenerica.Text = "E.coli &Generica";
+            this.itemGenerica.Click += new System.EventHandler(this.itemGenerica_Click);
+            // 
+            // itemCloracion
+            // 
+            this.itemCloracion.Name = "itemCloracion";
+            this.itemCloracion.Size = new System.Drawing.Size(213, 24);
+            this.itemCloracion.Text = "Control de &Cloracion";
+            this.itemCloracion.Click += new System.EventHandler(this.itemCloracion_Click);
+            // 
+            // itemUE
+            // 
+            this.itemUE.Name = "itemUE";
+            this.itemUE.Size = new System.Drawing.Size(213, 24);
+            this.itemUE.Text = "&U.E.";
+            this.itemUE.Click += new System.EventHandler(this.itemUE_Click);
+            // 
+            // ItemLado
+            // 
+            this.ItemLado.Name = "ItemLado";
+            this.ItemLado.Size = new System.Drawing.Size(213, 24);
+            this.ItemLado.Text = "&Lado (1: Izq. / 2: Der,)";
+            this.ItemLado.Click += new System.EventHandler(this.ItemLado_Click);
+            // 
+            // ItemMes
+            // 
+            this.ItemMes.Name = "ItemMes";
+            this.ItemMes.Size = new System.Drawing.Size(213, 24);
+            this.ItemMes.Text = "&Mes (1...12)";
+            this.ItemMes.Click += new System.EventHandler(this.ItemMes_Click);
+            // 
+            // itemDiaSemana
+            // 
+            this.itemDiaSemana.Name = "itemDiaSemana";
+            this.itemDiaSemana.Size = new System.Drawing.Size(213, 24);
+            this.itemDiaSemana.Text = "&Dia de Semana (1...7)";
+            this.itemDiaSemana.Click += new System.EventHandler(this.itemDiaSemana_Click);
+            // 
+            // itemNuevo
+            // 
+            this.itemNuevo.Name = "itemNuevo";
+            this.itemNuevo.Size = new System.Drawing.Size(169, 24);
+            this.itemNuevo.Text = "&Nuevo";
+            this.itemNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(166, 6);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 494);
+            this.ClientSize = new System.Drawing.Size(519, 511);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.barraMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.barraMenu;
             this.Name = "Inicio";
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);
@@ -413,6 +535,8 @@
             this.grupoTipoSorteo.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.barraMenu.ResumeLayout(false);
+            this.barraMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,6 +575,19 @@
         private System.Windows.Forms.TextBox txtCantVerificacion;
         private System.Windows.Forms.TextBox txtResultadoVerificacion;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.MenuStrip barraMenu;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sorteosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem itemPersonalizado;
+        private System.Windows.Forms.ToolStripMenuItem itemGenerica;
+        private System.Windows.Forms.ToolStripMenuItem itemCloracion;
+        private System.Windows.Forms.ToolStripMenuItem itemUE;
+        private System.Windows.Forms.ToolStripMenuItem ItemLado;
+        private System.Windows.Forms.ToolStripMenuItem ItemMes;
+        private System.Windows.Forms.ToolStripMenuItem itemDiaSemana;
+        private System.Windows.Forms.ToolStripMenuItem itemNuevo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

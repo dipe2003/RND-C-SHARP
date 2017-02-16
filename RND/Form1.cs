@@ -132,11 +132,12 @@ namespace RND {
                         Personalizado SorteoPersonalizado = new Personalizado();
                         SorteoPersonalizado.Inicio = int.Parse(this.txtInicio.Text);
                         SorteoPersonalizado.Tope = int.Parse(this.txtTope.Text);
-                        SorteoPersonalizado.Cantidad = int.Parse(this.txtCantidad.Text);
                         SorteoPersonalizado.PermitirDuplicados = PermitirDuplicados;
                         if(UtilizarRango) {
                             SorteoPersonalizado.Rango = double.Parse(this.txtRango.Text);
                             SorteoPersonalizado.UsarRango = true;
+                        }else {
+                            SorteoPersonalizado.Cantidad = int.Parse(this.txtCantidad.Text);
                         }
                         SorteoPersonalizado.SortearNumeros();
                         MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.txtResultado);
@@ -271,7 +272,6 @@ namespace RND {
                 // campos de ingreso de texto
                 this.txtInicio.Enabled = false;
                 this.txtTope.Enabled = false;
-                this.txtCantidad.Enabled = false;
                 this.txtRango.Enabled = false;
                 this.txtCantVerificacion.Enabled = false;
 
@@ -294,6 +294,7 @@ namespace RND {
                 this.chkRango.Checked = false;
 
                 this.chkDuplicados.Enabled = false;
+                this.txtCantidad.Enabled = false;
             }
         }
 
@@ -479,6 +480,72 @@ namespace RND {
                 }
             }
             contenedor.Text = resultado;
+        }
+
+        /*
+         * Barra de Menu
+         */
+          
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.txtResultado.Clear();
+            this.txtResultadoVerificacion.Clear();
+            switch(SorteoPredefinido) {
+                case EnumSorteo.GENERICA:
+                    this.radioGenerica.Checked = true;
+                    break;
+                case EnumSorteo.CLORACION:
+                    this.radioCloracion.Checked = true;
+                    break;
+                case EnumSorteo.UE:
+                    this.radioUE.Checked = true;
+                    break;
+                case EnumSorteo.DIA_SEMANA:
+                    this.radioDiaSemana.Checked = true;
+                    break;
+                case EnumSorteo.MES_ANIO:
+                    this.radioMes.Checked = true;
+                    break;
+                case EnumSorteo.LADO:
+                    this.radioLado.Checked = true;
+                    break;
+                case EnumSorteo.PERSONALIZADO:
+                    this.radioPersonalizado.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void itemPersonalizado_Click(object sender, EventArgs e) {
+            this.radioPersonalizado.Checked = true;
+        }
+
+        private void itemGenerica_Click(object sender, EventArgs e) {
+            this.radioGenerica.Checked = true;
+        }
+
+        private void itemCloracion_Click(object sender, EventArgs e) {
+            this.radioCloracion.Checked = true;
+        }
+
+        private void itemUE_Click(object sender, EventArgs e) {
+            this.radioUE.Checked = true;
+        }
+
+        private void ItemLado_Click(object sender, EventArgs e) {
+            this.radioLado.Checked = true;
+        }
+
+        private void ItemMes_Click(object sender, EventArgs e) {
+            this.radioMes.Checked = true;
+        }
+
+        private void itemDiaSemana_Click(object sender, EventArgs e) {
+            this.radioDiaSemana.Checked = true;
         }
     }
 }
