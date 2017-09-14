@@ -1,4 +1,5 @@
 ﻿using RND.Clases;
+using RND.Printing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -555,6 +556,10 @@ namespace RND {
 
         private void itemDiaSemana_Click(object sender, EventArgs e) {
             this.radioDiaSemana.Checked = true;
+        }
+
+        private void conVerificacionToolStripMenuItem_Click(object sender, EventArgs e) {
+            new PrintForm().Show();
         }
     }
 }

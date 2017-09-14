@@ -70,6 +70,9 @@
             this.ItemMes = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDiaSemana = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.conVerificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sinVerificacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
@@ -457,6 +460,7 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemNuevo,
+            this.imprimirToolStripMenuItem,
             this.toolStripSeparator1,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
@@ -467,19 +471,19 @@
             // itemNuevo
             // 
             this.itemNuevo.Name = "itemNuevo";
-            this.itemNuevo.Size = new System.Drawing.Size(127, 26);
+            this.itemNuevo.Size = new System.Drawing.Size(181, 26);
             this.itemNuevo.Text = "&Nuevo";
             this.itemNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(124, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -556,11 +560,34 @@
             this.panel4.Size = new System.Drawing.Size(293, 51);
             this.panel4.TabIndex = 10;
             // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.conVerificacionToolStripMenuItem,
+            this.sinVerificacionToolStripMenuItem});
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.imprimirToolStripMenuItem.Text = "&Imprimir";
+            // 
+            // conVerificacionToolStripMenuItem
+            // 
+            this.conVerificacionToolStripMenuItem.Name = "conVerificacionToolStripMenuItem";
+            this.conVerificacionToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.conVerificacionToolStripMenuItem.Text = "Con Verificacion";
+            this.conVerificacionToolStripMenuItem.Click += new System.EventHandler(this.conVerificacionToolStripMenuItem_Click);
+            // 
+            // sinVerificacionToolStripMenuItem
+            // 
+            this.sinVerificacionToolStripMenuItem.Name = "sinVerificacionToolStripMenuItem";
+            this.sinVerificacionToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.sinVerificacionToolStripMenuItem.Text = "Sin Verificacion";
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 645);
+            this.ControlBox = false;
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
@@ -572,6 +599,7 @@
             this.MainMenuStrip = this.barraMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Inicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -635,6 +663,9 @@
         private System.Windows.Forms.ToolStripMenuItem itemNuevo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem conVerificacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sinVerificacionToolStripMenuItem;
     }
 }
 
