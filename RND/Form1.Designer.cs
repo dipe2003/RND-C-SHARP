@@ -93,7 +93,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.grupoTipoSorteo);
             this.panel1.Location = new System.Drawing.Point(35, 59);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(304, 566);
             this.panel1.TabIndex = 2;
@@ -115,7 +115,7 @@
             this.panel2.Controls.Add(this.txtTope);
             this.panel2.Controls.Add(this.txtCantidad);
             this.panel2.Location = new System.Drawing.Point(24, 14);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(267, 287);
             this.panel2.TabIndex = 6;
@@ -123,7 +123,7 @@
             // txtInicio
             // 
             this.txtInicio.Location = new System.Drawing.Point(93, 9);
-            this.txtInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtInicio.Margin = new System.Windows.Forms.Padding(4);
             this.txtInicio.Name = "txtInicio";
             this.txtInicio.Size = new System.Drawing.Size(164, 22);
             this.txtInicio.TabIndex = 1;
@@ -132,7 +132,7 @@
             // 
             this.chkVerificacion.AutoSize = true;
             this.chkVerificacion.Location = new System.Drawing.Point(93, 255);
-            this.chkVerificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkVerificacion.Margin = new System.Windows.Forms.Padding(4);
             this.chkVerificacion.Name = "chkVerificacion";
             this.chkVerificacion.Size = new System.Drawing.Size(144, 21);
             this.chkVerificacion.TabIndex = 5;
@@ -144,7 +144,7 @@
             // 
             this.chkOrdenados.AutoSize = true;
             this.chkOrdenados.Location = new System.Drawing.Point(93, 226);
-            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4);
             this.chkOrdenados.Name = "chkOrdenados";
             this.chkOrdenados.Size = new System.Drawing.Size(162, 21);
             this.chkOrdenados.TabIndex = 5;
@@ -166,7 +166,7 @@
             // 
             this.chkRango.AutoSize = true;
             this.chkRango.Location = new System.Drawing.Point(93, 171);
-            this.chkRango.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkRango.Margin = new System.Windows.Forms.Padding(4);
             this.chkRango.Name = "chkRango";
             this.chkRango.Size = new System.Drawing.Size(119, 21);
             this.chkRango.TabIndex = 4;
@@ -189,7 +189,7 @@
             // 
             this.chkDuplicados.AutoSize = true;
             this.chkDuplicados.Location = new System.Drawing.Point(93, 197);
-            this.chkDuplicados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkDuplicados.Margin = new System.Windows.Forms.Padding(4);
             this.chkDuplicados.Name = "chkDuplicados";
             this.chkDuplicados.Size = new System.Drawing.Size(152, 21);
             this.chkDuplicados.TabIndex = 4;
@@ -231,7 +231,7 @@
             // 
             this.txtCantVerificacion.Enabled = false;
             this.txtCantVerificacion.Location = new System.Drawing.Point(93, 139);
-            this.txtCantVerificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantVerificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantVerificacion.Name = "txtCantVerificacion";
             this.txtCantVerificacion.Size = new System.Drawing.Size(164, 22);
             this.txtCantVerificacion.TabIndex = 3;
@@ -240,7 +240,7 @@
             // 
             this.txtRango.Enabled = false;
             this.txtRango.Location = new System.Drawing.Point(93, 106);
-            this.txtRango.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRango.Margin = new System.Windows.Forms.Padding(4);
             this.txtRango.Name = "txtRango";
             this.txtRango.Size = new System.Drawing.Size(164, 22);
             this.txtRango.TabIndex = 3;
@@ -248,7 +248,7 @@
             // txtTope
             // 
             this.txtTope.Location = new System.Drawing.Point(93, 41);
-            this.txtTope.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTope.Margin = new System.Windows.Forms.Padding(4);
             this.txtTope.Name = "txtTope";
             this.txtTope.Size = new System.Drawing.Size(164, 22);
             this.txtTope.TabIndex = 2;
@@ -256,7 +256,7 @@
             // txtCantidad
             // 
             this.txtCantidad.Location = new System.Drawing.Point(93, 73);
-            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(164, 22);
             this.txtCantidad.TabIndex = 3;
@@ -271,9 +271,9 @@
             this.grupoTipoSorteo.Controls.Add(this.radioCloracion);
             this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
             this.grupoTipoSorteo.Location = new System.Drawing.Point(24, 308);
-            this.grupoTipoSorteo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grupoTipoSorteo.Margin = new System.Windows.Forms.Padding(4);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grupoTipoSorteo.Padding = new System.Windows.Forms.Padding(4);
             this.grupoTipoSorteo.Size = new System.Drawing.Size(267, 236);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
@@ -283,7 +283,7 @@
             // 
             this.radioDiaSemana.AutoSize = true;
             this.radioDiaSemana.Location = new System.Drawing.Point(23, 175);
-            this.radioDiaSemana.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioDiaSemana.Margin = new System.Windows.Forms.Padding(4);
             this.radioDiaSemana.Name = "radioDiaSemana";
             this.radioDiaSemana.Size = new System.Drawing.Size(168, 21);
             this.radioDiaSemana.TabIndex = 3;
@@ -295,7 +295,7 @@
             // 
             this.radioMes.AutoSize = true;
             this.radioMes.Location = new System.Drawing.Point(23, 145);
-            this.radioMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioMes.Margin = new System.Windows.Forms.Padding(4);
             this.radioMes.Name = "radioMes";
             this.radioMes.Size = new System.Drawing.Size(105, 21);
             this.radioMes.TabIndex = 2;
@@ -307,7 +307,7 @@
             // 
             this.radioLado.AutoSize = true;
             this.radioLado.Location = new System.Drawing.Point(23, 116);
-            this.radioLado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioLado.Margin = new System.Windows.Forms.Padding(4);
             this.radioLado.Name = "radioLado";
             this.radioLado.Size = new System.Drawing.Size(168, 21);
             this.radioLado.TabIndex = 1;
@@ -320,7 +320,7 @@
             this.radioPersonalizado.AutoSize = true;
             this.radioPersonalizado.Checked = true;
             this.radioPersonalizado.Location = new System.Drawing.Point(23, 207);
-            this.radioPersonalizado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioPersonalizado.Margin = new System.Windows.Forms.Padding(4);
             this.radioPersonalizado.Name = "radioPersonalizado";
             this.radioPersonalizado.Size = new System.Drawing.Size(119, 21);
             this.radioPersonalizado.TabIndex = 0;
@@ -333,7 +333,7 @@
             // 
             this.radioUE.AutoSize = true;
             this.radioUE.Location = new System.Drawing.Point(23, 86);
-            this.radioUE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioUE.Margin = new System.Windows.Forms.Padding(4);
             this.radioUE.Name = "radioUE";
             this.radioUE.Size = new System.Drawing.Size(60, 21);
             this.radioUE.TabIndex = 0;
@@ -345,11 +345,11 @@
             // 
             this.radioCloracion.AutoSize = true;
             this.radioCloracion.Location = new System.Drawing.Point(23, 57);
-            this.radioCloracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioCloracion.Margin = new System.Windows.Forms.Padding(4);
             this.radioCloracion.Name = "radioCloracion";
-            this.radioCloracion.Size = new System.Drawing.Size(137, 21);
+            this.radioCloracion.Size = new System.Drawing.Size(157, 21);
             this.radioCloracion.TabIndex = 0;
-            this.radioCloracion.Text = "Control Cloracion";
+            this.radioCloracion.Text = "Control de Cloracion";
             this.radioCloracion.UseVisualStyleBackColor = true;
             this.radioCloracion.CheckedChanged += new System.EventHandler(this.radioCloracion_CheckedChanged);
             // 
@@ -357,7 +357,7 @@
             // 
             this.radioGenerica.AutoSize = true;
             this.radioGenerica.Location = new System.Drawing.Point(23, 27);
-            this.radioGenerica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioGenerica.Margin = new System.Windows.Forms.Padding(4);
             this.radioGenerica.Name = "radioGenerica";
             this.radioGenerica.Size = new System.Drawing.Size(125, 21);
             this.radioGenerica.TabIndex = 0;
@@ -371,7 +371,7 @@
             this.panel3.Controls.Add(this.txtResultado);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(369, 59);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(293, 503);
             this.panel3.TabIndex = 5;
@@ -380,7 +380,7 @@
             // 
             this.txtResultadoVerificacion.BackColor = System.Drawing.SystemColors.Window;
             this.txtResultadoVerificacion.Location = new System.Drawing.Point(19, 348);
-            this.txtResultadoVerificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResultadoVerificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtResultadoVerificacion.Multiline = true;
             this.txtResultadoVerificacion.Name = "txtResultadoVerificacion";
             this.txtResultadoVerificacion.ReadOnly = true;
@@ -391,7 +391,7 @@
             // 
             this.txtResultado.BackColor = System.Drawing.SystemColors.Window;
             this.txtResultado.Location = new System.Drawing.Point(19, 14);
-            this.txtResultado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResultado.Margin = new System.Windows.Forms.Padding(4);
             this.txtResultado.Multiline = true;
             this.txtResultado.Name = "txtResultado";
             this.txtResultado.ReadOnly = true;
@@ -421,7 +421,7 @@
             // btnGenerar
             // 
             this.btnGenerar.Location = new System.Drawing.Point(159, 8);
-            this.btnGenerar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(112, 34);
             this.btnGenerar.TabIndex = 7;
@@ -432,7 +432,7 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(18, 8);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(115, 34);
             this.btnSalir.TabIndex = 8;
@@ -570,7 +570,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.barraMenu;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Inicio";
             this.Text = "RND: Numeros Aleatorios";
             this.panel1.ResumeLayout(false);

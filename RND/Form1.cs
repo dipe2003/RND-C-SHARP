@@ -5,7 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 
 namespace RND {
-    public partial class Inicio : Form {
+    public partial class Inicio :Form {
         public Inicio() {
             InitializeComponent();
         }
@@ -136,7 +136,7 @@ namespace RND {
                         if(UtilizarRango) {
                             SorteoPersonalizado.Rango = double.Parse(this.txtRango.Text);
                             SorteoPersonalizado.UsarRango = true;
-                        }else {
+                        } else {
                             SorteoPersonalizado.Cantidad = int.Parse(this.txtCantidad.Text);
                         }
                         SorteoPersonalizado.SortearNumeros();
@@ -457,18 +457,7 @@ namespace RND {
             int[] arr = new int[Resultado.Count];
             arr = Resultado.ToArray();
             if(ordenados) {
-                int pos;
-                int num;
-                for(int i = 0; i < arr.Length; i++) {
-                    num = arr[i];
-                    pos = i;
-
-                    while(pos > 0 && arr[pos - 1] > num) {
-                        arr[pos] = arr[pos - 1];
-                        pos = pos - 1;
-                    }
-                    arr[pos] = num;
-                }
+                ordenarArray(arr);
             }
             for(int i = 0; i < arr.Length; i++) {
                 resultado = resultado + arr[i].ToString();
@@ -480,6 +469,26 @@ namespace RND {
                 }
             }
             contenedor.Text = resultado;
+        }
+
+        /// <summary>
+        /// Ordena el arreglo de enteros.
+        /// </summary>
+        /// <param name="arreglo"></param>
+        /// <returns></returns>
+        private void ordenarArray(int[] arreglo) {
+            int pos;
+            int num;
+            for(int i = 0; i < arreglo.Length; i++) {
+                num = arreglo[i];
+                pos = i;
+
+                while(pos > 0 && arreglo[pos - 1] > num) {
+                    arreglo[pos] = arreglo[pos - 1];
+                    pos = pos - 1;
+                }
+                arreglo[pos] = num;
+            }
         }
 
         /*
