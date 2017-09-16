@@ -85,33 +85,45 @@
     <Compile Include="Clases\Opcion.cs" />
     <Compile Include="Clases\Personalizado.cs" />
     <Compile Include="Clases\Sorteo.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Views\Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Printing\AcercaDeAplicacion.cs">
+    <Compile Include="Views\AcercaDeAplicacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Printing\AcercaDeAplicacion.Designer.cs">
+    <Compile Include="Views\AcercaDeAplicacion.Designer.cs">
       <DependentUpon>AcercaDeAplicacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Printing\PrintForm.cs">
+    <Compile Include="Views\Printing\PrintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Printing\PrintForm.Designer.cs">
+    <Compile Include="Views\Printing\PrintForm.Designer.cs">
       <DependentUpon>PrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\Sorteos\SorteoFechas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sorteos\SorteoFechas.Designer.cs">
+      <DependentUpon>SorteoFechas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sorteos\SorteoNumeros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sorteos\SorteoNumeros.Designer.cs">
+      <DependentUpon>SorteoNumeros.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Printing\AcercaDeAplicacion.resx">
+    <EmbeddedResource Include="Views\AcercaDeAplicacion.resx">
       <DependentUpon>AcercaDeAplicacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Printing\PrintForm.resx">
+    <EmbeddedResource Include="Views\Printing\PrintForm.resx">
       <DependentUpon>PrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -124,6 +136,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Sorteos\SorteoFechas.resx">
+      <DependentUpon>SorteoFechas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sorteos\SorteoNumeros.resx">
+      <DependentUpon>SorteoNumeros.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
 [assembly: AssemblyTitle("RND")]
-[assembly: AssemblyDescription("Generado de numeros aleatorios.")]
+[assembly: AssemblyDescription("Generador de numeros y fechas aleatorias.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Diego Perez")]
 [assembly: AssemblyProduct("RND")]
