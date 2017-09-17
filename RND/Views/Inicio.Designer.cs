@@ -30,16 +30,16 @@
             this.numerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fechasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.instruccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.instruccionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,14 +78,14 @@
             // numerosToolStripMenuItem
             // 
             this.numerosToolStripMenuItem.Name = "numerosToolStripMenuItem";
-            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.numerosToolStripMenuItem.Text = "Numeros";
             this.numerosToolStripMenuItem.Click += new System.EventHandler(this.AbirSorteoNumeros);
             // 
             // fechasToolStripMenuItem
             // 
             this.fechasToolStripMenuItem.Name = "fechasToolStripMenuItem";
-            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.fechasToolStripMenuItem.Text = "Fechas";
             this.fechasToolStripMenuItem.Click += new System.EventHandler(this.AbrirSorteoFechas);
             // 
@@ -94,6 +94,12 @@
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
+            this.imprimirToolStripMenuItem.Visible = false;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
             // 
             // salirToolStripMenuItem
             // 
@@ -102,10 +108,28 @@
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirApp);
             // 
-            // toolStripSeparator1
+            // ayudaToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.instruccionesToolStripMenuItem,
+            this.acercaDeToolStripMenuItem});
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // instruccionesToolStripMenuItem
+            // 
+            this.instruccionesToolStripMenuItem.Name = "instruccionesToolStripMenuItem";
+            this.instruccionesToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.instruccionesToolStripMenuItem.Text = "Instrucciones";
+            this.instruccionesToolStripMenuItem.Visible = false;
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de RND";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // BottomToolStripPanel
             // 
@@ -142,28 +166,6 @@
             // ContentPanel
             // 
             this.ContentPanel.Size = new System.Drawing.Size(125, 150);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.instruccionesToolStripMenuItem,
-            this.acercaDeToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // instruccionesToolStripMenuItem
-            // 
-            this.instruccionesToolStripMenuItem.Name = "instruccionesToolStripMenuItem";
-            this.instruccionesToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
-            this.instruccionesToolStripMenuItem.Text = "Instrucciones";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de RND";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // Inicio
             // 

@@ -43,47 +43,55 @@ namespace RND.Views.Sorteos {
                 // vaciar los cuadros de resultados
                 this.txtResultado.Clear();
                 this.txtResultadoVerificacion.Clear();
-                //Sorteo sorteo;
-                Sorteo SorteoGenerico;
-                switch(SorteoPredefinido) {
-                    case EnumSorteo.GENERICA:
-                        SorteoGenerico = new Generica();
-                        SorteoGenerico.Inicio = Inicio;
-                        SorteoGenerico.Tope = Tope;
-                        ((Generica)(SorteoGenerico)).Rango = Rango;
-                        SorteoGenerico.SortearNumeros();
-                        MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
-                        break;
-                    case EnumSorteo.PERSONALIZADO:
-                        Personalizado SorteoPersonalizado = new Personalizado();
-                        SorteoPersonalizado.Inicio = Inicio;
-                        SorteoPersonalizado.Tope = Tope;
-                        SorteoPersonalizado.PermitirDuplicados = PermitirDuplicados;
-                        if(UtilizarRango) {
-                            SorteoPersonalizado.Rango = Rango;
-                            SorteoPersonalizado.UsarRango = true;
-                        } else {
-                            SorteoPersonalizado.Cantidad = Cantidad;
+                if(!ComprobarLimiteSorteo(Cantidad, Inicio, Tope)) {
+                    MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " numeros en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else {
+                    //Sorteo sorteo;
+                    Sorteo SorteoGenerico;
+                    try {
+                        switch(SorteoPredefinido) {
+                            case EnumSorteo.GENERICA:
+                                SorteoGenerico = new Generica();
+                                SorteoGenerico.Inicio = Inicio;
+                                SorteoGenerico.Tope = Tope;
+                                ((Generica)(SorteoGenerico)).Rango = Rango;
+                                SorteoGenerico.SortearNumeros();
+                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
+                                break;
+                            case EnumSorteo.PERSONALIZADO:
+                                Personalizado SorteoPersonalizado = new Personalizado();
+                                SorteoPersonalizado.Inicio = Inicio;
+                                SorteoPersonalizado.Tope = Tope;
+                                SorteoPersonalizado.PermitirDuplicados = PermitirDuplicados;
+                                if(UtilizarRango) {
+                                    SorteoPersonalizado.Rango = Rango;
+                                    SorteoPersonalizado.UsarRango = true;
+                                } else {
+                                    SorteoPersonalizado.Cantidad = Cantidad;
+                                }
+                                SorteoPersonalizado.SortearNumeros();
+                                MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.txtResultado);
+                                if(IncluirVerificacion) {
+                                    SorteoPersonalizado.CantidadVerificacion = CantidadVerificacion;
+                                    SorteoPersonalizado.SortearNumerosVerificacion();
+                                    MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.txtResultadoVerificacion);
+                                }
+                                break;
+                            // default cubre los sorteos restantes UE, Cloracion, Lado, Mes, Dia
+                            default:
+                                SorteoGenerico = new Personalizado();
+                                SorteoGenerico.Inicio = Inicio;
+                                SorteoGenerico.Tope = Tope;
+                                ((Personalizado)(SorteoGenerico)).Cantidad = Cantidad;
+                                ((Personalizado)(SorteoGenerico)).PermitirDuplicados = false;
+                                ((Personalizado)(SorteoGenerico)).UsarRango = false;
+                                SorteoGenerico.SortearNumeros();
+                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
+                                break;
                         }
-                        SorteoPersonalizado.SortearNumeros();
-                        MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.txtResultado);
-                        if(IncluirVerificacion) {
-                            SorteoPersonalizado.CantidadVerificacion = CantidadVerificacion;
-                            SorteoPersonalizado.SortearNumerosVerificacion();
-                            MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.txtResultadoVerificacion);
-                        }
-                        break;
-                        // default cubre los sorteos restantes UE, Cloracion, Lado, Mes, Dia
-                    default:
-                        SorteoGenerico = new Personalizado();
-                        SorteoGenerico.Inicio = Inicio;
-                        SorteoGenerico.Tope = Tope;
-                        ((Personalizado)(SorteoGenerico)).Cantidad = Cantidad;
-                        ((Personalizado)(SorteoGenerico)).PermitirDuplicados = false;
-                        ((Personalizado)(SorteoGenerico)).UsarRango = false;
-                        SorteoGenerico.SortearNumeros();
-                        MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
-                        break;
+                    } catch(Exception ex) {
+                        MostrarMensajeError(ex);
+                    }
                 }
             }
         }
@@ -387,40 +395,33 @@ namespace RND.Views.Sorteos {
             contenedor.Clear();
             string resultado = string.Empty;
             int[] arr = new int[Resultado.Count];
-            arr = Resultado.ToArray();
             if(ordenados) {
-                ordenarArray(arr);
+                Resultado.Sort();
             }
-            for(int i = 0; i < arr.Length; i++) {
-                resultado = resultado + arr[i].ToString();
-                int sig = i + 1;
-                if(sig >= arr.Length) {
-                    resultado = resultado + ".";
+            foreach(int num in Resultado) {
+                resultado += num.ToString();
+                if(Resultado.IndexOf(num) == Resultado.Count()) {
+                    resultado += ".";
                 } else {
-                    resultado = resultado + ", ";
+                    resultado += System.Environment.NewLine;
                 }
             }
             contenedor.Text = resultado;
         }
 
         /// <summary>
-        /// Ordena el arreglo de enteros.
+        /// Comprueba que el rango de fecha sea suficiente para el total a sortear.
         /// </summary>
-        /// <param name="arreglo"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaTope"></param>
         /// <returns></returns>
-        private void ordenarArray(int[] arreglo) {
-            int pos;
-            int num;
-            for(int i = 0; i < arreglo.Length; i++) {
-                num = arreglo[i];
-                pos = i;
-
-                while(pos > 0 && arreglo[pos - 1] > num) {
-                    arreglo[pos] = arreglo[pos - 1];
-                    pos = pos - 1;
-                }
-                arreglo[pos] = num;
+        private bool ComprobarLimiteSorteo(int cantidad, int numeroInicio, int numeroTope) {
+            int diferencia = numeroTope - numeroInicio;
+            if(cantidad >= diferencia) {
+                return false;
             }
+            return true;
         }
 
         /// <summary>
@@ -438,7 +439,7 @@ namespace RND.Views.Sorteos {
             } catch(Exception ex) when(ex is FormatException || ex is NullReferenceException) {
                 MostrarMensajeError(ex);
                 return false;
-            }catch(Exception ex) {
+            } catch(Exception ex) {
                 MostrarMensajeError(ex);
                 return false;
             }

@@ -37,7 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkDuplicados = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkOrdenados = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -115,6 +117,7 @@
             this.btnCerrar.TabIndex = 8;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnSortear
             // 
@@ -125,6 +128,7 @@
             this.btnSortear.TabIndex = 7;
             this.btnSortear.Text = "Sortear";
             this.btnSortear.UseVisualStyleBackColor = true;
+            this.btnSortear.Click += new System.EventHandler(this.btnSortear_Click);
             // 
             // panel3
             // 
@@ -146,7 +150,6 @@
             this.chkDomingos.TabIndex = 19;
             this.chkDomingos.Text = "Inlcuir Domingos";
             this.chkDomingos.UseVisualStyleBackColor = true;
-            this.chkDomingos.CheckedChanged += new System.EventHandler(this.chkDomingos_CheckedChanged);
             // 
             // label1
             // 
@@ -168,6 +171,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkOrdenados);
+            this.panel1.Controls.Add(this.chkDuplicados);
             this.panel1.Controls.Add(this.chkDomingos);
             this.panel1.Controls.Add(this.fechaInicio);
             this.panel1.Controls.Add(this.label2);
@@ -180,6 +185,17 @@
             this.panel1.Size = new System.Drawing.Size(229, 333);
             this.panel1.TabIndex = 22;
             // 
+            // chkDuplicados
+            // 
+            this.chkDuplicados.AutoSize = true;
+            this.chkDuplicados.Location = new System.Drawing.Point(13, 243);
+            this.chkDuplicados.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDuplicados.Name = "chkDuplicados";
+            this.chkDuplicados.Size = new System.Drawing.Size(152, 21);
+            this.chkDuplicados.TabIndex = 22;
+            this.chkDuplicados.Text = "Permitir Duplicados";
+            this.chkDuplicados.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -189,6 +205,17 @@
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 23;
             this.label3.Text = "Opciones";
+            // 
+            // chkOrdenados
+            // 
+            this.chkOrdenados.AutoSize = true;
+            this.chkOrdenados.Location = new System.Drawing.Point(13, 284);
+            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOrdenados.Name = "chkOrdenados";
+            this.chkOrdenados.Size = new System.Drawing.Size(151, 21);
+            this.chkOrdenados.TabIndex = 23;
+            this.chkOrdenados.Text = "Fechas Ordenadas";
+            this.chkOrdenados.UseVisualStyleBackColor = true;
             // 
             // SorteoFechas
             // 
@@ -235,5 +262,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkDuplicados;
+        private System.Windows.Forms.CheckBox chkOrdenados;
     }
 }
