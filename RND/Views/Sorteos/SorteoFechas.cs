@@ -113,21 +113,22 @@ namespace RND.Views {
         #endregion
 
         private void btnSortear_Click(object sender, EventArgs e) {
-            ObtenerParametrosNumericos();
-            if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
-                MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else {
-                Resultado = new DateTime[Cantidad];
-                for(int i = 0; i < Cantidad; i++) {
-                    DateTime sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
-                    if(!PermitirDuplicados) {
-                        while(Resultado.Contains(sorteo)) {
-                            sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
+            if(ObtenerParametrosNumericos()) {
+                if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
+                    MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else {
+                    Resultado = new DateTime[Cantidad];
+                    for(int i = 0; i < Cantidad; i++) {
+                        DateTime sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
+                        if(!PermitirDuplicados) {
+                            while(Resultado.Contains(sorteo)) {
+                                sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
+                            }
                         }
+                        Resultado[i] = sorteo;
                     }
-                    Resultado[i] = sorteo;
+                    MostrarResultado(Resultado.ToList<DateTime>(), false, this.txtResultado);
                 }
-                MostrarResultado(Resultado.ToList<DateTime>(), false, this.txtResultado);
             }
         }
 
