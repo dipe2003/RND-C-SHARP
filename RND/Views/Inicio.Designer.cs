@@ -64,7 +64,7 @@
             this.salirToolStripMenuItem});
             this.menuItemArchivo.Name = "menuItemArchivo";
             this.menuItemArchivo.Size = new System.Drawing.Size(71, 24);
-            this.menuItemArchivo.Text = "&Archivo";
+            this.menuItemArchivo.Text = "&Sorteos";
             // 
             // nuevoToolStripMenuItem
             // 
@@ -78,14 +78,14 @@
             // numerosToolStripMenuItem
             // 
             this.numerosToolStripMenuItem.Name = "numerosToolStripMenuItem";
-            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.numerosToolStripMenuItem.Text = "Numeros";
             this.numerosToolStripMenuItem.Click += new System.EventHandler(this.AbirSorteoNumeros);
             // 
             // fechasToolStripMenuItem
             // 
             this.fechasToolStripMenuItem.Name = "fechasToolStripMenuItem";
-            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.fechasToolStripMenuItem.Text = "Fechas";
             this.fechasToolStripMenuItem.Click += new System.EventHandler(this.AbrirSorteoFechas);
             // 

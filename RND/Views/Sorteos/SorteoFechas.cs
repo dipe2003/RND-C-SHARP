@@ -100,7 +100,7 @@ namespace RND.Views {
                 Resultado.Sort();
             }
             foreach(DateTime fecha in Resultado) {
-                resultado += fecha.ToShortDateString();
+                resultado += Resultado.IndexOf(fecha)+1 + ") " + fecha.ToShortDateString();
                 if(Resultado.IndexOf(fecha) == Resultado.Count()) {
                     resultado += ".";
                 } else {

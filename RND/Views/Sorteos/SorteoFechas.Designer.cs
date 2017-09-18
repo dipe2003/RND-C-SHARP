@@ -37,9 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkOrdenados = new System.Windows.Forms.CheckBox();
             this.chkDuplicados = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkOrdenados = new System.Windows.Forms.CheckBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,7 +80,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(310, 14);
+            this.label6.Location = new System.Drawing.Point(292, 14);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(127, 17);
@@ -185,6 +185,17 @@
             this.panel1.Size = new System.Drawing.Size(229, 333);
             this.panel1.TabIndex = 22;
             // 
+            // chkOrdenados
+            // 
+            this.chkOrdenados.AutoSize = true;
+            this.chkOrdenados.Location = new System.Drawing.Point(13, 284);
+            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOrdenados.Name = "chkOrdenados";
+            this.chkOrdenados.Size = new System.Drawing.Size(151, 21);
+            this.chkOrdenados.TabIndex = 23;
+            this.chkOrdenados.Text = "Fechas Ordenadas";
+            this.chkOrdenados.UseVisualStyleBackColor = true;
+            // 
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
@@ -205,17 +216,6 @@
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 23;
             this.label3.Text = "Opciones";
-            // 
-            // chkOrdenados
-            // 
-            this.chkOrdenados.AutoSize = true;
-            this.chkOrdenados.Location = new System.Drawing.Point(13, 284);
-            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4);
-            this.chkOrdenados.Name = "chkOrdenados";
-            this.chkOrdenados.Size = new System.Drawing.Size(151, 21);
-            this.chkOrdenados.TabIndex = 23;
-            this.chkOrdenados.Text = "Fechas Ordenadas";
-            this.chkOrdenados.UseVisualStyleBackColor = true;
             // 
             // SorteoFechas
             // 

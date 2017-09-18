@@ -399,7 +399,7 @@ namespace RND.Views.Sorteos {
                 Resultado.Sort();
             }
             foreach(int num in Resultado) {
-                resultado += num.ToString();
+                resultado += Resultado.IndexOf(num)+1 +") " + num.ToString();
                 if(Resultado.IndexOf(num) == Resultado.Count()) {
                     resultado += ".";
                 } else {
