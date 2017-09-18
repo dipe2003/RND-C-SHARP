@@ -34,5 +34,9 @@ namespace RND {
             nuevo.MdiParent = this;
             nuevo.Show();
         }
+
+        private void tabNumeros_Click(object sender, EventArgs e) {
+
+        }
     }
 }

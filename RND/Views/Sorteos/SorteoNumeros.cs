@@ -77,7 +77,7 @@ namespace RND.Views.Sorteos {
                                     MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.txtResultadoVerificacion);
                                 }
                                 break;
-                            // default cubre los sorteos restantes UE, Cloracion, Lado, Mes, Dia
+                            // default cubre los sorteos restantes UE, Cloracion, Lado
                             default:
                                 SorteoGenerico = new Personalizado();
                                 SorteoGenerico.Inicio = Inicio;
@@ -130,76 +130,7 @@ namespace RND.Views.Sorteos {
                 this.txtCantVerificacion.Enabled = false;
             }
         }
-
-
-        private void radioDiaSemana_CheckedChanged(object sender, EventArgs e) {
-            if(this.radioDiaSemana.Checked) {
-                this.SorteoPredefinido = EnumSorteo.DIA_SEMANA;
-                // habiilitar/deshabilitar controles
-                // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = false;
-                this.txtCantidad.Enabled = true;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
-
-                // radio buttons
-                this.chkOrdenados.Enabled = false;
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
-
-                // valores predefinidos
-                this.txtInicio.Text = "1";
-                this.txtTope.Text = "7";
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
-
-                // checks predefinidos
-                this.chkOrdenados.Checked = false;
-                this.chkDuplicados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
-            }
-        }
-
-        private void radioMes_CheckedChanged(object sender, EventArgs e) {
-            if(this.radioMes.Checked) {
-                this.SorteoPredefinido = EnumSorteo.MES_ANIO;
-                // habiilitar/deshabilitar controles
-                // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = false;
-                this.txtCantidad.Enabled = true;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
-
-                // radio buttons                
-                this.chkOrdenados.Enabled = false;
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
-
-                // valores predefinidos
-                this.txtInicio.Text = "1";
-                Inicio = 1;
-                this.txtTope.Text = "12";
-                Tope = 12;
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
-
-                // checks predefinidos
-                this.chkOrdenados.Checked = false;
-                this.chkDuplicados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
-            }
-        }
-
+        
         private void radioLado_CheckedChanged(object sender, EventArgs e) {
             if(this.radioLado.Checked) {
                 this.SorteoPredefinido = EnumSorteo.LADO;
@@ -394,7 +325,6 @@ namespace RND.Views.Sorteos {
         private void MostrarResultado(List<int> Resultado, bool ordenados, TextBox contenedor) {
             contenedor.Clear();
             string resultado = string.Empty;
-            int[] arr = new int[Resultado.Count];
             if(ordenados) {
                 Resultado.Sort();
             }
@@ -473,12 +403,6 @@ namespace RND.Views.Sorteos {
                 case EnumSorteo.UE:
                     this.radioUE.Checked = true;
                     break;
-                case EnumSorteo.DIA_SEMANA:
-                    this.radioDiaSemana.Checked = true;
-                    break;
-                case EnumSorteo.MES_ANIO:
-                    this.radioMes.Checked = true;
-                    break;
                 case EnumSorteo.LADO:
                     this.radioLado.Checked = true;
                     break;
@@ -489,6 +413,5 @@ namespace RND.Views.Sorteos {
                     break;
             }
         }
-
     }
 }
