@@ -88,7 +88,7 @@ namespace RND.Views {
         /// <param name="fechaTope"></param>
         /// <returns></returns>
         private bool ComprobarLimiteSorteo(int cantidad, DateTime fechaInicio, DateTime fechaTope) {
-            int diferencia = fechaTope.Day - fechaInicio.Day;
+            int diferencia = fechaTope.Subtract(fechaInicio).Days;
             if(cantidad >= diferencia) {
                 return false;
             }
@@ -157,6 +157,7 @@ namespace RND.Views {
                         Resultado[i] = sorteo;
                     }
                     MostrarResultado(Resultado.ToList<DateTime>(), ResultadoOrdenado, this.txtResultado);
+                    //ArmarTabla(Resultado.ToList<DateTime>());
                 }
             }
         }
@@ -179,6 +180,17 @@ namespace RND.Views {
             MostrarResultado(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString(), false, this.txtResultado);
         }
 
+        //private void ArmarTabla(List<DateTime> fechasSorteadas) {
+        //    this.dataGridFechas.Columns.Add("colNum", "Num");
+        //    this.dataGridFechas.Columns.Add("colFecha", "Fecha");
+        //    //this.dataGridFechas.Rows[num].Cells[0].Value = "Num";
+        //    //this.dataGridFechas.Rows[num].Cells[0].Value = "Fecha";
+        //    foreach(DateTime fecha in fechasSorteadas) {
+        //        int num = this.dataGridFechas.Rows.Add();
+        //        this.dataGridFechas.Rows[num].Cells[fechasSorteadas.IndexOf(fecha) + 1].Value = fechasSorteadas.IndexOf(fecha) + 1;
+        //        this.dataGridFechas.Rows[num].Cells[fechasSorteadas.IndexOf(fecha) + 1].Value = fecha.ToShortDateString();
+        //    }
+        //}
         #endregion
 
         private void btnSortear_Click(object sender, EventArgs e) {

@@ -15,7 +15,7 @@ namespace RND.Clases {
         public bool UsarRango { get; set; }
 
         // constructores
-        public Personalizado() {
+        public Personalizado() : base() {            
             this.ResultadoVerificacion = new List<int>();
         }
 
