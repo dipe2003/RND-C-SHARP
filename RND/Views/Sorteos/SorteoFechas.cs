@@ -49,8 +49,6 @@ namespace RND.Views {
         private DateTime FechaTope;
         private int Cantidad;
 
-        private DateTime[] Resultado;
-
         #region Metodos
         /// <summary>
         /// Parsea los valores string ingresados al valor numerico correspondiente.
@@ -95,6 +93,14 @@ namespace RND.Views {
             return true;
         }
 
+        /// <summary>
+        /// Genera una fecha al azar entre la fecha inicio y fecha tope.
+        /// Permite especificar si se incluyen los domingos.
+        /// </summary>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaTope"></param>
+        /// <param name="incluirDomingo"></param>
+        /// <returns></returns>
         private DateTime RandomDay(DateTime fechaInicio, DateTime fechaTope, bool incluirDomingo) {
             int range = (fechaTope - fechaInicio).Days;
             DateTime dia = fechaInicio.AddDays(rand.Next(range));
@@ -107,46 +113,32 @@ namespace RND.Views {
         }
 
         /// <summary>
-        /// Genera una string de los numeros indicados y los muestra en al cuadro de texto.
+        /// Genera una string de los numeros indicados y los muestra en el datagrid.
         /// </summary>
         /// <param name="Resultado"></param>
         /// <param name="ordenados"></param>
         /// <param name="contenedor"></param>
-        private void MostrarResultado(List<DateTime> Resultado, bool ordenados, TextBox contenedor) {
-            contenedor.Clear();
+        private void MostrarResultado(List<DateTime> Resultado, bool ordenados) {
             string resultado = string.Empty;
             if(ordenados) {
                 Resultado.Sort();
             }
+            List<string> lista = new List<string>();
             foreach(DateTime fecha in Resultado) {
-                resultado += Resultado.IndexOf(fecha) + 1 + ") " + fecha.ToShortDateString();
-                if(Resultado.IndexOf(fecha) == Resultado.Count()) {
-                    resultado += ".";
-                } else {
-                    resultado += System.Environment.NewLine;
-                }
+                lista.Add(fecha.ToShortDateString());
             }
-            contenedor.Text = resultado;
+            LlenarTabla(lista, "Fechas");
         }
 
         /// <summary>
-        /// Genera una string de los numeros indicados y los muestra en al cuadro de texto.
+        /// Genera una lista de fechas al azar.
         /// </summary>
-        /// <param name="Resultado"></param>
-        /// <param name="ordenados"></param>
-        /// <param name="contenedor"></param>
-        private void MostrarResultado(string Resultado, bool ordenados, TextBox contenedor) {
-            contenedor.Clear();
-            Resultado += "." + System.Environment.NewLine;
-            contenedor.Text = Resultado;
-        }
-
         private void SortearPersonalizado() {
             if(ObtenerParametrosNumericos()) {
                 if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    Resultado = new DateTime[Cantidad];
+                    List<DateTime> Resultado = new List<DateTime>();
                     for(int i = 0; i < Cantidad; i++) {
                         DateTime sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
                         if(!PermitirDuplicados) {
@@ -154,14 +146,15 @@ namespace RND.Views {
                                 sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
                             }
                         }
-                        Resultado[i] = sorteo;
+                        Resultado.Add(sorteo);
                     }
-                    MostrarResultado(Resultado.ToList<DateTime>(), ResultadoOrdenado, this.txtResultado);
-                    //ArmarTabla(Resultado.ToList<DateTime>());
+                    MostrarResultado(Resultado, ResultadoOrdenado);
                 }
             }
         }
-
+        /// <summary>
+        /// Genera un numero al azar y le asigna un dia de la semana.
+        /// </summary>
         private void SortearDiaSemana() {
             Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 6, Cantidad = 1 };
             sorteo.SortearNumeros();
@@ -171,26 +164,42 @@ namespace RND.Views {
                     sorteo.SortearNumeros();
                 }
             }
-            MostrarResultado(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString(), false, this.txtResultado);
+            List<string> lista = new List<string>();
+            lista.Add(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString());
+            LlenarTabla(lista, "Dia");            
         }
 
+        /// <summary>
+        /// Genera un numero al azar y le asigna un mes de año
+        /// </summary>
         private void SortearMesAnio() {
             Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 11, Cantidad = 1 };
             sorteo.SortearNumeros();
-            MostrarResultado(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString(), false, this.txtResultado);
+            List<string> lista = new List<string>();
+            lista.Add(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString());
+            LlenarTabla(lista, "Mes");
+        }
+        /// <summary>
+        /// Llena el datagridview con los strings del sorteo.
+        /// </summary>
+        /// <param name="fechasSorteadas"></param>
+        /// <param name="nombreSegundaColumna"></param>
+        private void LlenarTabla(List<string> fechasSorteadas, string nombreSegundaColumna) {
+            DataTable tabla = new DataTable();
+            tabla.Columns.Add("#", typeof(int));
+            tabla.Columns.Add(nombreSegundaColumna, typeof(string));
+            foreach(string fecha in fechasSorteadas) {
+                DataRow fila = tabla.NewRow();
+                fila["#"] = fechasSorteadas.IndexOf(fecha)+1;
+                fila[nombreSegundaColumna] = fecha;
+                tabla.Rows.Add(fila);
+            }
+            this.dataGridFechas.DataSource = tabla;
+            this.dataGridFechas.ReadOnly = true;
+            this.dataGridFechas.ShowEditingIcon = false;
+            this.dataGridFechas.RowHeadersVisible = false;
         }
 
-        //private void ArmarTabla(List<DateTime> fechasSorteadas) {
-        //    this.dataGridFechas.Columns.Add("colNum", "Num");
-        //    this.dataGridFechas.Columns.Add("colFecha", "Fecha");
-        //    //this.dataGridFechas.Rows[num].Cells[0].Value = "Num";
-        //    //this.dataGridFechas.Rows[num].Cells[0].Value = "Fecha";
-        //    foreach(DateTime fecha in fechasSorteadas) {
-        //        int num = this.dataGridFechas.Rows.Add();
-        //        this.dataGridFechas.Rows[num].Cells[fechasSorteadas.IndexOf(fecha) + 1].Value = fechasSorteadas.IndexOf(fecha) + 1;
-        //        this.dataGridFechas.Rows[num].Cells[fechasSorteadas.IndexOf(fecha) + 1].Value = fecha.ToShortDateString();
-        //    }
-        //}
         #endregion
 
         private void btnSortear_Click(object sender, EventArgs e) {

@@ -28,11 +28,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtResultado = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSortear = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridFechas = new System.Windows.Forms.DataGridView();
             this.chkDomingos = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).BeginInit();
             this.panel1.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -94,17 +95,6 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Fechas Sorteadas:";
             // 
-            // txtResultado
-            // 
-            this.txtResultado.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResultado.Location = new System.Drawing.Point(9, 14);
-            this.txtResultado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtResultado.Multiline = true;
-            this.txtResultado.Name = "txtResultado";
-            this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(262, 344);
-            this.txtResultado.TabIndex = 0;
-            // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -140,12 +130,23 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtResultado);
+            this.panel3.Controls.Add(this.dataGridFechas);
             this.panel3.Location = new System.Drawing.Point(295, 35);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(283, 373);
             this.panel3.TabIndex = 16;
+            // 
+            // dataGridFechas
+            // 
+            this.dataGridFechas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridFechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFechas.Location = new System.Drawing.Point(9, 14);
+            this.dataGridFechas.Name = "dataGridFechas";
+            this.dataGridFechas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridFechas.RowTemplate.Height = 24;
+            this.dataGridFechas.Size = new System.Drawing.Size(262, 344);
+            this.dataGridFechas.TabIndex = 25;
             // 
             // chkDomingos
             // 
@@ -293,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 482);
+            this.ClientSize = new System.Drawing.Size(596, 482);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
@@ -310,7 +311,7 @@
             this.TopMost = true;
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.grupoTipoSorteo.ResumeLayout(false);
@@ -328,7 +329,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtResultado;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnSortear;
@@ -345,5 +345,6 @@
         private System.Windows.Forms.RadioButton radioMes;
         private System.Windows.Forms.RadioButton radioDiaSemana;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridFechas;
     }
 }
