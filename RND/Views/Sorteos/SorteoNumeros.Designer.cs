@@ -32,13 +32,6 @@
             this.txtResultado = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.grupoTipoSorteo = new System.Windows.Forms.GroupBox();
-            this.radioLado = new System.Windows.Forms.RadioButton();
-            this.radioPersonalizado = new System.Windows.Forms.RadioButton();
-            this.radioUE = new System.Windows.Forms.RadioButton();
-            this.radioCloracion = new System.Windows.Forms.RadioButton();
-            this.radioGenerica = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtInicio = new System.Windows.Forms.TextBox();
             this.chkVerificacion = new System.Windows.Forms.CheckBox();
@@ -54,13 +47,22 @@
             this.txtRango = new System.Windows.Forms.TextBox();
             this.txtTope = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.grupoTipoSorteo = new System.Windows.Forms.GroupBox();
+            this.radioDiaSemana = new System.Windows.Forms.RadioButton();
+            this.radioMes = new System.Windows.Forms.RadioButton();
+            this.radioLado = new System.Windows.Forms.RadioButton();
+            this.radioPersonalizado = new System.Windows.Forms.RadioButton();
+            this.radioUE = new System.Windows.Forms.RadioButton();
+            this.radioCloracion = new System.Windows.Forms.RadioButton();
+            this.radioGenerica = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.grupoTipoSorteo.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.grupoTipoSorteo.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
@@ -68,7 +70,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.btnCerrar);
             this.panel4.Controls.Add(this.btnGenerar);
-            this.panel4.Location = new System.Drawing.Point(347, 523);
+            this.panel4.Location = new System.Drawing.Point(347, 557);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(293, 51);
             this.panel4.TabIndex = 15;
@@ -115,7 +117,7 @@
             this.panel3.Location = new System.Drawing.Point(347, 42);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(293, 474);
+            this.panel3.Size = new System.Drawing.Size(293, 503);
             this.panel3.TabIndex = 13;
             // 
             // txtResultadoVerificacion
@@ -126,7 +128,7 @@
             this.txtResultadoVerificacion.Multiline = true;
             this.txtResultadoVerificacion.Name = "txtResultadoVerificacion";
             this.txtResultadoVerificacion.ReadOnly = true;
-            this.txtResultadoVerificacion.Size = new System.Drawing.Size(252, 112);
+            this.txtResultadoVerificacion.Size = new System.Drawing.Size(252, 141);
             this.txtResultadoVerificacion.TabIndex = 0;
             // 
             // txtResultado
@@ -157,96 +159,8 @@
             this.panel1.Location = new System.Drawing.Point(13, 42);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 532);
+            this.panel1.Size = new System.Drawing.Size(304, 574);
             this.panel1.TabIndex = 12;
-            // 
-            // panel5
-            // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.grupoTipoSorteo);
-            this.panel5.Location = new System.Drawing.Point(23, 313);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(267, 205);
-            this.panel5.TabIndex = 7;
-            // 
-            // grupoTipoSorteo
-            // 
-            this.grupoTipoSorteo.Controls.Add(this.radioLado);
-            this.grupoTipoSorteo.Controls.Add(this.radioPersonalizado);
-            this.grupoTipoSorteo.Controls.Add(this.radioUE);
-            this.grupoTipoSorteo.Controls.Add(this.radioCloracion);
-            this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
-            this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grupoTipoSorteo.Location = new System.Drawing.Point(13, 4);
-            this.grupoTipoSorteo.Margin = new System.Windows.Forms.Padding(4);
-            this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Padding = new System.Windows.Forms.Padding(4);
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(242, 185);
-            this.grupoTipoSorteo.TabIndex = 0;
-            this.grupoTipoSorteo.TabStop = false;
-            this.grupoTipoSorteo.Text = "Sorteos";
-            // 
-            // radioLado
-            // 
-            this.radioLado.AutoSize = true;
-            this.radioLado.Location = new System.Drawing.Point(23, 116);
-            this.radioLado.Margin = new System.Windows.Forms.Padding(4);
-            this.radioLado.Name = "radioLado";
-            this.radioLado.Size = new System.Drawing.Size(168, 21);
-            this.radioLado.TabIndex = 1;
-            this.radioLado.Text = "Lado (1: Izq. / 2: Der.)";
-            this.radioLado.UseVisualStyleBackColor = true;
-            this.radioLado.CheckedChanged += new System.EventHandler(this.radioLado_CheckedChanged);
-            // 
-            // radioPersonalizado
-            // 
-            this.radioPersonalizado.AutoSize = true;
-            this.radioPersonalizado.Checked = true;
-            this.radioPersonalizado.Location = new System.Drawing.Point(23, 145);
-            this.radioPersonalizado.Margin = new System.Windows.Forms.Padding(4);
-            this.radioPersonalizado.Name = "radioPersonalizado";
-            this.radioPersonalizado.Size = new System.Drawing.Size(119, 21);
-            this.radioPersonalizado.TabIndex = 0;
-            this.radioPersonalizado.TabStop = true;
-            this.radioPersonalizado.Text = "Personalizado";
-            this.radioPersonalizado.UseVisualStyleBackColor = true;
-            this.radioPersonalizado.CheckedChanged += new System.EventHandler(this.radioPersonalizado_CheckedChanged);
-            // 
-            // radioUE
-            // 
-            this.radioUE.AutoSize = true;
-            this.radioUE.Location = new System.Drawing.Point(23, 86);
-            this.radioUE.Margin = new System.Windows.Forms.Padding(4);
-            this.radioUE.Name = "radioUE";
-            this.radioUE.Size = new System.Drawing.Size(60, 21);
-            this.radioUE.TabIndex = 0;
-            this.radioUE.Text = "U.E. ";
-            this.radioUE.UseVisualStyleBackColor = true;
-            this.radioUE.CheckedChanged += new System.EventHandler(this.radioUE_CheckedChanged);
-            // 
-            // radioCloracion
-            // 
-            this.radioCloracion.AutoSize = true;
-            this.radioCloracion.Location = new System.Drawing.Point(23, 57);
-            this.radioCloracion.Margin = new System.Windows.Forms.Padding(4);
-            this.radioCloracion.Name = "radioCloracion";
-            this.radioCloracion.Size = new System.Drawing.Size(157, 21);
-            this.radioCloracion.TabIndex = 0;
-            this.radioCloracion.Text = "Control de Cloracion";
-            this.radioCloracion.UseVisualStyleBackColor = true;
-            this.radioCloracion.CheckedChanged += new System.EventHandler(this.radioCloracion_CheckedChanged);
-            // 
-            // radioGenerica
-            // 
-            this.radioGenerica.AutoSize = true;
-            this.radioGenerica.Location = new System.Drawing.Point(23, 27);
-            this.radioGenerica.Margin = new System.Windows.Forms.Padding(4);
-            this.radioGenerica.Name = "radioGenerica";
-            this.radioGenerica.Size = new System.Drawing.Size(125, 21);
-            this.radioGenerica.TabIndex = 0;
-            this.radioGenerica.Text = "E.coli Generica";
-            this.radioGenerica.UseVisualStyleBackColor = true;
-            this.radioGenerica.CheckedChanged += new System.EventHandler(this.radioGenerica_CheckedChanged);
             // 
             // panel2
             // 
@@ -412,6 +326,111 @@
             this.txtCantidad.Size = new System.Drawing.Size(164, 22);
             this.txtCantidad.TabIndex = 3;
             // 
+            // grupoTipoSorteo
+            // 
+            this.grupoTipoSorteo.Controls.Add(this.radioDiaSemana);
+            this.grupoTipoSorteo.Controls.Add(this.radioMes);
+            this.grupoTipoSorteo.Controls.Add(this.radioLado);
+            this.grupoTipoSorteo.Controls.Add(this.radioPersonalizado);
+            this.grupoTipoSorteo.Controls.Add(this.radioUE);
+            this.grupoTipoSorteo.Controls.Add(this.radioCloracion);
+            this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
+            this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.grupoTipoSorteo.Location = new System.Drawing.Point(13, 4);
+            this.grupoTipoSorteo.Margin = new System.Windows.Forms.Padding(4);
+            this.grupoTipoSorteo.Name = "grupoTipoSorteo";
+            this.grupoTipoSorteo.Padding = new System.Windows.Forms.Padding(4);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(242, 236);
+            this.grupoTipoSorteo.TabIndex = 0;
+            this.grupoTipoSorteo.TabStop = false;
+            this.grupoTipoSorteo.Text = "Sorteos";
+            // 
+            // radioDiaSemana
+            // 
+            this.radioDiaSemana.AutoSize = true;
+            this.radioDiaSemana.Location = new System.Drawing.Point(23, 175);
+            this.radioDiaSemana.Margin = new System.Windows.Forms.Padding(4);
+            this.radioDiaSemana.Name = "radioDiaSemana";
+            this.radioDiaSemana.Size = new System.Drawing.Size(168, 21);
+            this.radioDiaSemana.TabIndex = 3;
+            this.radioDiaSemana.Text = "Dia de Semana (1...7)";
+            this.radioDiaSemana.UseVisualStyleBackColor = true;
+            this.radioDiaSemana.CheckedChanged += new System.EventHandler(this.radioDiaSemana_CheckedChanged);
+            // 
+            // radioMes
+            // 
+            this.radioMes.AutoSize = true;
+            this.radioMes.Location = new System.Drawing.Point(23, 145);
+            this.radioMes.Margin = new System.Windows.Forms.Padding(4);
+            this.radioMes.Name = "radioMes";
+            this.radioMes.Size = new System.Drawing.Size(105, 21);
+            this.radioMes.TabIndex = 2;
+            this.radioMes.Text = "Mes (1...12)";
+            this.radioMes.UseVisualStyleBackColor = true;
+            this.radioMes.CheckedChanged += new System.EventHandler(this.radioMes_CheckedChanged);
+            // 
+            // radioLado
+            // 
+            this.radioLado.AutoSize = true;
+            this.radioLado.Location = new System.Drawing.Point(23, 116);
+            this.radioLado.Margin = new System.Windows.Forms.Padding(4);
+            this.radioLado.Name = "radioLado";
+            this.radioLado.Size = new System.Drawing.Size(168, 21);
+            this.radioLado.TabIndex = 1;
+            this.radioLado.Text = "Lado (1: Izq. / 2: Der.)";
+            this.radioLado.UseVisualStyleBackColor = true;
+            this.radioLado.CheckedChanged += new System.EventHandler(this.radioLado_CheckedChanged);
+            // 
+            // radioPersonalizado
+            // 
+            this.radioPersonalizado.AutoSize = true;
+            this.radioPersonalizado.Checked = true;
+            this.radioPersonalizado.Location = new System.Drawing.Point(23, 207);
+            this.radioPersonalizado.Margin = new System.Windows.Forms.Padding(4);
+            this.radioPersonalizado.Name = "radioPersonalizado";
+            this.radioPersonalizado.Size = new System.Drawing.Size(119, 21);
+            this.radioPersonalizado.TabIndex = 0;
+            this.radioPersonalizado.TabStop = true;
+            this.radioPersonalizado.Text = "Personalizado";
+            this.radioPersonalizado.UseVisualStyleBackColor = true;
+            this.radioPersonalizado.CheckedChanged += new System.EventHandler(this.radioPersonalizado_CheckedChanged);
+            // 
+            // radioUE
+            // 
+            this.radioUE.AutoSize = true;
+            this.radioUE.Location = new System.Drawing.Point(23, 86);
+            this.radioUE.Margin = new System.Windows.Forms.Padding(4);
+            this.radioUE.Name = "radioUE";
+            this.radioUE.Size = new System.Drawing.Size(60, 21);
+            this.radioUE.TabIndex = 0;
+            this.radioUE.Text = "U.E. ";
+            this.radioUE.UseVisualStyleBackColor = true;
+            this.radioUE.CheckedChanged += new System.EventHandler(this.radioUE_CheckedChanged);
+            // 
+            // radioCloracion
+            // 
+            this.radioCloracion.AutoSize = true;
+            this.radioCloracion.Location = new System.Drawing.Point(23, 57);
+            this.radioCloracion.Margin = new System.Windows.Forms.Padding(4);
+            this.radioCloracion.Name = "radioCloracion";
+            this.radioCloracion.Size = new System.Drawing.Size(157, 21);
+            this.radioCloracion.TabIndex = 0;
+            this.radioCloracion.Text = "Control de Cloracion";
+            this.radioCloracion.UseVisualStyleBackColor = true;
+            this.radioCloracion.CheckedChanged += new System.EventHandler(this.radioCloracion_CheckedChanged);
+            // 
+            // radioGenerica
+            // 
+            this.radioGenerica.AutoSize = true;
+            this.radioGenerica.Location = new System.Drawing.Point(23, 27);
+            this.radioGenerica.Margin = new System.Windows.Forms.Padding(4);
+            this.radioGenerica.Name = "radioGenerica";
+            this.radioGenerica.Size = new System.Drawing.Size(125, 21);
+            this.radioGenerica.TabIndex = 0;
+            this.radioGenerica.Text = "E.coli Generica";
+            this.radioGenerica.UseVisualStyleBackColor = true;
+            this.radioGenerica.CheckedChanged += new System.EventHandler(this.radioGenerica_CheckedChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -422,12 +441,21 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Opciones";
             // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.grupoTipoSorteo);
+            this.panel5.Location = new System.Drawing.Point(23, 313);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(267, 250);
+            this.panel5.TabIndex = 7;
+            // 
             // SorteoNumeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(656, 588);
+            this.ClientSize = new System.Drawing.Size(656, 648);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
@@ -445,11 +473,11 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.grupoTipoSorteo.ResumeLayout(false);
-            this.grupoTipoSorteo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.grupoTipoSorteo.ResumeLayout(false);
+            this.grupoTipoSorteo.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,6 +510,8 @@
         private System.Windows.Forms.TextBox txtTope;
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.GroupBox grupoTipoSorteo;
+        private System.Windows.Forms.RadioButton radioDiaSemana;
+        private System.Windows.Forms.RadioButton radioMes;
         private System.Windows.Forms.RadioButton radioLado;
         private System.Windows.Forms.RadioButton radioPersonalizado;
         private System.Windows.Forms.RadioButton radioUE;

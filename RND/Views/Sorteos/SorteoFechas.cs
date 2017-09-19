@@ -1,5 +1,4 @@
-﻿using RND.Clases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,31 +13,6 @@ namespace RND.Views {
             InitializeComponent();
         }
 
-        private EnumSorteo SorteoPredefinido = EnumSorteo.PERSONALIZADO;
-        private EnumDiaSpanish[] DiasSemana = {
-                EnumDiaSpanish.DOMINGO,
-                EnumDiaSpanish.LUNES,
-                EnumDiaSpanish.MARTES,
-                EnumDiaSpanish.MIERCOLES,
-                EnumDiaSpanish.JUEVES,
-                EnumDiaSpanish.VIERNES,
-                EnumDiaSpanish.SABADO
-        };
-        private EnumMesSpanish[] MesesAnio = {
-                EnumMesSpanish.ENERO,
-                EnumMesSpanish.FEBRERO,
-                EnumMesSpanish.MARZO,
-                EnumMesSpanish.ABRIL,
-                EnumMesSpanish.MAYO,
-                EnumMesSpanish.JUNIO,
-                EnumMesSpanish.JULIO,
-                EnumMesSpanish.AGOSTO,
-                EnumMesSpanish.SETIEMBRE,
-                EnumMesSpanish.OCTUBRE,
-                EnumMesSpanish.NOVIEMBRE,
-                EnumMesSpanish.DICIEMBRE
-        };
-
         private Random rand = new Random();
 
         private bool IncluirDomingos = false;
@@ -51,7 +25,8 @@ namespace RND.Views {
 
         private DateTime[] Resultado;
 
-        #region Metodos
+        #region Opciones de Sorteo  
+
         /// <summary>
         /// Parsea los valores string ingresados al valor numerico correspondiente.
         /// Muestra cuadro de mensaje ante error.
@@ -62,6 +37,9 @@ namespace RND.Views {
                 if(this.txtCantidad.Enabled) Cantidad = int.Parse(this.txtCantidad.Text);
                 FechaInicio = this.fechaInicio.Value;
                 FechaTope = this.fechaTope.Value;
+                PermitirDuplicados = this.chkDuplicados.Checked;
+                IncluirDomingos = this.chkDomingos.Checked;
+                ResultadoOrdenado = this.chkOrdenados.Checked;
             } catch(Exception ex) when(ex is FormatException || ex is NullReferenceException) {
                 MostrarMensajeError(ex);
                 return false;
@@ -71,6 +49,8 @@ namespace RND.Views {
             }
             return true;
         }
+        #endregion
+        #region Metodos
         /// <summary>
         /// Muestra un mesaje de error por valores no correctos.
         /// </summary>
@@ -88,7 +68,7 @@ namespace RND.Views {
         /// <param name="fechaTope"></param>
         /// <returns></returns>
         private bool ComprobarLimiteSorteo(int cantidad, DateTime fechaInicio, DateTime fechaTope) {
-            int diferencia = fechaTope.Day - fechaInicio.Day;
+            int diferencia = fechaInicio.Day - fechaTope.Day;
             if(cantidad >= diferencia) {
                 return false;
             }
@@ -99,11 +79,11 @@ namespace RND.Views {
             int range = (fechaTope - fechaInicio).Days;
             DateTime dia = fechaInicio.AddDays(rand.Next(range));
             if(!incluirDomingo) {
-                while(dia.DayOfWeek.Equals(DayOfWeek.Sunday)) {
+                while(dia.DayOfWeek == DayOfWeek.Sunday) {
                     dia = fechaInicio.AddDays(rand.Next(range));
-                } while(dia.DayOfWeek.Equals(DayOfWeek.Sunday)) ;
+                }
             }
-            return dia;
+            return fechaInicio.AddDays(rand.Next(range));
         }
 
         /// <summary>
@@ -115,11 +95,12 @@ namespace RND.Views {
         private void MostrarResultado(List<DateTime> Resultado, bool ordenados, TextBox contenedor) {
             contenedor.Clear();
             string resultado = string.Empty;
+            DateTime[] arr = new DateTime[Resultado.Count];
             if(ordenados) {
                 Resultado.Sort();
             }
             foreach(DateTime fecha in Resultado) {
-                resultado += Resultado.IndexOf(fecha) + 1 + ") " + fecha.ToShortDateString();
+                resultado += Resultado.IndexOf(fecha)+1 + ") " + fecha.ToShortDateString();
                 if(Resultado.IndexOf(fecha) == Resultado.Count()) {
                     resultado += ".";
                 } else {
@@ -129,19 +110,9 @@ namespace RND.Views {
             contenedor.Text = resultado;
         }
 
-        /// <summary>
-        /// Genera una string de los numeros indicados y los muestra en al cuadro de texto.
-        /// </summary>
-        /// <param name="Resultado"></param>
-        /// <param name="ordenados"></param>
-        /// <param name="contenedor"></param>
-        private void MostrarResultado(string Resultado, bool ordenados, TextBox contenedor) {
-            contenedor.Clear();
-            Resultado += "." + System.Environment.NewLine;
-            contenedor.Text = Resultado;
-        }
+        #endregion
 
-        private void SortearPersonalizado() {
+        private void btnSortear_Click(object sender, EventArgs e) {
             if(ObtenerParametrosNumericos()) {
                 if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -156,125 +127,13 @@ namespace RND.Views {
                         }
                         Resultado[i] = sorteo;
                     }
-                    MostrarResultado(Resultado.ToList<DateTime>(), ResultadoOrdenado, this.txtResultado);
+                    MostrarResultado(Resultado.ToList<DateTime>(), false, this.txtResultado);
                 }
-            }
-        }
-
-        private void SortearDiaSemana() {
-            Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 6, Cantidad = 1 };
-            sorteo.SortearNumeros();
-            if(!IncluirDomingos) {
-                while(sorteo.Resultado.Contains(0)) {
-                    sorteo.Resultado.Clear();
-                    sorteo.SortearNumeros();
-                }
-            }
-            MostrarResultado(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString(), false, this.txtResultado);
-        }
-
-        private void SortearMesAnio() {
-            Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 11, Cantidad = 1 };
-            sorteo.SortearNumeros();
-            MostrarResultado(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString(), false, this.txtResultado);
-        }
-
-        #endregion
-
-        private void btnSortear_Click(object sender, EventArgs e) {
-            switch(SorteoPredefinido) {
-                case EnumSorteo.DIA_SEMANA:
-                    SortearDiaSemana();
-                    break;
-                case EnumSorteo.MES_ANIO:
-                    SortearMesAnio();
-                    break;
-                case EnumSorteo.PERSONALIZADO:
-                    SortearPersonalizado();
-                    break;
-                default:
-                    break;
             }
         }
 
         private void btnCerrar_Click(object sender, EventArgs e) {
             this.Close();
         }
-
-        #region Predefinidos
-        private void radioDiaSemana_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.DIA_SEMANA;
-
-            //desactivar controles de personalizado
-            this.fechaInicio.Enabled = false;
-            this.fechaTope.Enabled = false;
-
-            this.txtCantidad.Text = "1";
-            this.txtCantidad.Enabled = false;
-
-            this.chkDomingos.Enabled = true;
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-        }
-
-        private void radioMes_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.MES_ANIO;
-
-            //desactivar controles de personalizado
-            this.fechaInicio.Enabled = false;
-            this.fechaTope.Enabled = false;
-
-            this.txtCantidad.Text = "1";
-            this.txtCantidad.Enabled = false;
-
-            this.chkDomingos.Enabled = false;
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
-        }
-
-        private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
-            this.SorteoPredefinido = EnumSorteo.PERSONALIZADO;
-
-            //desactivar controles de personalizado
-            this.fechaInicio.Enabled = true;
-            this.fechaTope.Enabled = true;
-
-            this.txtCantidad.Text = string.Empty;
-            this.txtCantidad.Enabled = true;
-
-            this.chkDomingos.Enabled = true;
-            this.chkDuplicados.Enabled = true;
-            this.chkOrdenados.Enabled = true;
-        }
-
-
-        #endregion
-
-        #region Opciones
-        private void chkDomingos_CheckedChanged(object sender, EventArgs e) {
-            if(chkDomingos.Checked) {
-                this.IncluirDomingos = true;
-            } else {
-                this.IncluirDomingos = false;
-            }
-        }
-
-        private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
-            if(chkDuplicados.Checked) {
-                this.PermitirDuplicados = true;
-            } else {
-                this.PermitirDuplicados = false;
-            }
-        }
-
-        private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
-            if(chkOrdenados.Checked) {
-                this.ResultadoOrdenado = true;
-            } else {
-                this.ResultadoOrdenado = false;
-            }
-        }
-        #endregion
-
     }
 }

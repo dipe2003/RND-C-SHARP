@@ -79,8 +79,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\EnumMesSpanish.cs" />
-    <Compile Include="Clases\EnumDiaSpanish.cs" />
     <Compile Include="Clases\EnumSorteo.cs" />
     <Compile Include="Clases\Generica.cs" />
     <Compile Include="Clases\Haccp.cs" />
