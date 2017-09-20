@@ -119,7 +119,6 @@ namespace RND.Views {
         /// <param name="ordenados"></param>
         /// <param name="contenedor"></param>
         private void MostrarResultado(List<DateTime> Resultado, bool ordenados) {
-            string resultado = string.Empty;
             if(ordenados) {
                 Resultado.Sort();
             }
@@ -127,7 +126,7 @@ namespace RND.Views {
             foreach(DateTime fecha in Resultado) {
                 lista.Add(fecha.ToShortDateString());
             }
-            LlenarTabla(lista, "Fechas");
+            VistaTabla.LlenarTabla(lista, "#", "Fechas", this.dataGridFechas);
         }
 
         /// <summary>
@@ -166,7 +165,7 @@ namespace RND.Views {
             }
             List<string> lista = new List<string>();
             lista.Add(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString());
-            LlenarTabla(lista, "Dia");            
+            VistaTabla.LlenarTabla(lista, "#", "Dia", this.dataGridFechas);            
         }
 
         /// <summary>
@@ -177,28 +176,9 @@ namespace RND.Views {
             sorteo.SortearNumeros();
             List<string> lista = new List<string>();
             lista.Add(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString());
-            LlenarTabla(lista, "Mes");
+            VistaTabla.LlenarTabla(lista, "#", "Mes", this.dataGridFechas);
         }
-        /// <summary>
-        /// Llena el datagridview con los strings del sorteo.
-        /// </summary>
-        /// <param name="fechasSorteadas"></param>
-        /// <param name="nombreSegundaColumna"></param>
-        private void LlenarTabla(List<string> fechasSorteadas, string nombreSegundaColumna) {
-            DataTable tabla = new DataTable();
-            tabla.Columns.Add("#", typeof(int));
-            tabla.Columns.Add(nombreSegundaColumna, typeof(string));
-            foreach(string fecha in fechasSorteadas) {
-                DataRow fila = tabla.NewRow();
-                fila["#"] = fechasSorteadas.IndexOf(fecha)+1;
-                fila[nombreSegundaColumna] = fecha;
-                tabla.Rows.Add(fila);
-            }
-            this.dataGridFechas.DataSource = tabla;
-            this.dataGridFechas.ReadOnly = true;
-            this.dataGridFechas.ShowEditingIcon = false;
-            this.dataGridFechas.RowHeadersVisible = false;
-        }
+        
 
         #endregion
 

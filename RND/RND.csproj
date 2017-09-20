@@ -87,6 +87,7 @@
     <Compile Include="Clases\Opcion.cs" />
     <Compile Include="Clases\Personalizado.cs" />
     <Compile Include="Clases\Sorteo.cs" />
+    <Compile Include="Clases\VistaTabla.cs" />
     <Compile Include="Views\Inicio.cs">
       <SubType>Form</SubType>
     </Compile>

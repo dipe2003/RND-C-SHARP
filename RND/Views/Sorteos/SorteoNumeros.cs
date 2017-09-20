@@ -41,8 +41,6 @@ namespace RND.Views.Sorteos {
             // obtener los parametros numericos y continuar si son correctos.
             if(ObtenerParametrosNumericos()) {
                 // vaciar los cuadros de resultados
-                this.txtResultado.Clear();
-                this.txtResultadoVerificacion.Clear();
                 if(!ComprobarLimiteSorteo(Cantidad, Inicio, Tope)) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " numeros en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
@@ -56,7 +54,7 @@ namespace RND.Views.Sorteos {
                                 SorteoGenerico.Tope = Tope;
                                 ((Generica)(SorteoGenerico)).Rango = Rango;
                                 SorteoGenerico.SortearNumeros();
-                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
+                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
                             case EnumSorteo.PERSONALIZADO:
                                 Personalizado SorteoPersonalizado = new Personalizado();
@@ -70,11 +68,11 @@ namespace RND.Views.Sorteos {
                                     SorteoPersonalizado.Cantidad = Cantidad;
                                 }
                                 SorteoPersonalizado.SortearNumeros();
-                                MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.txtResultado);
+                                MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 if(IncluirVerificacion) {
                                     SorteoPersonalizado.CantidadVerificacion = CantidadVerificacion;
                                     SorteoPersonalizado.SortearNumerosVerificacion();
-                                    MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.txtResultadoVerificacion);
+                                    MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.dataGridVerificacion);
                                 }
                                 break;
                             // default cubre los sorteos restantes UE, Cloracion, Lado
@@ -86,7 +84,7 @@ namespace RND.Views.Sorteos {
                                 ((Personalizado)(SorteoGenerico)).PermitirDuplicados = false;
                                 ((Personalizado)(SorteoGenerico)).UsarRango = false;
                                 SorteoGenerico.SortearNumeros();
-                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.txtResultado);
+                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
                         }
                     } catch(Exception ex) {
@@ -322,21 +320,15 @@ namespace RND.Views.Sorteos {
         /// <param name="Resultado"></param>
         /// <param name="ordenados"></param>
         /// <param name="contenedor"></param>
-        private void MostrarResultado(List<int> Resultado, bool ordenados, TextBox contenedor) {
-            contenedor.Clear();
-            string resultado = string.Empty;
+        private void MostrarResultado(List<int> Resultado, bool ordenados, DataGridView tabla) {
             if(ordenados) {
                 Resultado.Sort();
             }
-            foreach(int num in Resultado) {
-                resultado += Resultado.IndexOf(num)+1 +") " + num.ToString();
-                if(Resultado.IndexOf(num) == Resultado.Count()) {
-                    resultado += ".";
-                } else {
-                    resultado += System.Environment.NewLine;
-                }
+            List<string> lista = new List<string>();
+            foreach(int numero in Resultado) {
+                lista.Add(numero.ToString());
             }
-            contenedor.Text = resultado;
+            VistaTabla.LlenarTabla(lista, "#", "Numero", tabla);
         }
 
         /// <summary>
@@ -391,8 +383,6 @@ namespace RND.Views.Sorteos {
          * Barra de Menu
          */
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.txtResultado.Clear();
-            this.txtResultadoVerificacion.Clear();
             switch(SorteoPredefinido) {
                 case EnumSorteo.GENERICA:
                     this.radioGenerica.Checked = true;

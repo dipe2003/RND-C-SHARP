@@ -28,8 +28,6 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtResultadoVerificacion = new System.Windows.Forms.TextBox();
-            this.txtResultado = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -55,12 +53,16 @@
             this.txtTope = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataGridNumeros = new System.Windows.Forms.DataGridView();
+            this.dataGridVerificacion = new System.Windows.Forms.DataGridView();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -109,36 +111,14 @@
             // 
             this.panel3.AutoSize = true;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtResultadoVerificacion);
-            this.panel3.Controls.Add(this.txtResultado);
+            this.panel3.Controls.Add(this.dataGridVerificacion);
+            this.panel3.Controls.Add(this.dataGridNumeros);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(347, 42);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(293, 474);
             this.panel3.TabIndex = 13;
-            // 
-            // txtResultadoVerificacion
-            // 
-            this.txtResultadoVerificacion.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResultadoVerificacion.Location = new System.Drawing.Point(19, 348);
-            this.txtResultadoVerificacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtResultadoVerificacion.Multiline = true;
-            this.txtResultadoVerificacion.Name = "txtResultadoVerificacion";
-            this.txtResultadoVerificacion.ReadOnly = true;
-            this.txtResultadoVerificacion.Size = new System.Drawing.Size(252, 112);
-            this.txtResultadoVerificacion.TabIndex = 0;
-            // 
-            // txtResultado
-            // 
-            this.txtResultado.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResultado.Location = new System.Drawing.Point(19, 14);
-            this.txtResultado.Margin = new System.Windows.Forms.Padding(4);
-            this.txtResultado.Multiline = true;
-            this.txtResultado.Name = "txtResultado";
-            this.txtResultado.ReadOnly = true;
-            this.txtResultado.Size = new System.Drawing.Size(252, 302);
-            this.txtResultado.TabIndex = 0;
             // 
             // label8
             // 
@@ -422,6 +402,28 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Opciones";
             // 
+            // dataGridNumeros
+            // 
+            this.dataGridNumeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNumeros.Location = new System.Drawing.Point(19, 13);
+            this.dataGridNumeros.Name = "dataGridNumeros";
+            this.dataGridNumeros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridNumeros.RowTemplate.Height = 24;
+            this.dataGridNumeros.Size = new System.Drawing.Size(252, 294);
+            this.dataGridNumeros.TabIndex = 26;
+            // 
+            // dataGridVerificacion
+            // 
+            this.dataGridVerificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridVerificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVerificacion.Location = new System.Drawing.Point(19, 344);
+            this.dataGridVerificacion.Name = "dataGridVerificacion";
+            this.dataGridVerificacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridVerificacion.RowTemplate.Height = 24;
+            this.dataGridVerificacion.Size = new System.Drawing.Size(252, 110);
+            this.dataGridVerificacion.TabIndex = 27;
+            // 
             // SorteoNumeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -450,6 +452,8 @@
             this.grupoTipoSorteo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,8 +466,6 @@
         private System.Windows.Forms.Button btnGenerar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtResultadoVerificacion;
-        private System.Windows.Forms.TextBox txtResultado;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -489,5 +491,7 @@
         private System.Windows.Forms.RadioButton radioGenerica;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridVerificacion;
+        private System.Windows.Forms.DataGridView dataGridNumeros;
     }
 }
