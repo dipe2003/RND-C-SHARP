@@ -340,7 +340,7 @@ namespace RND.Views.Sorteos {
         /// <returns></returns>
         private bool ComprobarLimiteSorteo(int cantidad, int numeroInicio, int numeroTope) {
             int diferencia = numeroTope - numeroInicio;
-            if(cantidad >= diferencia) {
+            if(cantidad > diferencia) {
                 return false;
             }
             return true;
