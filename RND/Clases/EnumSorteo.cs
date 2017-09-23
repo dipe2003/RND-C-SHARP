@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace RND.Clases {
-    enum EnumSorteo {
+    public enum EnumSorteo {
         HACCP,
         GENERICA,
         CLORACION,

@@ -26,30 +26,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblTotalASortear = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblVerificacion = new System.Windows.Forms.Label();
-            this.txtVerificacion = new System.Windows.Forms.TextBox();
             this.chkOrdenados = new System.Windows.Forms.CheckBox();
             this.chkRango = new System.Windows.Forms.CheckBox();
             this.chkDuplicados = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRango = new System.Windows.Forms.Label();
+            this.txtInicio = new System.Windows.Forms.Label();
+            this.txtTotalSorteo = new System.Windows.Forms.Label();
+            this.txtTope = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTipoSorteo = new System.Windows.Forms.Label();
-            this.txtInicio = new System.Windows.Forms.Label();
-            this.txtTope = new System.Windows.Forms.Label();
-            this.txtTotalSorteo = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.Label();
             this.imprimirSorteo = new System.Drawing.Printing.PrintDocument();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridNumeros = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtRango = new System.Windows.Forms.Label();
+            this.dataGridVerificacion = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -82,23 +84,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Tope:";
             // 
-            // label4
+            // lblTotalASortear
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 100);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Total a Sortear:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(8, 25);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(513, 161);
-            this.textBox1.TabIndex = 1;
+            this.lblTotalASortear.AutoSize = true;
+            this.lblTotalASortear.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalASortear.Location = new System.Drawing.Point(18, 100);
+            this.lblTotalASortear.Name = "lblTotalASortear";
+            this.lblTotalASortear.Size = new System.Drawing.Size(123, 17);
+            this.lblTotalASortear.TabIndex = 0;
+            this.lblTotalASortear.Text = "Total a Sortear:";
             // 
             // label8
             // 
@@ -119,14 +113,6 @@
             this.lblVerificacion.Size = new System.Drawing.Size(151, 17);
             this.lblVerificacion.TabIndex = 0;
             this.lblVerificacion.Text = "Sorteo Verificacion:";
-            // 
-            // txtVerificacion
-            // 
-            this.txtVerificacion.Location = new System.Drawing.Point(8, 25);
-            this.txtVerificacion.Multiline = true;
-            this.txtVerificacion.Name = "txtVerificacion";
-            this.txtVerificacion.Size = new System.Drawing.Size(513, 117);
-            this.txtVerificacion.TabIndex = 1;
             // 
             // chkOrdenados
             // 
@@ -168,7 +154,7 @@
             this.panel1.Controls.Add(this.chkRango);
             this.panel1.Controls.Add(this.chkDuplicados);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblTotalASortear);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtInicio);
             this.panel1.Controls.Add(this.txtTotalSorteo);
@@ -177,6 +163,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(538, 136);
             this.panel1.TabIndex = 9;
+            // 
+            // txtRango
+            // 
+            this.txtRango.AutoSize = true;
+            this.txtRango.Location = new System.Drawing.Point(422, 28);
+            this.txtRango.Name = "txtRango";
+            this.txtRango.Size = new System.Drawing.Size(45, 17);
+            this.txtRango.TabIndex = 9;
+            this.txtRango.Text = "rango";
+            // 
+            // txtInicio
+            // 
+            this.txtInicio.AutoSize = true;
+            this.txtInicio.Location = new System.Drawing.Point(145, 31);
+            this.txtInicio.Name = "txtInicio";
+            this.txtInicio.Size = new System.Drawing.Size(104, 17);
+            this.txtInicio.TabIndex = 0;
+            this.txtInicio.Text = "inicio de sorteo";
+            // 
+            // txtTotalSorteo
+            // 
+            this.txtTotalSorteo.AutoSize = true;
+            this.txtTotalSorteo.Location = new System.Drawing.Point(145, 100);
+            this.txtTotalSorteo.Name = "txtTotalSorteo";
+            this.txtTotalSorteo.Size = new System.Drawing.Size(96, 17);
+            this.txtTotalSorteo.TabIndex = 0;
+            this.txtTotalSorteo.Text = "total a sortear";
+            // 
+            // txtTope
+            // 
+            this.txtTope.AutoSize = true;
+            this.txtTope.Location = new System.Drawing.Point(145, 66);
+            this.txtTope.Name = "txtTope";
+            this.txtTope.Size = new System.Drawing.Size(100, 17);
+            this.txtTope.TabIndex = 0;
+            this.txtTope.Text = "tope de sorteo";
             // 
             // label5
             // 
@@ -196,33 +218,6 @@
             this.txtTipoSorteo.Size = new System.Drawing.Size(95, 17);
             this.txtTipoSorteo.TabIndex = 0;
             this.txtTipoSorteo.Text = "tipo de sorteo";
-            // 
-            // txtInicio
-            // 
-            this.txtInicio.AutoSize = true;
-            this.txtInicio.Location = new System.Drawing.Point(145, 31);
-            this.txtInicio.Name = "txtInicio";
-            this.txtInicio.Size = new System.Drawing.Size(104, 17);
-            this.txtInicio.TabIndex = 0;
-            this.txtInicio.Text = "inicio de sorteo";
-            // 
-            // txtTope
-            // 
-            this.txtTope.AutoSize = true;
-            this.txtTope.Location = new System.Drawing.Point(145, 66);
-            this.txtTope.Name = "txtTope";
-            this.txtTope.Size = new System.Drawing.Size(100, 17);
-            this.txtTope.TabIndex = 0;
-            this.txtTope.Text = "tope de sorteo";
-            // 
-            // txtTotalSorteo
-            // 
-            this.txtTotalSorteo.AutoSize = true;
-            this.txtTotalSorteo.Location = new System.Drawing.Point(145, 100);
-            this.txtTotalSorteo.Name = "txtTotalSorteo";
-            this.txtTotalSorteo.Size = new System.Drawing.Size(96, 17);
-            this.txtTotalSorteo.TabIndex = 0;
-            this.txtTotalSorteo.Text = "total a sortear";
             // 
             // lblFecha
             // 
@@ -254,36 +249,50 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.dataGridNumeros);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Location = new System.Drawing.Point(24, 218);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(537, 196);
+            this.panel2.Size = new System.Drawing.Size(287, 394);
             this.panel2.TabIndex = 11;
+            // 
+            // dataGridNumeros
+            // 
+            this.dataGridNumeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridNumeros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNumeros.Location = new System.Drawing.Point(12, 25);
+            this.dataGridNumeros.Name = "dataGridNumeros";
+            this.dataGridNumeros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridNumeros.RowTemplate.Height = 24;
+            this.dataGridNumeros.Size = new System.Drawing.Size(260, 357);
+            this.dataGridNumeros.TabIndex = 27;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtVerificacion);
+            this.panel3.Controls.Add(this.dataGridVerificacion);
             this.panel3.Controls.Add(this.lblVerificacion);
-            this.panel3.Location = new System.Drawing.Point(24, 435);
+            this.panel3.Location = new System.Drawing.Point(320, 218);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(537, 157);
+            this.panel3.Size = new System.Drawing.Size(242, 394);
             this.panel3.TabIndex = 12;
             // 
-            // txtRango
+            // dataGridVerificacion
             // 
-            this.txtRango.AutoSize = true;
-            this.txtRango.Location = new System.Drawing.Point(422, 28);
-            this.txtRango.Name = "txtRango";
-            this.txtRango.Size = new System.Drawing.Size(45, 17);
-            this.txtRango.TabIndex = 9;
-            this.txtRango.Text = "rango";
+            this.dataGridVerificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridVerificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVerificacion.Location = new System.Drawing.Point(12, 25);
+            this.dataGridVerificacion.Name = "dataGridVerificacion";
+            this.dataGridVerificacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridVerificacion.RowTemplate.Height = 24;
+            this.dataGridVerificacion.Size = new System.Drawing.Size(213, 357);
+            this.dataGridVerificacion.TabIndex = 28;
             // 
             // PrintForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 674);
+            this.ClientSize = new System.Drawing.Size(584, 674);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnImprimir);
@@ -297,12 +306,15 @@
             this.Name = "PrintForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Imprimir Sorteo";
+            this.Shown += new System.EventHandler(this.PrintForm_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,11 +325,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblTotalASortear;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblVerificacion;
-        private System.Windows.Forms.TextBox txtVerificacion;
         private System.Windows.Forms.CheckBox chkOrdenados;
         private System.Windows.Forms.CheckBox chkRango;
         private System.Windows.Forms.CheckBox chkDuplicados;
@@ -334,5 +344,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label txtRango;
+        private System.Windows.Forms.DataGridView dataGridNumeros;
+        private System.Windows.Forms.DataGridView dataGridVerificacion;
     }
 }

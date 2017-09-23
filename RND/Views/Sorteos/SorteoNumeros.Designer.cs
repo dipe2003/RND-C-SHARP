@@ -24,10 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.dataGridVerificacion = new System.Windows.Forms.DataGridView();
+            this.dataGridNumeros = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -53,38 +56,36 @@
             this.txtTope = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridNumeros = new System.Windows.Forms.DataGridView();
-            this.dataGridVerificacion = new System.Windows.Forms.DataGridView();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.btnCerrar);
+            this.panel4.Controls.Add(this.btnImprimir);
             this.panel4.Controls.Add(this.btnGenerar);
             this.panel4.Location = new System.Drawing.Point(347, 523);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(293, 51);
             this.panel4.TabIndex = 15;
             // 
-            // btnCerrar
+            // btnImprimir
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(156, 8);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(115, 34);
-            this.btnCerrar.TabIndex = 8;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnImprimir.Location = new System.Drawing.Point(159, 8);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(112, 34);
+            this.btnImprimir.TabIndex = 7;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnGenerar
             // 
@@ -96,6 +97,17 @@
             this.btnGenerar.Text = "Sortear";
             this.btnGenerar.UseVisualStyleBackColor = true;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(507, 586);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(112, 34);
+            this.btnCerrar.TabIndex = 8;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // label6
             // 
@@ -119,6 +131,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(293, 474);
             this.panel3.TabIndex = 13;
+            // 
+            // dataGridVerificacion
+            // 
+            this.dataGridVerificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridVerificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridVerificacion.Location = new System.Drawing.Point(19, 344);
+            this.dataGridVerificacion.Name = "dataGridVerificacion";
+            this.dataGridVerificacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridVerificacion.RowTemplate.Height = 24;
+            this.dataGridVerificacion.Size = new System.Drawing.Size(252, 110);
+            this.dataGridVerificacion.TabIndex = 27;
+            // 
+            // dataGridNumeros
+            // 
+            this.dataGridNumeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNumeros.Location = new System.Drawing.Point(19, 13);
+            this.dataGridNumeros.Name = "dataGridNumeros";
+            this.dataGridNumeros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridNumeros.RowTemplate.Height = 24;
+            this.dataGridNumeros.Size = new System.Drawing.Size(252, 294);
+            this.dataGridNumeros.TabIndex = 26;
             // 
             // label8
             // 
@@ -402,34 +436,13 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Opciones";
             // 
-            // dataGridNumeros
-            // 
-            this.dataGridNumeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridNumeros.Location = new System.Drawing.Point(19, 13);
-            this.dataGridNumeros.Name = "dataGridNumeros";
-            this.dataGridNumeros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridNumeros.RowTemplate.Height = 24;
-            this.dataGridNumeros.Size = new System.Drawing.Size(252, 294);
-            this.dataGridNumeros.TabIndex = 26;
-            // 
-            // dataGridVerificacion
-            // 
-            this.dataGridVerificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridVerificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridVerificacion.Location = new System.Drawing.Point(19, 344);
-            this.dataGridVerificacion.Name = "dataGridVerificacion";
-            this.dataGridVerificacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridVerificacion.RowTemplate.Height = 24;
-            this.dataGridVerificacion.Size = new System.Drawing.Size(252, 110);
-            this.dataGridVerificacion.TabIndex = 27;
-            // 
             // SorteoNumeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(656, 588);
+            this.ClientSize = new System.Drawing.Size(656, 633);
+            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel3);
@@ -446,14 +459,14 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.grupoTipoSorteo.ResumeLayout(false);
             this.grupoTipoSorteo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +506,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridVerificacion;
         private System.Windows.Forms.DataGridView dataGridNumeros;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

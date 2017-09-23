@@ -30,5 +30,34 @@ namespace RND.Clases {
             dataGridView.ShowEditingIcon = false;
             dataGridView.RowHeadersVisible = false;
         }
+
+        /// <summary>
+        /// Genera una string de los numeros indicados y los muestra en al cuadro de texto.
+        /// </summary>
+        /// <param name="Resultado"></param>
+        /// <param name="ordenados"></param>
+        /// <param name="contenedor"></param>
+        public static void MostrarResultado(List<int> Resultado, bool ordenados, DataGridView tabla) {
+            if(ordenados) {
+                Resultado.Sort();
+            }
+            List<string> lista = new List<string>();
+            foreach(int numero in Resultado) {
+                lista.Add(numero.ToString());
+            }
+            VistaTabla.LlenarTabla(lista, "#", "Numero", tabla);
+        }
+
+        /// <summary>
+        /// Metodo de extension de List<int>() para comprobar lista vacia.
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <returns></returns>
+        public static bool IsEmpty(this List<int> lista) {
+            if(lista.Count == 0) {
+                return true;
+            }
+            return false;
+        }
     }
 }

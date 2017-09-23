@@ -1,4 +1,5 @@
 ﻿using RND.Clases;
+using RND.Printing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,8 @@ namespace RND.Views.Sorteos {
 
         private EnumSorteo SorteoPredefinido = EnumSorteo.PERSONALIZADO;
 
+        private Sorteo SorteoGenerico;
+
         /*
          * Botones
          */
@@ -44,35 +47,34 @@ namespace RND.Views.Sorteos {
                 if(!ComprobarLimiteSorteo(Cantidad, Inicio, Tope)) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " numeros en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    //Sorteo sorteo;
-                    Sorteo SorteoGenerico;
                     try {
                         switch(SorteoPredefinido) {
                             case EnumSorteo.GENERICA:
                                 SorteoGenerico = new Generica();
                                 SorteoGenerico.Inicio = Inicio;
                                 SorteoGenerico.Tope = Tope;
-                                ((Generica)(SorteoGenerico)).Rango = Rango;
+                                (SorteoGenerico as Generica).Rango = Rango;
                                 SorteoGenerico.SortearNumeros();
-                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
+                                Cantidad = (SorteoGenerico as Generica).Cantidad;
+                                VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
                             case EnumSorteo.PERSONALIZADO:
-                                Personalizado SorteoPersonalizado = new Personalizado();
-                                SorteoPersonalizado.Inicio = Inicio;
-                                SorteoPersonalizado.Tope = Tope;
-                                SorteoPersonalizado.PermitirDuplicados = PermitirDuplicados;
+                                SorteoGenerico = new Personalizado();
+                                SorteoGenerico.Inicio = Inicio;
+                                SorteoGenerico.Tope = Tope;
+                                (SorteoGenerico as Personalizado).PermitirDuplicados = PermitirDuplicados;
                                 if(UtilizarRango) {
-                                    SorteoPersonalizado.Rango = Rango;
-                                    SorteoPersonalizado.UsarRango = true;
+                                    (SorteoGenerico as Personalizado).Rango = Rango;
+                                    (SorteoGenerico as Personalizado).UsarRango = true;
                                 } else {
-                                    SorteoPersonalizado.Cantidad = Cantidad;
+                                    (SorteoGenerico as Personalizado).Cantidad = Cantidad;
                                 }
-                                SorteoPersonalizado.SortearNumeros();
-                                MostrarResultado(SorteoPersonalizado.Resultado, OrdenarResultado, this.dataGridNumeros);
+                                SorteoGenerico.SortearNumeros();
+                                VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 if(IncluirVerificacion) {
-                                    SorteoPersonalizado.CantidadVerificacion = CantidadVerificacion;
-                                    SorteoPersonalizado.SortearNumerosVerificacion();
-                                    MostrarResultado(SorteoPersonalizado.ResultadoVerificacion, OrdenarResultado, this.dataGridVerificacion);
+                                    (SorteoGenerico as Personalizado).CantidadVerificacion = CantidadVerificacion;
+                                    (SorteoGenerico as Personalizado).SortearNumerosVerificacion();
+                                    VistaTabla.MostrarResultado((SorteoGenerico as Personalizado).ResultadoVerificacion, OrdenarResultado, this.dataGridVerificacion);
                                 }
                                 break;
                             // default cubre los sorteos restantes UE, Cloracion, Lado
@@ -80,11 +82,11 @@ namespace RND.Views.Sorteos {
                                 SorteoGenerico = new Personalizado();
                                 SorteoGenerico.Inicio = Inicio;
                                 SorteoGenerico.Tope = Tope;
-                                ((Personalizado)(SorteoGenerico)).Cantidad = Cantidad;
-                                ((Personalizado)(SorteoGenerico)).PermitirDuplicados = false;
-                                ((Personalizado)(SorteoGenerico)).UsarRango = false;
+                                (SorteoGenerico as Personalizado).Cantidad = Cantidad;
+                                (SorteoGenerico as Personalizado).PermitirDuplicados = false;
+                                (SorteoGenerico as Personalizado).UsarRango = false;
                                 SorteoGenerico.SortearNumeros();
-                                MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
+                                VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
                         }
                     } catch(Exception ex) {
@@ -315,23 +317,6 @@ namespace RND.Views.Sorteos {
         #region Metodos
 
         /// <summary>
-        /// Genera una string de los numeros indicados y los muestra en al cuadro de texto.
-        /// </summary>
-        /// <param name="Resultado"></param>
-        /// <param name="ordenados"></param>
-        /// <param name="contenedor"></param>
-        private void MostrarResultado(List<int> Resultado, bool ordenados, DataGridView tabla) {
-            if(ordenados) {
-                Resultado.Sort();
-            }
-            List<string> lista = new List<string>();
-            foreach(int numero in Resultado) {
-                lista.Add(numero.ToString());
-            }
-            VistaTabla.LlenarTabla(lista, "#", "Numero", tabla);
-        }
-
-        /// <summary>
         /// Comprueba que el rango de fecha sea suficiente para el total a sortear.
         /// </summary>
         /// <param name="cantidad"></param>
@@ -379,30 +364,13 @@ namespace RND.Views.Sorteos {
 
         #endregion
 
-        /*
-         * Barra de Menu
-         */
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch(SorteoPredefinido) {
-                case EnumSorteo.GENERICA:
-                    this.radioGenerica.Checked = true;
-                    break;
-                case EnumSorteo.CLORACION:
-                    this.radioCloracion.Checked = true;
-                    break;
-                case EnumSorteo.UE:
-                    this.radioUE.Checked = true;
-                    break;
-                case EnumSorteo.LADO:
-                    this.radioLado.Checked = true;
-                    break;
-                case EnumSorteo.PERSONALIZADO:
-                    this.radioPersonalizado.Checked = true;
-                    break;
-                default:
-                    break;
-            }
+        private void btnImprimir_Click(object sender, EventArgs e) {
+            Form nuevo = new PrintForm();
+            nuevo.MdiParent = this.MdiParent;
+            (nuevo as PrintForm).TipoSorteo = SorteoPredefinido;
+            (nuevo as PrintForm).SorteoAImprimir = this.SorteoGenerico;
+            (nuevo as PrintForm).ResultadoOrdenado = this.OrdenarResultado;
+            nuevo.Show();
         }
-
     }
 }

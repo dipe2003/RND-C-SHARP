@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace RND.Clases {
-    abstract class Sorteo {
+    public abstract class Sorteo {
 
         protected static Random Aleatorio = new Random();
 
