@@ -85,7 +85,7 @@
             this.btnImprimir.TabIndex = 7;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.btnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
             // btnGenerar
             // 
@@ -96,7 +96,7 @@
             this.btnGenerar.TabIndex = 7;
             this.btnGenerar.Text = "Sortear";
             this.btnGenerar.UseVisualStyleBackColor = true;
-            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
+            this.btnGenerar.Click += new System.EventHandler(this.BtnGenerar_Click);
             // 
             // btnCerrar
             // 
@@ -107,7 +107,7 @@
             this.btnCerrar.TabIndex = 8;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // label6
             // 
@@ -210,7 +210,7 @@
             this.radioLado.TabIndex = 1;
             this.radioLado.Text = "Lado (1: Izq. / 2: Der.)";
             this.radioLado.UseVisualStyleBackColor = true;
-            this.radioLado.CheckedChanged += new System.EventHandler(this.radioLado_CheckedChanged);
+            this.radioLado.CheckedChanged += new System.EventHandler(this.RadioLado_CheckedChanged);
             // 
             // radioPersonalizado
             // 
@@ -224,7 +224,7 @@
             this.radioPersonalizado.TabStop = true;
             this.radioPersonalizado.Text = "Personalizado";
             this.radioPersonalizado.UseVisualStyleBackColor = true;
-            this.radioPersonalizado.CheckedChanged += new System.EventHandler(this.radioPersonalizado_CheckedChanged);
+            this.radioPersonalizado.CheckedChanged += new System.EventHandler(this.RadioPersonalizado_CheckedChanged);
             // 
             // radioUE
             // 
@@ -236,7 +236,7 @@
             this.radioUE.TabIndex = 0;
             this.radioUE.Text = "U.E. ";
             this.radioUE.UseVisualStyleBackColor = true;
-            this.radioUE.CheckedChanged += new System.EventHandler(this.radioUE_CheckedChanged);
+            this.radioUE.CheckedChanged += new System.EventHandler(this.RadioUE_CheckedChanged);
             // 
             // radioCloracion
             // 
@@ -248,7 +248,7 @@
             this.radioCloracion.TabIndex = 0;
             this.radioCloracion.Text = "Control de Cloracion";
             this.radioCloracion.UseVisualStyleBackColor = true;
-            this.radioCloracion.CheckedChanged += new System.EventHandler(this.radioCloracion_CheckedChanged);
+            this.radioCloracion.CheckedChanged += new System.EventHandler(this.RadioCloracion_CheckedChanged);
             // 
             // radioGenerica
             // 
@@ -260,7 +260,7 @@
             this.radioGenerica.TabIndex = 0;
             this.radioGenerica.Text = "E.coli Generica";
             this.radioGenerica.UseVisualStyleBackColor = true;
-            this.radioGenerica.CheckedChanged += new System.EventHandler(this.radioGenerica_CheckedChanged);
+            this.radioGenerica.CheckedChanged += new System.EventHandler(this.RadioGenerica_CheckedChanged);
             // 
             // panel2
             // 
@@ -303,7 +303,7 @@
             this.chkVerificacion.TabIndex = 5;
             this.chkVerificacion.Text = "Inlcuir Verificacion";
             this.chkVerificacion.UseVisualStyleBackColor = true;
-            this.chkVerificacion.CheckedChanged += new System.EventHandler(this.chkVerificacion_CheckedChanged);
+            this.chkVerificacion.CheckedChanged += new System.EventHandler(this.ChkVerificacion_CheckedChanged);
             // 
             // chkOrdenados
             // 
@@ -315,7 +315,7 @@
             this.chkOrdenados.TabIndex = 5;
             this.chkOrdenados.Text = "Numeros Ordenados";
             this.chkOrdenados.UseVisualStyleBackColor = true;
-            this.chkOrdenados.CheckedChanged += new System.EventHandler(this.chkOrdenados_CheckedChanged);
+            this.chkOrdenados.CheckedChanged += new System.EventHandler(this.ChkOrdenados_CheckedChanged);
             // 
             // label1
             // 
@@ -337,7 +337,7 @@
             this.chkRango.TabIndex = 4;
             this.chkRango.Text = "Utilizar Rango";
             this.chkRango.UseVisualStyleBackColor = true;
-            this.chkRango.CheckedChanged += new System.EventHandler(this.chkRango_CheckedChanged);
+            this.chkRango.CheckedChanged += new System.EventHandler(this.ChkRango_CheckedChanged);
             // 
             // label3
             // 
@@ -360,7 +360,7 @@
             this.chkDuplicados.TabIndex = 4;
             this.chkDuplicados.Text = "Permitir Duplicados";
             this.chkDuplicados.UseVisualStyleBackColor = true;
-            this.chkDuplicados.CheckedChanged += new System.EventHandler(this.chkDuplicados_CheckedChanged);
+            this.chkDuplicados.CheckedChanged += new System.EventHandler(this.ChkDuplicados_CheckedChanged);
             // 
             // label4
             // 

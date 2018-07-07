@@ -10,7 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace RND.Views.Sorteos {
-    public partial class SorteoNumeros :Form {
+    public partial class SorteoNumeros:Form {
         public SorteoNumeros() {
             InitializeComponent();
         }
@@ -36,11 +36,16 @@ namespace RND.Views.Sorteos {
         /*
          * Botones
          */
-        private void btnCerrar_Click(object sender, EventArgs e) {
+        private void BtnCerrar_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e) {
+        /// <summary>
+        /// Genera el sorteo con los parametros seleccionados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnGenerar_Click(object sender, EventArgs e) {
             // obtener los parametros numericos y continuar si son correctos.
             if(ObtenerParametrosNumericos()) {
                 // vaciar los cuadros de resultados
@@ -50,19 +55,21 @@ namespace RND.Views.Sorteos {
                     try {
                         switch(SorteoPredefinido) {
                             case EnumSorteo.GENERICA:
-                                SorteoGenerico = new Generica();
-                                SorteoGenerico.Inicio = Inicio;
-                                SorteoGenerico.Tope = Tope;
-                                (SorteoGenerico as Generica).Rango = Rango;
+                                SorteoGenerico = new Generica {
+                                    Inicio = Inicio,
+                                    Tope = Tope,
+                                    Rango = Rango
+                                };
                                 SorteoGenerico.SortearNumeros();
                                 Cantidad = (SorteoGenerico as Generica).Cantidad;
                                 VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
                             case EnumSorteo.PERSONALIZADO:
-                                SorteoGenerico = new Personalizado();
-                                SorteoGenerico.Inicio = Inicio;
-                                SorteoGenerico.Tope = Tope;
-                                (SorteoGenerico as Personalizado).PermitirDuplicados = PermitirDuplicados;
+                                SorteoGenerico = new Personalizado {
+                                    Inicio = Inicio,
+                                    Tope = Tope,
+                                    PermitirDuplicados = PermitirDuplicados
+                                };
                                 if(UtilizarRango) {
                                     (SorteoGenerico as Personalizado).Rango = Rango;
                                     (SorteoGenerico as Personalizado).UsarRango = true;
@@ -79,12 +86,13 @@ namespace RND.Views.Sorteos {
                                 break;
                             // default cubre los sorteos restantes UE, Cloracion, Lado
                             default:
-                                SorteoGenerico = new Personalizado();
-                                SorteoGenerico.Inicio = Inicio;
-                                SorteoGenerico.Tope = Tope;
-                                (SorteoGenerico as Personalizado).Cantidad = Cantidad;
-                                (SorteoGenerico as Personalizado).PermitirDuplicados = false;
-                                (SorteoGenerico as Personalizado).UsarRango = false;
+                                SorteoGenerico = new Personalizado {
+                                    Inicio = Inicio,
+                                    Tope = Tope,
+                                    Cantidad = Cantidad,
+                                    PermitirDuplicados = false,
+                                    UsarRango = false
+                                };
                                 SorteoGenerico.SortearNumeros();
                                 VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
                                 break;
@@ -99,173 +107,129 @@ namespace RND.Views.Sorteos {
         #region Sorteos Predefinidos (radio buttons)
         //Botones de Opcion (radio buttons): seleccion de tipo de sorteo.
 
-        private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
+        private void RadioPersonalizado_CheckedChanged(object sender, EventArgs e) {
             if(this.radioPersonalizado.Checked) {
                 this.SorteoPredefinido = EnumSorteo.PERSONALIZADO;
 
                 // radio buttons
-                this.chkDuplicados.Checked = false;
-                this.chkOrdenados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-
-                this.chkDuplicados.Enabled = true;
-                this.chkOrdenados.Enabled = true;
-                this.chkVerificacion.Enabled = true;
-                this.chkRango.Enabled = true;
+                CambiarEstadoRadioButtons();
+                CambiarHabilitacionRadioButtons(true, true, true, true);
 
                 // valores predefinidos
-                this.txtInicio.Text = string.Empty;
-                this.txtTope.Text = string.Empty;
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
+                VaciarCuadrosTexto();
 
                 // habiilitar/deshabilitar controles
                 // campos de ingreso de texto
-                this.txtInicio.Enabled = true;
-                this.txtTope.Enabled = true;
-                this.txtCantidad.Enabled = true;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
+                CambiarHabilitacionCuadroTexto(inicio: true, tope: true, cantidad: true);
             }
         }
-        
-        private void radioLado_CheckedChanged(object sender, EventArgs e) {
-            if(this.radioLado.Checked) {
+
+        private void VaciarCuadrosTexto() {
+            this.txtInicio.Text = string.Empty;
+            this.txtTope.Text = string.Empty;
+            this.txtCantidad.Text = string.Empty;
+            this.txtRango.Text = string.Empty;
+            this.txtCantVerificacion.Text = string.Empty;
+        }
+
+        private void CambiarEstadoRadioButtons(bool duplicados = false, bool ordenados =false, bool verificacion = false, bool rango = false) {
+            this.chkDuplicados.Checked = duplicados;
+            this.chkOrdenados.Checked = ordenados;
+            this.chkVerificacion.Checked = verificacion;
+            this.chkRango.Checked = rango;
+        }
+
+        private void CambiarHabilitacionRadioButtons(bool duplicados = false, bool ordenados = false, bool verificacion = false, bool rango = false) {
+            this.chkDuplicados.Enabled = duplicados;
+            this.chkOrdenados.Enabled = ordenados;
+            this.chkVerificacion.Enabled = verificacion;
+            this.chkRango.Enabled = rango;
+        }
+
+        private void CambiarHabilitacionCuadroTexto(bool inicio=false, bool tope=false, bool rango=false, bool verificacion=false,
+            bool cantidad=false) {
+            this.txtInicio.Enabled = inicio;
+            this.txtTope.Enabled = tope;
+            this.txtRango.Enabled = rango;
+            this.txtCantVerificacion.Enabled = verificacion;
+            this.txtCantidad.Enabled = cantidad;
+        }
+
+        private void RadioLado_CheckedChanged(object sender, EventArgs e) {
+            if(radioLado.Checked) {
                 this.SorteoPredefinido = EnumSorteo.LADO;
                 // habiilitar/deshabilitar controles
                 // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = false;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
+                CambiarHabilitacionCuadroTexto();
 
                 // radio buttons
-                this.chkOrdenados.Enabled = false;
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
+                CambiarEstadoRadioButtons();
+                CambiarHabilitacionRadioButtons();
 
                 // valores predefinidos
+                VaciarCuadrosTexto();
+
                 this.txtInicio.Text = "1";
                 Inicio = 1;
                 this.txtTope.Text = "2";
                 Tope = 2;
                 this.txtCantidad.Text = "1";
                 Cantidad = 1;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
-
-                // checks predefinidos
-                this.chkOrdenados.Checked = false;
-                this.chkDuplicados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
-                this.txtCantidad.Enabled = false;
             }
         }
 
-        private void radioUE_CheckedChanged(object sender, EventArgs e) {
+        private void RadioUE_CheckedChanged(object sender, EventArgs e) {
             if(this.radioUE.Checked) {
                 this.SorteoPredefinido = EnumSorteo.UE;
                 // habiilitar/deshabilitar controles
                 // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = true;
-                this.txtCantidad.Enabled = true;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
-
-                // radio buttons                
-                this.chkOrdenados.Enabled = false;
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
+                CambiarHabilitacionCuadroTexto(tope: true, cantidad: true);
 
                 // valores predefinidos
+                VaciarCuadrosTexto();
                 this.txtInicio.Text = "1";
                 Inicio = 1;
-                this.txtTope.Text = string.Empty;
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
 
                 // checks predefinidos
-                this.chkOrdenados.Checked = true;
-                this.chkDuplicados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
+                CambiarEstadoRadioButtons(ordenados: true);
+                CambiarHabilitacionRadioButtons();
             }
         }
 
-        private void radioCloracion_CheckedChanged(object sender, EventArgs e) {
+        private void RadioCloracion_CheckedChanged(object sender, EventArgs e) {
             if(this.radioCloracion.Checked) {
                 this.SorteoPredefinido = EnumSorteo.CLORACION;
                 // habiilitar/deshabilitar controles
                 // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = true;
-                this.txtCantidad.Enabled = true;
-                this.txtRango.Enabled = false;
-                this.txtCantVerificacion.Enabled = false;
+                CambiarHabilitacionCuadroTexto(tope: true, cantidad: true);
 
                 // radio buttons
-                this.chkOrdenados.Enabled = false;
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
+                CambiarEstadoRadioButtons();
+                CambiarHabilitacionRadioButtons();
 
                 // valores predefinidos
+                VaciarCuadrosTexto();
                 this.txtInicio.Text = "0";
                 Inicio = 0;
-                this.txtTope.Text = string.Empty;
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
-
-                // checks predefinidos
-                this.chkOrdenados.Checked = false;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = false;
-                this.chkDuplicados.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
             }
         }
 
-        private void radioGenerica_CheckedChanged(object sender, EventArgs e) {
+        private void RadioGenerica_CheckedChanged(object sender, EventArgs e) {
             if(this.radioGenerica.Checked) {
                 this.SorteoPredefinido = EnumSorteo.GENERICA;
                 // habiilitar/deshabilitar controles
                 // campos de ingreso de texto
-                this.txtInicio.Enabled = false;
-                this.txtTope.Enabled = true;
-                this.txtCantidad.Enabled = false;
-                this.txtRango.Enabled = true;
-                this.txtCantVerificacion.Enabled = false;
+                CambiarHabilitacionCuadroTexto(tope: true, rango: true);
 
                 // radio buttons
-                this.chkVerificacion.Enabled = false;
-                this.chkRango.Enabled = false;
-                this.chkOrdenados.Enabled = false;
+                CambiarEstadoRadioButtons(ordenados:true, rango:true);
+                CambiarHabilitacionRadioButtons();
 
                 // valores predefinidos
+                VaciarCuadrosTexto();
+
                 this.txtInicio.Text = "1";
                 Inicio = 1;
-                this.txtTope.Text = string.Empty;
-                this.txtCantidad.Text = string.Empty;
-                this.txtRango.Text = string.Empty;
-                this.txtCantVerificacion.Text = string.Empty;
-
-                // checks predefinidos
-                this.chkOrdenados.Checked = true;
-                this.chkVerificacion.Checked = false;
-                this.chkRango.Checked = true;
-                this.chkDuplicados.Checked = false;
-
-                this.chkDuplicados.Enabled = false;
             }
         }
         #endregion
@@ -273,7 +237,7 @@ namespace RND.Views.Sorteos {
         #region Opciones de Sorteo
         // habilita opciones adicionales para los sorteos
 
-        private void chkRango_CheckedChanged(object sender, EventArgs e) {
+        private void ChkRango_CheckedChanged(object sender, EventArgs e) {
             if(!this.chkRango.Checked) {
                 UtilizarRango = false;
                 this.txtRango.Enabled = false;
@@ -287,7 +251,7 @@ namespace RND.Views.Sorteos {
             }
         }
 
-        private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
+        private void ChkDuplicados_CheckedChanged(object sender, EventArgs e) {
             if(!this.chkDuplicados.Checked) {
                 PermitirDuplicados = false;
             } else {
@@ -295,7 +259,7 @@ namespace RND.Views.Sorteos {
             }
         }
 
-        private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
+        private void ChkOrdenados_CheckedChanged(object sender, EventArgs e) {
             if(!this.chkOrdenados.Checked) {
                 OrdenarResultado = false;
             } else {
@@ -303,7 +267,7 @@ namespace RND.Views.Sorteos {
             }
         }
 
-        private void chkVerificacion_CheckedChanged(object sender, EventArgs e) {
+        private void ChkVerificacion_CheckedChanged(object sender, EventArgs e) {
             if(!this.chkVerificacion.Checked) {
                 IncluirVerificacion = false;
                 this.txtCantVerificacion.Enabled = false;
@@ -364,13 +328,8 @@ namespace RND.Views.Sorteos {
 
         #endregion
 
-        private void btnImprimir_Click(object sender, EventArgs e) {
-            Form nuevo = new PrintForm();
-            nuevo.MdiParent = this.MdiParent;
-            (nuevo as PrintForm).TipoSorteo = SorteoPredefinido;
-            (nuevo as PrintForm).SorteoAImprimir = this.SorteoGenerico;
-            (nuevo as PrintForm).ResultadoOrdenado = this.OrdenarResultado;
-            nuevo.Show();
+        private void BtnImprimir_Click(object sender, EventArgs e) {
+
         }
     }
 }
