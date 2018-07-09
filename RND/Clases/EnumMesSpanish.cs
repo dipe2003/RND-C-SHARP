@@ -5,17 +5,17 @@ using System.Text;
 
 namespace RND.Clases {
     enum EnumMesSpanish{
-        ENERO,
-        FEBRERO,
-        MARZO,
-        ABRIL,
-        MAYO,
-        JUNIO,
-        JULIO,
-        AGOSTO,
-        SETIEMBRE,
-        OCTUBRE,
-        NOVIEMBRE,
-        DICIEMBRE
+        Enero,
+        Febrero,
+        Marzo,
+        Abril,
+        Mayo,
+        Junio,
+        Julio,
+        Agosto,
+        Setiembre,
+        Octubre,
+        Noviembre,
+        Diciembre
     }
 }

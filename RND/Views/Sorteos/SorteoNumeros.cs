@@ -238,13 +238,12 @@ namespace RND.Views.Sorteos {
         // habilita opciones adicionales para los sorteos
 
         private void ChkRango_CheckedChanged(object sender, EventArgs e) {
-            if(!this.chkRango.Checked) {
-                UtilizarRango = false;
+            UtilizarRango = (sender as CheckBox).Checked;
+            if(!UtilizarRango) {
                 this.txtRango.Enabled = false;
                 this.chkDuplicados.Enabled = true;
                 this.txtCantidad.Enabled = true;
             } else {
-                UtilizarRango = true;
                 this.txtRango.Enabled = true;
                 this.chkDuplicados.Enabled = false;
                 this.txtCantidad.Enabled = false;
@@ -252,27 +251,18 @@ namespace RND.Views.Sorteos {
         }
 
         private void ChkDuplicados_CheckedChanged(object sender, EventArgs e) {
-            if(!this.chkDuplicados.Checked) {
-                PermitirDuplicados = false;
-            } else {
-                PermitirDuplicados = true;
-            }
+            PermitirDuplicados = (sender as CheckBox).Checked;
         }
 
-        private void ChkOrdenados_CheckedChanged(object sender, EventArgs e) {
-            if(!this.chkOrdenados.Checked) {
-                OrdenarResultado = false;
-            } else {
-                OrdenarResultado = true;
-            }
+        private void ChkOrdenados_CheckedChanged(object sender, EventArgs e) {            
+                OrdenarResultado = (sender as CheckBox).Checked;
         }
 
         private void ChkVerificacion_CheckedChanged(object sender, EventArgs e) {
-            if(!this.chkVerificacion.Checked) {
-                IncluirVerificacion = false;
+            IncluirVerificacion = (sender as CheckBox).Checked;
+            if(!IncluirVerificacion) {
                 this.txtCantVerificacion.Enabled = false;
             } else {
-                IncluirVerificacion = true;
                 this.txtCantVerificacion.Enabled = true;
             }
         }
@@ -329,7 +319,7 @@ namespace RND.Views.Sorteos {
         #endregion
 
         private void BtnImprimir_Click(object sender, EventArgs e) {
-
+            MessageBox.Show("No implementado aun.");
         }
     }
 }

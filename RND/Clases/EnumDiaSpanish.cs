@@ -5,12 +5,12 @@ using System.Text;
 
 namespace RND.Clases {
     enum EnumDiaSpanish{
-        DOMINGO,
-        LUNES,
-        MARTES,
-        MIERCOLES,
-        JUEVES,
-        VIERNES,
-        SABADO
+        Domingo,
+        Lunes,
+        Martes,
+        Miercoles,
+        Jueves,
+        Viernes,
+        Sabado
     }
 }

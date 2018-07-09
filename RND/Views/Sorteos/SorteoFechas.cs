@@ -15,30 +15,8 @@ namespace RND.Views {
         }
 
         private EnumSorteo SorteoPredefinido = EnumSorteo.PERSONALIZADO;
-        private EnumDiaSpanish[] DiasSemana = {
-                EnumDiaSpanish.DOMINGO,
-                EnumDiaSpanish.LUNES,
-                EnumDiaSpanish.MARTES,
-                EnumDiaSpanish.MIERCOLES,
-                EnumDiaSpanish.JUEVES,
-                EnumDiaSpanish.VIERNES,
-                EnumDiaSpanish.SABADO
-        };
-        private EnumMesSpanish[] MesesAnio = {
-                EnumMesSpanish.ENERO,
-                EnumMesSpanish.FEBRERO,
-                EnumMesSpanish.MARZO,
-                EnumMesSpanish.ABRIL,
-                EnumMesSpanish.MAYO,
-                EnumMesSpanish.JUNIO,
-                EnumMesSpanish.JULIO,
-                EnumMesSpanish.AGOSTO,
-                EnumMesSpanish.SETIEMBRE,
-                EnumMesSpanish.OCTUBRE,
-                EnumMesSpanish.NOVIEMBRE,
-                EnumMesSpanish.DICIEMBRE
-        };
-
+        private EnumDiaSpanish[] DiasSemana = Enum.GetValues(typeof(EnumDiaSpanish)).Cast<EnumDiaSpanish>().ToArray();        
+        private EnumMesSpanish[] MesesAnio = Enum.GetValues(typeof(EnumMesSpanish)).Cast<EnumMesSpanish>().ToArray();
         private Random rand = new Random();
 
         private bool IncluirDomingos = false;
@@ -202,78 +180,59 @@ namespace RND.Views {
             this.Close();
         }
 
+        private void CambiarEstadoRadioButtons(bool duplicados = false, bool ordenados = false, bool domingos = false) {
+            this.chkDuplicados.Checked = duplicados;
+            this.chkOrdenados.Checked = ordenados;
+            this.chkDomingos.Checked = domingos;
+        }
+
+        private void CambiarHabilitacionControles(bool inicio = false, bool tope = false, bool cantidad = false) {
+            this.fechaInicio.Enabled = inicio;
+            this.fechaTope.Enabled = tope;
+            this.txtCantidad.Enabled = cantidad;
+        }
+
         #region Predefinidos
         private void radioDiaSemana_CheckedChanged(object sender, EventArgs e) {
             this.SorteoPredefinido = EnumSorteo.DIA_SEMANA;
 
             //desactivar controles de personalizado
-            this.fechaInicio.Enabled = false;
-            this.fechaTope.Enabled = false;
-
+            CambiarHabilitacionControles();
             this.txtCantidad.Text = "1";
-            this.txtCantidad.Enabled = false;
-
-            this.chkDomingos.Enabled = true;
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
+            CambiarEstadoRadioButtons(domingos: true);
         }
 
         private void radioMes_CheckedChanged(object sender, EventArgs e) {
             this.SorteoPredefinido = EnumSorteo.MES_ANIO;
 
             //desactivar controles de personalizado
-            this.fechaInicio.Enabled = false;
-            this.fechaTope.Enabled = false;
-
+            CambiarHabilitacionControles();
             this.txtCantidad.Text = "1";
-            this.txtCantidad.Enabled = false;
-
-            this.chkDomingos.Enabled = false;
-            this.chkDuplicados.Enabled = false;
-            this.chkOrdenados.Enabled = false;
+            CambiarEstadoRadioButtons();
         }
 
         private void radioPersonalizado_CheckedChanged(object sender, EventArgs e) {
             this.SorteoPredefinido = EnumSorteo.PERSONALIZADO;
 
             //desactivar controles de personalizado
-            this.fechaInicio.Enabled = true;
-            this.fechaTope.Enabled = true;
-
+            CambiarHabilitacionControles(true, true, true);
             this.txtCantidad.Text = string.Empty;
-            this.txtCantidad.Enabled = true;
-
-            this.chkDomingos.Enabled = true;
-            this.chkDuplicados.Enabled = true;
-            this.chkOrdenados.Enabled = true;
+            CambiarEstadoRadioButtons(true, true, true);
         }
-
 
         #endregion
 
         #region Opciones
         private void chkDomingos_CheckedChanged(object sender, EventArgs e) {
-            if(chkDomingos.Checked) {
-                this.IncluirDomingos = true;
-            } else {
-                this.IncluirDomingos = false;
-            }
+            IncluirDomingos = (sender as CheckBox).Checked;
         }
 
         private void chkDuplicados_CheckedChanged(object sender, EventArgs e) {
-            if(chkDuplicados.Checked) {
-                this.PermitirDuplicados = true;
-            } else {
-                this.PermitirDuplicados = false;
-            }
+            PermitirDuplicados = (sender as CheckBox).Checked;
         }
 
         private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
-            if(chkOrdenados.Checked) {
-                this.ResultadoOrdenado = true;
-            } else {
-                this.ResultadoOrdenado = false;
-            }
+            ResultadoOrdenado = (sender as CheckBox).Checked;
         }
         #endregion
 
