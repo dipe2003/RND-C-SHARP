@@ -1,5 +1,5 @@
 ﻿using RND.Clases;
-using RND.Printing;
+using RND.Clases.PdfText;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +13,7 @@ namespace RND.Views.Sorteos {
     public partial class SorteoNumeros:Form {
         public SorteoNumeros() {
             InitializeComponent();
+            FechaSorteo = DateTime.Today;
         }
 
         /*
@@ -32,6 +33,8 @@ namespace RND.Views.Sorteos {
         private EnumSorteo SorteoPredefinido = EnumSorteo.PERSONALIZADO;
 
         private Sorteo SorteoGenerico;
+
+        private DateTime FechaSorteo = new DateTime();
 
         /*
          * Botones
@@ -318,8 +321,24 @@ namespace RND.Views.Sorteos {
 
         #endregion
 
-        private void BtnImprimir_Click(object sender, EventArgs e) {
-            MessageBox.Show("No implementado aun.");
+        private void BtnGuardar_Click(object sender, EventArgs e) {
+            SaveFileDialog dialogoDestino = new SaveFileDialog();
+            dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
+            StringBuilder strNombre = new StringBuilder();
+            strNombre.Append(SorteoPredefinido.ToString())
+                .Append(" ")
+                .Append(FechaSorteo.ToShortDateString().Replace('/', '.'));
+            dialogoDestino.FileName = strNombre.ToString();
+            DialogResult resultado = dialogoDestino.ShowDialog();
+
+            if(resultado == DialogResult.OK) {
+                string destino = dialogoDestino.FileName;
+                ControladorPDF pdf = new ControladorPDF();
+                pdf.GuardarDocumento(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
+                                 SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), Rango.ToString(),
+                                 SorteoGenerico.Resultado);
+            }
+
         }
     }
 }

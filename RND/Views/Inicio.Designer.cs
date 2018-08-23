@@ -72,39 +72,39 @@
             this.numerosToolStripMenuItem,
             this.fechasToolStripMenuItem});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // numerosToolStripMenuItem
             // 
             this.numerosToolStripMenuItem.Name = "numerosToolStripMenuItem";
-            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.numerosToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.numerosToolStripMenuItem.Text = "Numeros";
             this.numerosToolStripMenuItem.Click += new System.EventHandler(this.AbirSorteoNumeros);
             // 
             // fechasToolStripMenuItem
             // 
             this.fechasToolStripMenuItem.Name = "fechasToolStripMenuItem";
-            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.fechasToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.fechasToolStripMenuItem.Text = "Fechas";
             this.fechasToolStripMenuItem.Click += new System.EventHandler(this.AbrirSorteoFechas);
             // 
             // imprimirToolStripMenuItem
             // 
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
             this.imprimirToolStripMenuItem.Visible = false;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.SalirApp);
             // 

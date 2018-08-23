@@ -1,4 +1,4 @@
-﻿namespace RND.Printing {
+﻿namespace RND.Views {
     partial class AcercaDeAplicacion {
         /// <summary>
         /// Variable del diseñador necesaria.

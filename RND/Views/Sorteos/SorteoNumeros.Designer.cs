@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +56,8 @@
             this.txtTope = new System.Windows.Forms.TextBox();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerFechaSorteo = new System.Windows.Forms.DateTimePicker();
+            this.labelFechaSorteo = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
@@ -69,23 +71,23 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.btnImprimir);
+            this.panel4.Controls.Add(this.btnGuardar);
             this.panel4.Controls.Add(this.btnGenerar);
-            this.panel4.Location = new System.Drawing.Point(347, 523);
+            this.panel4.Location = new System.Drawing.Point(347, 552);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(293, 51);
             this.panel4.TabIndex = 15;
             // 
-            // btnImprimir
+            // btnGuardar
             // 
-            this.btnImprimir.Location = new System.Drawing.Point(159, 8);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(112, 34);
-            this.btnImprimir.TabIndex = 7;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
+            this.btnGuardar.Location = new System.Drawing.Point(159, 8);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(112, 34);
+            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // btnGenerar
             // 
@@ -100,7 +102,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(507, 586);
+            this.btnCerrar.Location = new System.Drawing.Point(507, 615);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(112, 34);
@@ -112,7 +114,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(362, 21);
+            this.label6.Location = new System.Drawing.Point(362, 50);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 17);
@@ -126,7 +128,7 @@
             this.panel3.Controls.Add(this.dataGridVerificacion);
             this.panel3.Controls.Add(this.dataGridNumeros);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Location = new System.Drawing.Point(347, 42);
+            this.panel3.Location = new System.Drawing.Point(347, 71);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(293, 474);
@@ -168,7 +170,7 @@
             // 
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(13, 42);
+            this.panel1.Location = new System.Drawing.Point(13, 71);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(304, 532);
@@ -429,19 +431,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 22);
+            this.label2.Location = new System.Drawing.Point(33, 51);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 11;
             this.label2.Text = "Opciones";
             // 
+            // dateTimePickerFechaSorteo
+            // 
+            this.dateTimePickerFechaSorteo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFechaSorteo.Location = new System.Drawing.Point(174, 13);
+            this.dateTimePickerFechaSorteo.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerFechaSorteo.Name = "dateTimePickerFechaSorteo";
+            this.dateTimePickerFechaSorteo.Size = new System.Drawing.Size(143, 22);
+            this.dateTimePickerFechaSorteo.TabIndex = 18;
+            // 
+            // labelFechaSorteo
+            // 
+            this.labelFechaSorteo.AutoSize = true;
+            this.labelFechaSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaSorteo.Location = new System.Drawing.Point(34, 13);
+            this.labelFechaSorteo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFechaSorteo.Name = "labelFechaSorteo";
+            this.labelFechaSorteo.Size = new System.Drawing.Size(118, 18);
+            this.labelFechaSorteo.TabIndex = 17;
+            this.labelFechaSorteo.Text = "Fecha de Sorteo";
+            // 
             // SorteoNumeros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(656, 633);
+            this.ClientSize = new System.Drawing.Size(656, 688);
+            this.Controls.Add(this.dateTimePickerFechaSorteo);
+            this.Controls.Add(this.labelFechaSorteo);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.label6);
@@ -506,6 +530,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridVerificacion;
         private System.Windows.Forms.DataGridView dataGridNumeros;
-        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFechaSorteo;
+        private System.Windows.Forms.Label labelFechaSorteo;
     }
 }

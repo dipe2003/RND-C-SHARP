@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace RND.Printing {
+namespace RND.Views {
     partial class AcercaDeAplicacion :Form {
         public AcercaDeAplicacion() {
             InitializeComponent();

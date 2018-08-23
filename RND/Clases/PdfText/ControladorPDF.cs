@@ -1,0 +1,244 @@
+﻿/*
+ * Creado por SharpDevelop.
+ * Usuario: dperez
+ * Fecha: 23/08/2018
+ * Hora: 08:08 a.m.
+ * 
+ * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
+ */
+using System;
+using System.Collections.Generic;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using RND.Properties;
+
+namespace RND.Clases.PdfText {
+	/// <summary>
+	/// Description of ControladorPDF.
+	/// </summary>
+	public class ControladorPDF {
+		private Document documento;
+		
+		public ControladorPDF() {
+			documento = new Document();
+			documento.SetPageSize(PageSize.A4);
+			// 1 pulgada = 72
+			documento.SetMargins(72, 36, 36, 36);
+		}
+		
+		public void GuardarDocumento(string nombreArchivo, string tituloSorteo, string fechaSorteo, 
+		                             string inicio, string tope, string rango, List<int> sorteoGenerado) {
+			
+			try{
+				PdfWriter writer = PdfWriter.GetInstance(documento, new FileStream(nombreArchivo, FileMode.Create));
+				// si no se usa phrase o paragraph se debe setear el espaciado vertical (espaciado entre lineas):
+				writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_6);
+				
+				documento.Open();
+				documento.Add(CrearEncabezado(tituloSorteo));
+				
+				// tabla informacion
+				PdfPTable tabla = CrearTablaInformacion();
+				
+				// FILA 1				
+				tabla.AddCell(CrearCeldaTitulo("Fecha de Sorteo", 1));
+				tabla.AddCell(CrearCeldaContenido(fechaSorteo));
+				tabla.CompleteRow();
+				tabla.SpacingAfter = 10;
+				
+				// FILA 2
+				tabla.AddCell(CrearCeldaTitulo("Inicio"));
+				tabla.AddCell(CrearCeldaContenido(inicio));
+				
+				tabla.AddCell(CrearCeldaVacia(0));
+				
+				tabla.AddCell(CrearCeldaTitulo("Tope"));
+				tabla.AddCell(CrearCeldaContenido(tope));
+				tabla.CompleteRow();
+				tabla.SpacingAfter = 10;
+				
+				// FILA 3
+				tabla.AddCell(CrearCeldaTitulo("Cantidad"));
+				tabla.AddCell(CrearCeldaContenido(sorteoGenerado.Count.ToString()));
+				tabla.AddCell(CrearCeldaVacia(0));
+				
+				tabla.AddCell(CrearCeldaTitulo("Rango"));
+				string rangoContenido = string.IsNullOrEmpty(rango) || rango == "0" ? rangoContenido = "N/A" : rango;
+				tabla.AddCell(CrearCeldaContenido(rangoContenido));
+				tabla.CompleteRow();
+				tabla.SpacingAfter = 10;
+				
+				documento.Add(tabla);
+				
+				// tabla sorteo
+				int columnas = (int)(sorteoGenerado.Count/3);
+				columnas = columnas >= 15 ? columnas = 15 : columnas;
+				tabla = CrearTablaResultado(columnas);
+				
+				// FILA 1 - Titulo
+				tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados", columnas));
+
+				// FILAS -1 (restantes)
+				foreach (int numero in sorteoGenerado) {
+					tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
+				}
+				tabla.CompleteRow();
+				documento.Add(tabla);
+				
+				documento.Close();
+				
+			} catch (IOException ex) {
+				System.Console.Out.WriteLine("IO Error: " + ex.Message);
+                System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            } catch (DocumentException ex) {
+                System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            System.Windows.Forms.MessageBox.Show("El sorteo se guardo", "Correcto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
+
+        }
+		
+		private PdfPCell CrearCeldaTitulo(string textoTitulo, int colspan = 0) {
+			PdfPCell celda = new PdfPCell(new Phrase(textoTitulo, Fuentes.CELDA_TITULO));
+			celda.Colspan = colspan;
+			celda.PaddingBottom = 5;
+			celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+			celda.BackgroundColor = BaseColor.GRAY;
+			return celda;
+		}
+		
+		private PdfPCell CrearCeldaContenido(string textoContenido, int colspan = 0) {
+			PdfPCell celda = new PdfPCell(new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO));
+			celda.Colspan = colspan;
+			celda.PaddingBottom = 5;
+			celda.BorderWidthTop = 0;
+			celda.BorderWidthRight = 0;
+			celda.HorizontalAlignment = Element.ALIGN_CENTER;
+			return celda;
+		}
+		
+		private PdfPCell CrearCeldaContenidoTabla(string textoContenido) {
+			PdfPCell celda = new PdfPCell(new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO));
+			celda.PaddingBottom = 5;
+			celda.HorizontalAlignment = Element.ALIGN_CENTER;
+			return celda;
+		}
+		
+		private PdfPCell CrearCeldaVacia(int colspan) {
+			PdfPCell celda = new PdfPCell(new Phrase("  ", Fuentes.CELDA_CONTENIDO));
+			celda.Colspan = colspan;
+			celda.BorderWidthTop = 0;
+			celda.BorderWidthRight = 0;
+			celda.BorderWidthBottom = 0;
+			celda.BorderWidthLeft = 0;
+			celda.HorizontalAlignment = Element.ALIGN_CENTER;
+			return celda;
+		}
+		
+		
+		/// <summary>
+		/// Crea la tabla que aloja el encabezado y la completa con los datos.
+		/// </summary>
+		/// <param name="tituloImpresion"></param>
+		/// <returns></returns>
+		private PdfPTable CrearEncabezado(string tituloImpresion) {
+			PdfPTable tablaEncabezado = new PdfPTable(2);
+			tablaEncabezado.WidthPercentage = 100f;
+			tablaEncabezado.SetWidths(new int[]{ 11, 89 });
+			
+			tablaEncabezado.AddCell(CrearLogo());
+			tablaEncabezado.AddCell(CrearDatosEmpresa());
+			tablaEncabezado.AddCell(CrearTituloImpresion(tituloImpresion));
+			tablaEncabezado.SpacingAfter = 5;
+			
+			return tablaEncabezado;
+		}
+		
+		/// <summary>
+		/// Crea la tabla presentar la informacion basica del sorteo.
+		/// </summary>
+		/// <returns></returns>
+		private PdfPTable CrearTablaInformacion() {
+			PdfPTable tabla = new PdfPTable(5);
+			tabla.DefaultCell.BorderWidthBottom = 0;
+			tabla.DefaultCell.BorderWidthTop = 0;
+			tabla.DefaultCell.BorderWidthRight = 0;
+			tabla.DefaultCell.BorderWidthLeft = 0;
+			tabla.WidthPercentage = 100;
+			tabla.SetWidths(new int[]{ 25, 15, 15, 25, 15 });
+			return tabla;
+		}
+		
+		/// <summary>
+		/// Crea la tabla para presentar el resultado del sorteo.
+		/// La primer fila corresponde al encabezado.
+		/// </summary>
+		/// <returns></returns>
+		private PdfPTable CrearTablaResultado(int totalColumnas) {
+			PdfPTable tabla = new PdfPTable(totalColumnas);
+			tabla.WidthPercentage = 100;
+			tabla.HeaderRows = 1;
+			tabla.DefaultCell.BorderWidthBottom = 1;
+			tabla.DefaultCell.BorderWidthTop = 1;
+			tabla.DefaultCell.BorderWidthRight = 1;
+			tabla.DefaultCell.BorderWidthLeft = 1;
+			return tabla;
+		}
+		
+		
+		/// <summary>
+		/// Genera la celda e inserta el logo de la empresa.
+		/// El logo se escala automaticamente para un alto de media pulgada (1/2 in = 36).
+		/// </summary>
+		/// <returns></returns>
+		private PdfPCell CrearLogo() {
+			Phrase frase = new Phrase();
+			Image logo = Image.GetInstance(Resources.MarfrigLogo, System.Drawing.Imaging.ImageFormat.Png);
+			logo.ScaleToFit(1000, 36);
+			logo.Alignment = Element.ALIGN_LEFT;
+			Chunk chLogo = new Chunk(logo, 0, 0, true);
+			frase.Add(chLogo);
+			
+			PdfPCell celda = new PdfPCell(frase);
+			celda.BorderWidth = 0;
+			return celda;
+		}
+		
+		/// <summary>
+		/// Genera la celda con los datos de la empresa
+		/// </summary>
+		/// <returns></returns>
+		private PdfPCell CrearDatosEmpresa() {
+			Phrase frase = new Phrase();
+			frase = new Phrase(new Chunk("Unidad Productiva San José", Fuentes.ENCABEZADO_TEXTO_NORMAL));
+			frase.Add(Chunk.NEWLINE);
+			frase.Add(new Chunk("INALER S.A. - EST. 55", Fuentes.ENCABEZADO_RESALTADO));
+			frase.Add(Chunk.NEWLINE);
+			frase.Add(new Chunk("Paraje Bañado, San José, Uruguay", Fuentes.ENCABEZADO_TEXTO_NORMAL));
+			frase.Add(Chunk.NEWLINE);
+			frase.Add(new Chunk("Tel: (+598) 4342 2525 | Fax: (+598) 4342 2662", Fuentes.ENCABEZADO_TEXTO_NORMAL));
+			
+			PdfPCell celda = new PdfPCell(frase);
+			celda.HorizontalAlignment = Element.ALIGN_LEFT;
+			celda.BorderWidth = 0;
+			return celda;
+		}
+		
+		/// <summary>
+		/// Genera celda con la barra de tiulo
+		/// </summary>
+		/// <param name="titulo"></param>
+		/// <returns></returns>
+		private PdfPCell CrearTituloImpresion(string titulo) {
+			PdfPCell celda = new PdfPCell(new Phrase(titulo.ToUpper(), Fuentes.ENCABEZADO_TITULO));
+			celda.Colspan = 2;
+			celda.BackgroundColor = Fuentes.AZUL_INSTITUCIONAL;
+			celda.BorderWidth = 0;
+			celda.VerticalAlignment = Element.ALIGN_MIDDLE;
+			celda.PaddingBottom = 5;
+			
+			return celda;
+		}
+		
+	}
+}
