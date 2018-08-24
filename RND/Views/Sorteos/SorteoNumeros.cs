@@ -50,6 +50,7 @@ namespace RND.Views.Sorteos {
         /// <param name="e"></param>
         private void BtnGenerar_Click(object sender, EventArgs e) {
             // obtener los parametros numericos y continuar si son correctos.
+            FechaSorteo = dateTimePickerFechaSorteo.Value;
             if(ObtenerParametrosNumericos()) {
                 // vaciar los cuadros de resultados
                 if(!ComprobarLimiteSorteo(Cantidad, Inicio, Tope)) {
@@ -87,6 +88,23 @@ namespace RND.Views.Sorteos {
                                     VistaTabla.MostrarResultado((SorteoGenerico as Personalizado).ResultadoVerificacion, OrdenarResultado, this.dataGridVerificacion);
                                 }
                                 break;
+
+                            case EnumSorteo.HACCP:
+                                SorteoGenerico = new Haccp {
+                                    Inicio = Inicio,
+                                    Tope = Tope,
+                                    Cantidad = Cantidad,
+                                    CantidadVerificacion = CantidadVerificacion
+                                };
+                                SorteoGenerico.SortearNumeros();
+                                VistaTabla.MostrarResultado(SorteoGenerico.Resultado, OrdenarResultado, this.dataGridNumeros);
+                                if(IncluirVerificacion) {
+                                    (SorteoGenerico as Haccp).CantidadVerificacion = CantidadVerificacion;
+                                    (SorteoGenerico as Haccp).SortearNumerosVerificacion();
+                                    VistaTabla.MostrarResultado((SorteoGenerico as Haccp).ResultadoVerificacion, OrdenarResultado, this.dataGridVerificacion);
+                                }
+                                break;
+
                             // default cubre los sorteos restantes UE, Cloracion, Lado
                             default:
                                 SorteoGenerico = new Personalizado {
@@ -127,6 +145,25 @@ namespace RND.Views.Sorteos {
             }
         }
 
+        void RadioHaccpCheckedChanged(object sender, EventArgs e) {
+            if((sender as RadioButton).Checked) {
+                this.SorteoPredefinido = EnumSorteo.HACCP;
+
+                // radio buttons
+                CambiarEstadoRadioButtons(verificacion: true);
+                CambiarHabilitacionRadioButtons();
+
+                // valores predefinidos
+                VaciarCuadrosTexto();
+                txtInicio.Text = "1";
+                Inicio = 1;
+
+                // habilitar/deshabilitar controles
+                // campos de ingreso de texto
+                CambiarHabilitacionCuadroTexto(tope: true, verificacion: true, cantidad: true);
+            }
+        }
+
         private void VaciarCuadrosTexto() {
             this.txtInicio.Text = string.Empty;
             this.txtTope.Text = string.Empty;
@@ -135,7 +172,7 @@ namespace RND.Views.Sorteos {
             this.txtCantVerificacion.Text = string.Empty;
         }
 
-        private void CambiarEstadoRadioButtons(bool duplicados = false, bool ordenados =false, bool verificacion = false, bool rango = false) {
+        private void CambiarEstadoRadioButtons(bool duplicados = false, bool ordenados = false, bool verificacion = false, bool rango = false) {
             this.chkDuplicados.Checked = duplicados;
             this.chkOrdenados.Checked = ordenados;
             this.chkVerificacion.Checked = verificacion;
@@ -149,8 +186,8 @@ namespace RND.Views.Sorteos {
             this.chkRango.Enabled = rango;
         }
 
-        private void CambiarHabilitacionCuadroTexto(bool inicio=false, bool tope=false, bool rango=false, bool verificacion=false,
-            bool cantidad=false) {
+        private void CambiarHabilitacionCuadroTexto(bool inicio = false, bool tope = false, bool rango = false, bool verificacion = false,
+            bool cantidad = false) {
             this.txtInicio.Enabled = inicio;
             this.txtTope.Enabled = tope;
             this.txtRango.Enabled = rango;
@@ -225,7 +262,7 @@ namespace RND.Views.Sorteos {
                 CambiarHabilitacionCuadroTexto(tope: true, rango: true);
 
                 // radio buttons
-                CambiarEstadoRadioButtons(ordenados:true, rango:true);
+                CambiarEstadoRadioButtons(ordenados: true, rango: true);
                 CambiarHabilitacionRadioButtons();
 
                 // valores predefinidos
@@ -257,8 +294,8 @@ namespace RND.Views.Sorteos {
             PermitirDuplicados = (sender as CheckBox).Checked;
         }
 
-        private void ChkOrdenados_CheckedChanged(object sender, EventArgs e) {            
-                OrdenarResultado = (sender as CheckBox).Checked;
+        private void ChkOrdenados_CheckedChanged(object sender, EventArgs e) {
+            OrdenarResultado = (sender as CheckBox).Checked;
         }
 
         private void ChkVerificacion_CheckedChanged(object sender, EventArgs e) {
@@ -300,7 +337,10 @@ namespace RND.Views.Sorteos {
                 if(this.txtRango.Enabled) Rango = double.Parse(this.txtRango.Text);
                 if(this.txtCantidad.Enabled) Cantidad = int.Parse(this.txtCantidad.Text);
                 if(this.txtCantVerificacion.Enabled) CantidadVerificacion = int.Parse(this.txtCantVerificacion.Text);
-            } catch(Exception ex) when(ex is FormatException || ex is NullReferenceException) {
+            } catch(FormatException ex) {
+                MostrarMensajeError(ex);
+                return false;
+            } catch(NullReferenceException ex) {
                 MostrarMensajeError(ex);
                 return false;
             } catch(Exception ex) {
@@ -321,24 +361,34 @@ namespace RND.Views.Sorteos {
 
         #endregion
 
-        private void BtnGuardar_Click(object sender, EventArgs e) {
-            SaveFileDialog dialogoDestino = new SaveFileDialog();
-            dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
-            StringBuilder strNombre = new StringBuilder();
-            strNombre.Append(SorteoPredefinido.ToString())
+        private void BtnImprimir_Click(object sender, EventArgs e) {
+            if(SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {
+                SaveFileDialog dialogoDestino = new SaveFileDialog();
+                dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
+                StringBuilder strNombre = new StringBuilder();
+                strNombre.Append(SorteoPredefinido.ToString())
                 .Append(" ")
                 .Append(FechaSorteo.ToShortDateString().Replace('/', '.'));
-            dialogoDestino.FileName = strNombre.ToString();
-            DialogResult resultado = dialogoDestino.ShowDialog();
+                dialogoDestino.FileName = strNombre.ToString();
+                DialogResult resultado = dialogoDestino.ShowDialog();
 
-            if(resultado == DialogResult.OK) {
-                string destino = dialogoDestino.FileName;
-                ControladorPDF pdf = new ControladorPDF();
-                pdf.GuardarDocumento(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
-                                 SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), Rango.ToString(),
-                                 SorteoGenerico.Resultado);
+                if(resultado == DialogResult.OK) {
+                    string destino = dialogoDestino.FileName;
+                    List<int> verificacion;
+                    if(SorteoGenerico is Personalizado) {
+                        verificacion = chkVerificacion.Checked ? (SorteoGenerico as Personalizado).ResultadoVerificacion : new List<int>();
+                    } else {
+                        verificacion = (SorteoGenerico as Haccp).ResultadoVerificacion;
+                    }
+                    ControladorPDF pdf = new ControladorPDF();
+                    string rango = chkRango.Checked ? rango = Rango.ToString() : rango = "N/A";
+                    pdf.GuardarDocumento(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
+                        SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), rango,
+                        SorteoGenerico.Resultado, verificacion);
+                }
+            } else {
+                System.Windows.Forms.MessageBox.Show("No se ha realizado ningún sorteo.", "?", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
             }
-
         }
     }
 }

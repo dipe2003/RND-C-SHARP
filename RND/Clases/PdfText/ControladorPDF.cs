@@ -26,79 +26,100 @@ namespace RND.Clases.PdfText {
 			// 1 pulgada = 72
 			documento.SetMargins(72, 36, 36, 36);
 		}
-		
-		public void GuardarDocumento(string nombreArchivo, string tituloSorteo, string fechaSorteo, 
-		                             string inicio, string tope, string rango, List<int> sorteoGenerado) {
-			
-			try{
-				PdfWriter writer = PdfWriter.GetInstance(documento, new FileStream(nombreArchivo, FileMode.Create));
-				// si no se usa phrase o paragraph se debe setear el espaciado vertical (espaciado entre lineas):
-				writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_6);
-				
-				documento.Open();
-				documento.Add(CrearEncabezado(tituloSorteo));
-				
-				// tabla informacion
-				PdfPTable tabla = CrearTablaInformacion();
-				
-				// FILA 1				
-				tabla.AddCell(CrearCeldaTitulo("Fecha de Sorteo", 1));
-				tabla.AddCell(CrearCeldaContenido(fechaSorteo));
-				tabla.CompleteRow();
-				tabla.SpacingAfter = 10;
-				
-				// FILA 2
-				tabla.AddCell(CrearCeldaTitulo("Inicio"));
-				tabla.AddCell(CrearCeldaContenido(inicio));
-				
-				tabla.AddCell(CrearCeldaVacia(0));
-				
-				tabla.AddCell(CrearCeldaTitulo("Tope"));
-				tabla.AddCell(CrearCeldaContenido(tope));
-				tabla.CompleteRow();
-				tabla.SpacingAfter = 10;
-				
-				// FILA 3
-				tabla.AddCell(CrearCeldaTitulo("Cantidad"));
-				tabla.AddCell(CrearCeldaContenido(sorteoGenerado.Count.ToString()));
-				tabla.AddCell(CrearCeldaVacia(0));
-				
-				tabla.AddCell(CrearCeldaTitulo("Rango"));
-				string rangoContenido = string.IsNullOrEmpty(rango) || rango == "0" ? rangoContenido = "N/A" : rango;
-				tabla.AddCell(CrearCeldaContenido(rangoContenido));
-				tabla.CompleteRow();
-				tabla.SpacingAfter = 10;
-				
-				documento.Add(tabla);
-				
-				// tabla sorteo
-				int columnas = (int)(sorteoGenerado.Count/3);
-				columnas = columnas >= 15 ? columnas = 15 : columnas;
-				tabla = CrearTablaResultado(columnas);
-				
-				// FILA 1 - Titulo
-				tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados", columnas));
 
-				// FILAS -1 (restantes)
-				foreach (int numero in sorteoGenerado) {
-					tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
-				}
-				tabla.CompleteRow();
-				documento.Add(tabla);
-				
-				documento.Close();
-				
-			} catch (IOException ex) {
-				System.Console.Out.WriteLine("IO Error: " + ex.Message);
+        public void GuardarDocumento(string nombreArchivo, string tituloSorteo, string fechaSorteo,
+                                     string inicio, string tope, string rango, List<int> sorteoGenerado,
+                                     List<int> sorteoVerificacion) {
+
+            try {
+                PdfWriter writer = PdfWriter.GetInstance(documento, new FileStream(nombreArchivo, FileMode.Create));
+                // si no se usa phrase o paragraph se debe setear el espaciado vertical (espaciado entre lineas):
+                writer.SetPdfVersion(PdfWriter.PDF_VERSION_1_6);
+
+                documento.Open();
+                documento.Add(CrearEncabezado(tituloSorteo));
+
+                // tabla informacion
+                PdfPTable tabla = CrearTablaInformacion();
+
+                // FILA 1				
+                tabla.AddCell(CrearCeldaTitulo("Fecha de Sorteo", 1));
+                tabla.AddCell(CrearCeldaContenido(fechaSorteo));
+                tabla.CompleteRow();
+                tabla.SpacingAfter = 10;
+
+                // FILA 2
+                tabla.AddCell(CrearCeldaTitulo("Inicio"));
+                tabla.AddCell(CrearCeldaContenido(inicio));
+
+                tabla.AddCell(CrearCeldaVacia(0));
+
+                tabla.AddCell(CrearCeldaTitulo("Tope"));
+                tabla.AddCell(CrearCeldaContenido(tope));
+                tabla.CompleteRow();
+                tabla.SpacingAfter = 10;
+
+                // FILA 3
+                tabla.AddCell(CrearCeldaTitulo("Cantidad"));
+                tabla.AddCell(CrearCeldaContenido(sorteoGenerado.Count.ToString()));
+                tabla.AddCell(CrearCeldaVacia(0));
+
+                tabla.AddCell(CrearCeldaTitulo("Rango"));
+                string rangoContenido = string.IsNullOrEmpty(rango) || rango == "0" ? rangoContenido = "N/A" : rango;
+                tabla.AddCell(CrearCeldaContenido(rangoContenido));
+                tabla.CompleteRow();
+                tabla.SpacingAfter = 10;
+
+                documento.Add(tabla);
+
+                // tabla sorteo
+                int elementos = sorteoGenerado.Count;
+                int columnas = elementos <= 3 ? columnas=elementos : (int)(elementos/3);
+                columnas = columnas >= 15 ? columnas = 15 : columnas;
+                tabla = CrearTablaResultado(columnas);
+
+                // FILA 1 - Titulo
+                tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados", columnas));
+
+                // FILAS -1 (restantes)
+                foreach(int numero in sorteoGenerado) {
+                    tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
+                }
+                tabla.CompleteRow();
+                documento.Add(tabla);
+
+                // tabla verificación
+                if(sorteoVerificacion != null) {
+                    elementos = sorteoVerificacion.Count;
+                    if(elementos > 0) {
+                        columnas = elementos <= 3 ? columnas = elementos : (int)(elementos / 3);
+                        columnas = columnas >= 15 ? columnas = 15 : columnas;
+                        tabla = CrearTablaResultado(columnas);
+
+                        // FILA 1 - Titulo
+                        tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados para Verificación", columnas));
+
+                        // FILAS -1 (restantes)
+                        foreach(int numero in sorteoVerificacion) {
+                            tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
+                        }
+                        tabla.CompleteRow();
+                        documento.Add(tabla);
+                    }
+                }
+                documento.Close();
+
+            } catch(IOException ex) {
+                System.Console.Out.WriteLine("IO Error: " + ex.Message);
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            } catch (DocumentException ex) {
+            } catch(DocumentException ex) {
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
             System.Windows.Forms.MessageBox.Show("El sorteo se guardo", "Correcto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
         }
-		
-		private PdfPCell CrearCeldaTitulo(string textoTitulo, int colspan = 0) {
+
+        private PdfPCell CrearCeldaTitulo(string textoTitulo, int colspan = 0) {
 			PdfPCell celda = new PdfPCell(new Phrase(textoTitulo, Fuentes.CELDA_TITULO));
 			celda.Colspan = colspan;
 			celda.PaddingBottom = 5;

@@ -51,7 +51,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(773, 28);
+            this.menuStrip.Size = new System.Drawing.Size(946, 28);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -169,7 +169,7 @@
             // 
             // Inicio
             // 
-            this.ClientSize = new System.Drawing.Size(773, 740);
+            this.ClientSize = new System.Drawing.Size(946, 820);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
