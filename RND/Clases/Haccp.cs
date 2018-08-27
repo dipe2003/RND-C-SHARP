@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace RND.Clases {
-    class Haccp : Sorteo {
+    class Haccp:Sorteo {
         public double Rango { get; internal set; }
         public int CantidadVerificacion { get; set; }
         public int Cantidad { get; set; }
@@ -27,14 +27,18 @@ namespace RND.Clases {
             }
             Rango = CalcularFrecuencia();
             int inicio;
+            int rangoAnterior = 0;
             for(int i = 1; i <= Cantidad; i++) {
-                inicio = (i - 1) * (int)Rango + 1;
-                int topeRango = i * (int)Rango;
+                //inicio = (i - 1) * (int)Rango + 1;
+                inicio = rangoAnterior+1;
+                //int topeRango = i * (int)Rango;
+                int topeRango = i == 2 ? rangoAnterior + (int)Rango + 1 : rangoAnterior + (int)Rango;
                 if(Tope > topeRango) {
                     Resultado.Add(sortearNumero(inicio, topeRango));
                 } else {
                     Resultado.Add(sortearNumero(inicio, Tope));
                 }
+                rangoAnterior = topeRango;
             }
         }
 
@@ -49,7 +53,7 @@ namespace RND.Clases {
             int numeroVerif;
             for(int i = 0; i < CantidadVerificacion; i++) {
                 do {
-                    numeroVerif = sortearNumero(0, Resultado.Count);
+                    numeroVerif = sortearNumero(0, Resultado.Count-1);
                     numeroSorteo = Resultado.ElementAt(numeroVerif);
                 } while(ResultadoVerificacion.Contains(numeroSorteo));
                 ResultadoVerificacion.Add(numeroSorteo);

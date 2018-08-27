@@ -334,9 +334,9 @@ namespace RND.Views.Sorteos {
             try {
                 if(this.txtInicio.Enabled) Inicio = int.Parse(this.txtInicio.Text);
                 if(this.txtTope.Enabled) Tope = int.Parse(this.txtTope.Text);
-                if(this.txtRango.Enabled) Rango = double.Parse(this.txtRango.Text);
+                if(this.chkRango.Checked) Rango = double.Parse(this.txtRango.Text);
                 if(this.txtCantidad.Enabled) Cantidad = int.Parse(this.txtCantidad.Text);
-                if(this.txtCantVerificacion.Enabled) CantidadVerificacion = int.Parse(this.txtCantVerificacion.Text);
+                if(this.chkVerificacion.Checked) CantidadVerificacion = int.Parse(this.txtCantVerificacion.Text);
             } catch(FormatException ex) {
                 MostrarMensajeError(ex);
                 return false;
