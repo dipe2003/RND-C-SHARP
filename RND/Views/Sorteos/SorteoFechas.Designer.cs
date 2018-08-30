@@ -44,6 +44,7 @@
             this.groupBoxOpciones = new System.Windows.Forms.GroupBox();
             this.dateTimePickerFechaSorteo = new System.Windows.Forms.DateTimePicker();
             this.labelFechaSorteo = new System.Windows.Forms.Label();
+            this.btnGuardarPDF = new System.Windows.Forms.Button();
             this.panelBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).BeginInit();
             this.grupoTipoSorteo.SuspendLayout();
@@ -52,54 +53,57 @@
             // 
             // fechaInicio
             // 
-            this.fechaInicio.Location = new System.Drawing.Point(10, 56);
+            this.fechaInicio.Location = new System.Drawing.Point(17, 60);
+            this.fechaInicio.Margin = new System.Windows.Forms.Padding(2);
             this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.Size = new System.Drawing.Size(257, 22);
+            this.fechaInicio.Size = new System.Drawing.Size(256, 22);
             this.fechaInicio.TabIndex = 0;
             // 
             // fechaTope
             // 
-            this.fechaTope.Location = new System.Drawing.Point(10, 110);
+            this.fechaTope.Location = new System.Drawing.Point(17, 119);
+            this.fechaTope.Margin = new System.Windows.Forms.Padding(2);
             this.fechaTope.Name = "fechaTope";
-            this.fechaTope.Size = new System.Drawing.Size(257, 22);
+            this.fechaTope.Size = new System.Drawing.Size(256, 22);
             this.fechaTope.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 145);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(17, 156);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
+            this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 4;
             this.label4.Text = "Cantidad";
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(10, 166);
-            this.txtCantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCantidad.Location = new System.Drawing.Point(17, 181);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(256, 22);
+            this.txtCantidad.Size = new System.Drawing.Size(255, 22);
             this.txtCantidad.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(308, 19);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(333, 15);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(127, 17);
+            this.label6.Size = new System.Drawing.Size(122, 16);
             this.label6.TabIndex = 17;
             this.label6.Text = "Fechas Sorteadas:";
             // 
             // panelBotones
             // 
             this.panelBotones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelBotones.Controls.Add(this.btnGuardarPDF);
             this.panelBotones.Controls.Add(this.btnCerrar);
             this.panelBotones.Controls.Add(this.btnSortear);
-            this.panelBotones.Location = new System.Drawing.Point(307, 565);
+            this.panelBotones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelBotones.Location = new System.Drawing.Point(332, 484);
+            this.panelBotones.Margin = new System.Windows.Forms.Padding(2);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Size = new System.Drawing.Size(383, 51);
+            this.panelBotones.Size = new System.Drawing.Size(297, 42);
             this.panelBotones.TabIndex = 18;
             // 
             // btnCerrar
@@ -107,10 +111,9 @@
             this.btnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(2)))), ((int)(((byte)(123)))));
             this.btnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCerrar.Location = new System.Drawing.Point(220, 8);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Location = new System.Drawing.Point(202, 6);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(145, 34);
+            this.btnCerrar.Size = new System.Drawing.Size(86, 28);
             this.btnCerrar.TabIndex = 8;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
@@ -121,10 +124,9 @@
             this.btnSortear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(2)))), ((int)(((byte)(123)))));
             this.btnSortear.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSortear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSortear.Location = new System.Drawing.Point(9, 8);
-            this.btnSortear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSortear.Location = new System.Drawing.Point(10, 6);
             this.btnSortear.Name = "btnSortear";
-            this.btnSortear.Size = new System.Drawing.Size(151, 34);
+            this.btnSortear.Size = new System.Drawing.Size(86, 28);
             this.btnSortear.TabIndex = 7;
             this.btnSortear.Text = "Sortear";
             this.btnSortear.UseVisualStyleBackColor = false;
@@ -135,20 +137,20 @@
             this.dataGridFechas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridFechas.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridFechas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridFechas.Location = new System.Drawing.Point(307, 44);
+            this.dataGridFechas.Location = new System.Drawing.Point(332, 36);
+            this.dataGridFechas.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridFechas.Name = "dataGridFechas";
             this.dataGridFechas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridFechas.RowTemplate.Height = 24;
-            this.dataGridFechas.Size = new System.Drawing.Size(383, 515);
+            this.dataGridFechas.Size = new System.Drawing.Size(297, 444);
             this.dataGridFechas.TabIndex = 25;
             // 
             // chkDomingos
             // 
             this.chkDomingos.AutoSize = true;
-            this.chkDomingos.Location = new System.Drawing.Point(43, 204);
-            this.chkDomingos.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDomingos.Location = new System.Drawing.Point(33, 215);
             this.chkDomingos.Name = "chkDomingos";
-            this.chkDomingos.Size = new System.Drawing.Size(134, 21);
+            this.chkDomingos.Size = new System.Drawing.Size(126, 20);
             this.chkDomingos.TabIndex = 19;
             this.chkDomingos.Text = "Inlcuir Domingos";
             this.chkDomingos.UseVisualStyleBackColor = true;
@@ -157,28 +159,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 33);
+            this.label1.Location = new System.Drawing.Point(17, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
+            this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 20;
             this.label1.Text = "Fecha Inicio:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 90);
+            this.label2.Location = new System.Drawing.Point(17, 95);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 17);
+            this.label2.Size = new System.Drawing.Size(85, 16);
             this.label2.TabIndex = 21;
             this.label2.Text = "Fecha Tope:";
             // 
             // chkOrdenados
             // 
             this.chkOrdenados.AutoSize = true;
-            this.chkOrdenados.Location = new System.Drawing.Point(42, 262);
-            this.chkOrdenados.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOrdenados.Location = new System.Drawing.Point(33, 278);
             this.chkOrdenados.Name = "chkOrdenados";
-            this.chkOrdenados.Size = new System.Drawing.Size(151, 21);
+            this.chkOrdenados.Size = new System.Drawing.Size(143, 20);
             this.chkOrdenados.TabIndex = 23;
             this.chkOrdenados.Text = "Fechas Ordenadas";
             this.chkOrdenados.UseVisualStyleBackColor = true;
@@ -187,10 +190,9 @@
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
-            this.chkDuplicados.Location = new System.Drawing.Point(42, 233);
-            this.chkDuplicados.Margin = new System.Windows.Forms.Padding(4);
+            this.chkDuplicados.Location = new System.Drawing.Point(33, 246);
             this.chkDuplicados.Name = "chkDuplicados";
-            this.chkDuplicados.Size = new System.Drawing.Size(152, 21);
+            this.chkDuplicados.Size = new System.Drawing.Size(144, 20);
             this.chkDuplicados.TabIndex = 22;
             this.chkDuplicados.Text = "Permitir Duplicados";
             this.chkDuplicados.UseVisualStyleBackColor = true;
@@ -202,11 +204,10 @@
             this.grupoTipoSorteo.Controls.Add(this.radioMes);
             this.grupoTipoSorteo.Controls.Add(this.radioDiaSemana);
             this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.grupoTipoSorteo.Location = new System.Drawing.Point(16, 341);
-            this.grupoTipoSorteo.Margin = new System.Windows.Forms.Padding(4);
+            this.grupoTipoSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grupoTipoSorteo.Location = new System.Drawing.Point(12, 377);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Padding = new System.Windows.Forms.Padding(4);
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(284, 218);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(298, 149);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
             this.grupoTipoSorteo.Text = "Sorteos";
@@ -215,10 +216,9 @@
             // 
             this.radioPersonalizado.AutoSize = true;
             this.radioPersonalizado.Checked = true;
-            this.radioPersonalizado.Location = new System.Drawing.Point(41, 120);
-            this.radioPersonalizado.Margin = new System.Windows.Forms.Padding(4);
+            this.radioPersonalizado.Location = new System.Drawing.Point(32, 107);
             this.radioPersonalizado.Name = "radioPersonalizado";
-            this.radioPersonalizado.Size = new System.Drawing.Size(119, 21);
+            this.radioPersonalizado.Size = new System.Drawing.Size(113, 20);
             this.radioPersonalizado.TabIndex = 0;
             this.radioPersonalizado.TabStop = true;
             this.radioPersonalizado.Text = "Personalizado";
@@ -228,10 +228,9 @@
             // radioMes
             // 
             this.radioMes.AutoSize = true;
-            this.radioMes.Location = new System.Drawing.Point(41, 91);
-            this.radioMes.Margin = new System.Windows.Forms.Padding(4);
+            this.radioMes.Location = new System.Drawing.Point(32, 67);
             this.radioMes.Name = "radioMes";
-            this.radioMes.Size = new System.Drawing.Size(107, 21);
+            this.radioMes.Size = new System.Drawing.Size(101, 20);
             this.radioMes.TabIndex = 0;
             this.radioMes.Text = "Mes del Año";
             this.radioMes.UseVisualStyleBackColor = true;
@@ -240,10 +239,9 @@
             // radioDiaSemana
             // 
             this.radioDiaSemana.AutoSize = true;
-            this.radioDiaSemana.Location = new System.Drawing.Point(41, 61);
-            this.radioDiaSemana.Margin = new System.Windows.Forms.Padding(4);
+            this.radioDiaSemana.Location = new System.Drawing.Point(32, 27);
             this.radioDiaSemana.Name = "radioDiaSemana";
-            this.radioDiaSemana.Size = new System.Drawing.Size(141, 21);
+            this.radioDiaSemana.Size = new System.Drawing.Size(134, 20);
             this.radioDiaSemana.TabIndex = 0;
             this.radioDiaSemana.Text = "Dia de la Semana";
             this.radioDiaSemana.UseVisualStyleBackColor = true;
@@ -260,39 +258,56 @@
             this.groupBoxOpciones.Controls.Add(this.label2);
             this.groupBoxOpciones.Controls.Add(this.chkDomingos);
             this.groupBoxOpciones.Controls.Add(this.fechaInicio);
-            this.groupBoxOpciones.Location = new System.Drawing.Point(16, 44);
+            this.groupBoxOpciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxOpciones.Location = new System.Drawing.Point(12, 36);
+            this.groupBoxOpciones.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxOpciones.Name = "groupBoxOpciones";
-            this.groupBoxOpciones.Size = new System.Drawing.Size(284, 291);
+            this.groupBoxOpciones.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxOpciones.Size = new System.Drawing.Size(299, 336);
             this.groupBoxOpciones.TabIndex = 26;
             this.groupBoxOpciones.TabStop = false;
             this.groupBoxOpciones.Text = "Opciones";
             // 
             // dateTimePickerFechaSorteo
             // 
+            this.dateTimePickerFechaSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerFechaSorteo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFechaSorteo.Location = new System.Drawing.Point(157, 15);
-            this.dateTimePickerFechaSorteo.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePickerFechaSorteo.Location = new System.Drawing.Point(118, 12);
             this.dateTimePickerFechaSorteo.Name = "dateTimePickerFechaSorteo";
-            this.dateTimePickerFechaSorteo.Size = new System.Drawing.Size(143, 22);
+            this.dateTimePickerFechaSorteo.Size = new System.Drawing.Size(193, 22);
             this.dateTimePickerFechaSorteo.TabIndex = 25;
             // 
             // labelFechaSorteo
             // 
             this.labelFechaSorteo.AutoSize = true;
-            this.labelFechaSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFechaSorteo.Location = new System.Drawing.Point(13, 18);
-            this.labelFechaSorteo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFechaSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFechaSorteo.Location = new System.Drawing.Point(10, 15);
             this.labelFechaSorteo.Name = "labelFechaSorteo";
-            this.labelFechaSorteo.Size = new System.Drawing.Size(118, 18);
+            this.labelFechaSorteo.Size = new System.Drawing.Size(108, 16);
             this.labelFechaSorteo.TabIndex = 24;
             this.labelFechaSorteo.Text = "Fecha de Sorteo";
             // 
+            // btnGuardarPDF
+            // 
+            this.btnGuardarPDF.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGuardarPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(2)))), ((int)(((byte)(123)))));
+            this.btnGuardarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnGuardarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarPDF.Location = new System.Drawing.Point(107, 6);
+            this.btnGuardarPDF.Name = "btnGuardarPDF";
+            this.btnGuardarPDF.Size = new System.Drawing.Size(86, 28);
+            this.btnGuardarPDF.TabIndex = 9;
+            this.btnGuardarPDF.Text = "Exportar";
+            this.btnGuardarPDF.UseVisualStyleBackColor = false;
+            this.btnGuardarPDF.Click += new System.EventHandler(this.btnGuardarPDF_Click);
+            // 
             // SorteoFechas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(720, 630);
+            this.ClientSize = new System.Drawing.Size(640, 530);
             this.Controls.Add(this.dateTimePickerFechaSorteo);
             this.Controls.Add(this.labelFechaSorteo);
             this.Controls.Add(this.groupBoxOpciones);
@@ -301,6 +316,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panelBotones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SorteoFechas";
@@ -342,5 +358,6 @@
         private System.Windows.Forms.GroupBox groupBoxOpciones;
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaSorteo;
         private System.Windows.Forms.Label labelFechaSorteo;
+        private System.Windows.Forms.Button btnGuardarPDF;
     }
 }

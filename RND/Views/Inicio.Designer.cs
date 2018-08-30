@@ -90,7 +90,7 @@
             this.panelLateralIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLateralIzquierdo.Location = new System.Drawing.Point(0, 0);
             this.panelLateralIzquierdo.Name = "panelLateralIzquierdo";
-            this.panelLateralIzquierdo.Size = new System.Drawing.Size(200, 629);
+            this.panelLateralIzquierdo.Size = new System.Drawing.Size(200, 536);
             this.panelLateralIzquierdo.TabIndex = 0;
             // 
             // buttonSalir
@@ -100,11 +100,11 @@
             this.buttonSalir.FlatAppearance.BorderSize = 0;
             this.buttonSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalir.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSalir.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalir.ForeColor = System.Drawing.Color.White;
             this.buttonSalir.Image = global::RND.Properties.Resources.exit_button_bg;
             this.buttonSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSalir.Location = new System.Drawing.Point(12, 564);
+            this.buttonSalir.Location = new System.Drawing.Point(12, 473);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(182, 53);
             this.buttonSalir.TabIndex = 3;
@@ -120,11 +120,11 @@
             this.buttonAyuda.FlatAppearance.BorderSize = 0;
             this.buttonAyuda.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAyuda.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAyuda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAyuda.ForeColor = System.Drawing.Color.White;
             this.buttonAyuda.Image = global::RND.Properties.Resources.help_button_bg;
             this.buttonAyuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAyuda.Location = new System.Drawing.Point(12, 501);
+            this.buttonAyuda.Location = new System.Drawing.Point(12, 410);
             this.buttonAyuda.Name = "buttonAyuda";
             this.buttonAyuda.Size = new System.Drawing.Size(182, 53);
             this.buttonAyuda.TabIndex = 3;
@@ -139,7 +139,7 @@
             this.buttonSorteoFechas.FlatAppearance.BorderSize = 0;
             this.buttonSorteoFechas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSorteoFechas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSorteoFechas.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSorteoFechas.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSorteoFechas.ForeColor = System.Drawing.Color.White;
             this.buttonSorteoFechas.Image = global::RND.Properties.Resources.rnd_date_button_bg;
             this.buttonSorteoFechas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -160,7 +160,7 @@
             this.buttonSorteoNumeros.FlatAppearance.BorderSize = 0;
             this.buttonSorteoNumeros.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.buttonSorteoNumeros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSorteoNumeros.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSorteoNumeros.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSorteoNumeros.ForeColor = System.Drawing.Color.White;
             this.buttonSorteoNumeros.Image = global::RND.Properties.Resources.rnd_number_button_bg;
             this.buttonSorteoNumeros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -201,7 +201,7 @@
             this.labelRND.ForeColor = System.Drawing.Color.White;
             this.labelRND.Location = new System.Drawing.Point(98, 37);
             this.labelRND.Name = "labelRND";
-            this.labelRND.Size = new System.Drawing.Size(99, 44);
+            this.labelRND.Size = new System.Drawing.Size(77, 35);
             this.labelRND.TabIndex = 0;
             this.labelRND.Text = "RND";
             this.labelRND.Click += new System.EventHandler(this.labelRND_Click);
@@ -211,20 +211,20 @@
             this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenido.Location = new System.Drawing.Point(200, 0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(722, 629);
+            this.panelContenido.Size = new System.Drawing.Size(637, 536);
             this.panelContenido.TabIndex = 1;
             // 
             // Inicio
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(922, 629);
+            this.ClientSize = new System.Drawing.Size(837, 536);
             this.Controls.Add(this.panelContenido);
             this.Controls.Add(this.panelLateralIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(940, 676);
-            this.MinimumSize = new System.Drawing.Size(940, 676);
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelLateralIzquierdo.ResumeLayout(false);

@@ -361,7 +361,7 @@ namespace RND.Views.Sorteos {
 
         #endregion
 
-        private void BtnImprimir_Click(object sender, EventArgs e) {
+        private void ButtonGuardarPDF_Click(object sender, EventArgs e) {
             if(SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {
                 SaveFileDialog dialogoDestino = new SaveFileDialog();
                 dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
@@ -382,7 +382,7 @@ namespace RND.Views.Sorteos {
                     }
                     ControladorPDF pdf = new ControladorPDF();
                     string rango = chkRango.Checked ? rango = Rango.ToString() : rango = "N/A";
-                    pdf.GuardarDocumento(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
+                    pdf.GuardarSorteoNumeros(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
                         SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), rango,
                         SorteoGenerico.Resultado, verificacion);
                 }

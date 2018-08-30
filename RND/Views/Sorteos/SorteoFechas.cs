@@ -1,4 +1,5 @@
 ﻿using RND.Clases;
+using RND.Clases.PdfText;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace RND.Views {
     public partial class SorteoFechas :Form {
         public SorteoFechas() {
             InitializeComponent();
+            FechaSorteo = DateTime.Today;
         }
 
         private EnumSorteo SorteoPredefinido = EnumSorteo.PERSONALIZADO;
@@ -26,6 +28,10 @@ namespace RND.Views {
         private DateTime FechaInicio;
         private DateTime FechaTope;
         private int Cantidad;
+
+        private DateTime FechaSorteo = new DateTime();
+
+        List<string> FechasSorteadas = new List<string>();
 
         #region Metodos
         /// <summary>
@@ -100,11 +106,17 @@ namespace RND.Views {
             if(ordenados) {
                 Resultado.Sort();
             }
+            FechasSorteadas = ConvertirLista(Resultado);            
+            VistaTabla.LlenarTabla(FechasSorteadas, "#", "Fechas", this.dataGridFechas);
+        }
+
+
+        private List<string> ConvertirLista(List<DateTime> listaOrigen) {
             List<string> lista = new List<string>();
-            foreach(DateTime fecha in Resultado) {
+            foreach(DateTime fecha in listaOrigen) {
                 lista.Add(fecha.ToShortDateString());
             }
-            VistaTabla.LlenarTabla(lista, "#", "Fechas", this.dataGridFechas);
+            return lista;
         }
 
         /// <summary>
@@ -141,9 +153,8 @@ namespace RND.Views {
                     sorteo.SortearNumeros();
                 }
             }
-            List<string> lista = new List<string>();
-            lista.Add(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString());
-            VistaTabla.LlenarTabla(lista, "#", "Dia", this.dataGridFechas);            
+            FechasSorteadas.Add(DiasSemana[sorteo.Resultado.FirstOrDefault()].ToString());
+            VistaTabla.LlenarTabla(FechasSorteadas, "#", "Dia", this.dataGridFechas);            
         }
 
         /// <summary>
@@ -152,15 +163,15 @@ namespace RND.Views {
         private void SortearMesAnio() {
             Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 11, Cantidad = 1 };
             sorteo.SortearNumeros();
-            List<string> lista = new List<string>();
-            lista.Add(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString());
-            VistaTabla.LlenarTabla(lista, "#", "Mes", this.dataGridFechas);
+            FechasSorteadas.Add(MesesAnio[sorteo.Resultado.FirstOrDefault()].ToString());
+            VistaTabla.LlenarTabla(FechasSorteadas, "#", "Mes", this.dataGridFechas);
         }
         
 
         #endregion
 
         private void btnSortear_Click(object sender, EventArgs e) {
+            if(FechasSorteadas.Any()) FechasSorteadas.Clear();
             switch(SorteoPredefinido) {
                 case EnumSorteo.DIA_SEMANA:
                     SortearDiaSemana();
@@ -236,5 +247,35 @@ namespace RND.Views {
         }
         #endregion
 
+        private void btnGuardarPDF_Click(object sender, EventArgs e) {
+            if(FechasSorteadas != null && FechasSorteadas.Any()) {
+                SaveFileDialog dialogoDestino = new SaveFileDialog();
+                dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
+                StringBuilder strNombre = new StringBuilder();
+                strNombre.Append(SorteoPredefinido.ToString())
+                .Append(" ")
+                .Append(FechaSorteo.ToShortDateString().Replace('/', '.'));
+                dialogoDestino.FileName = strNombre.ToString();
+                DialogResult resultado = dialogoDestino.ShowDialog();
+
+                if(resultado == DialogResult.OK) {
+                    string strFechaInicio = FechaInicio.ToShortDateString();
+                    string strFechaTope = FechaTope.ToShortDateString();
+                    string strTituloSorteo = SorteoPredefinido.ToString();
+                    // Ajustar titulos segun tipo de sorteo
+                    if(SorteoPredefinido != EnumSorteo.PERSONALIZADO) {
+                        strFechaInicio = "---";
+                        strFechaTope = "---";
+                        strTituloSorteo = SorteoPredefinido != EnumSorteo.MES_ANIO? "DIA DE LA SEMANA":"MES DEL AÑO";
+                    }
+                    string destino = dialogoDestino.FileName;
+                    ControladorPDF pdf = new ControladorPDF();
+                    pdf.GuardarSorteoFechas(destino, "Sorteo: " + strTituloSorteo, FechaSorteo.ToShortDateString(),
+                        strFechaInicio, strFechaTope, IncluirDomingos, FechasSorteadas);
+                }
+            } else {
+                System.Windows.Forms.MessageBox.Show("No se ha realizado ningún sorteo.", "?", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+            }
+        }
     }
 }
