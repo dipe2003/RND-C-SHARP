@@ -12,26 +12,28 @@ namespace RND {
             InitializeComponent();
         }
 
-        private void AbirSorteoNumeros(object sender, EventArgs e) {
-            Form nuevo = new SorteoNumeros();
-            nuevo.MdiParent = this;
-            nuevo.Show();
-        }
-
-        private void AbrirSorteoFechas(object sender, EventArgs e) {
-            Form nuevo = new SorteoFechas();
-            nuevo.MdiParent = this;
-            nuevo.Show();
-        }
-
-        private void SalirApp(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e) {
             Form nuevo = new AcercaDeAplicacion();
             nuevo.MdiParent = this;
             nuevo.Show();
+        }
+
+        private void buttonSorteoNumeros_Click(object sender, EventArgs e) {
+            Form nuevo = new SorteoNumeros();
+            ManejadorMenu.AgregarFormularioEnPanel(panelContenido, nuevo);
+        }
+
+        private void buttonSorteoFechas_Click(object sender, EventArgs e) {
+            Form nuevo = new SorteoFechas();
+            ManejadorMenu.AgregarFormularioEnPanel(panelContenido, nuevo);
+        }
+
+        private void buttonSalir_Click(object sender, EventArgs e) {
+            ManejadorMenu.CerrarAplicacion();
+        }
+
+        private void labelRND_Click(object sender, EventArgs e) {
+            new AcercaDeAplicacion().ShowDialog();
         }
     }
 }

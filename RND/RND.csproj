@@ -26,8 +26,8 @@
     <ProductName>RND</ProductName>
     <PublisherName>Diego Perez</PublisherName>
     <SuiteName>RND</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -107,6 +107,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\ManejadorMenu.cs" />
     <Compile Include="Views\Sorteos\SorteoFechas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +156,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dices.ico" />
+    <None Include="Resources\exit button bg.png" />
+    <None Include="Resources\help button bg.png" />
+    <None Include="Resources\rnd number button bg.png" />
+    <None Include="Resources\rnd date button bg.png" />
+    <None Include="Resources\rnd number button background.png" />
+    <None Include="Resources\rnd date button background.png" />
+    <None Include="Resources\dado_random.png" />
     <None Include="Resources\MarfrigLogo.png" />
     <None Include="Resources\Dices.ico" />
   </ItemGroup>
@@ -168,22 +176,22 @@
   <ItemGroup>
     <PublishFile Include="Dices.ico">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="itextsharp">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

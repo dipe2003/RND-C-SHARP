@@ -374,10 +374,10 @@ namespace RND.Views.Sorteos {
 
                 if(resultado == DialogResult.OK) {
                     string destino = dialogoDestino.FileName;
-                    List<int> verificacion;
+                    List<int> verificacion = new List<int>();
                     if(SorteoGenerico is Personalizado) {
-                        verificacion = chkVerificacion.Checked ? (SorteoGenerico as Personalizado).ResultadoVerificacion : new List<int>();
-                    } else {
+                        verificacion = chkVerificacion.Checked ? (SorteoGenerico as Personalizado).ResultadoVerificacion : verificacion;
+                    } else if(SorteoGenerico is Haccp){
                         verificacion = (SorteoGenerico as Haccp).ResultadoVerificacion;
                     }
                     ControladorPDF pdf = new ControladorPDF();
