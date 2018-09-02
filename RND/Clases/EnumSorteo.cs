@@ -12,6 +12,7 @@ namespace RND.Clases {
         DIA_SEMANA,
         MES_ANIO,
         LADO,
-        PERSONALIZADO
+        PERSONALIZADO,
+        DIAS_POR_SEMANA
     }
 }

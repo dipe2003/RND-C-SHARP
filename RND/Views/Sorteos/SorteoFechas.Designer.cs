@@ -29,6 +29,7 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panelBotones = new System.Windows.Forms.Panel();
+            this.btnGuardarPDF = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnSortear = new System.Windows.Forms.Button();
             this.dataGridFechas = new System.Windows.Forms.DataGridView();
@@ -44,7 +45,7 @@
             this.groupBoxOpciones = new System.Windows.Forms.GroupBox();
             this.dateTimePickerFechaSorteo = new System.Windows.Forms.DateTimePicker();
             this.labelFechaSorteo = new System.Windows.Forms.Label();
-            this.btnGuardarPDF = new System.Windows.Forms.Button();
+            this.radioDiaPorSemana = new System.Windows.Forms.RadioButton();
             this.panelBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFechas)).BeginInit();
             this.grupoTipoSorteo.SuspendLayout();
@@ -105,6 +106,21 @@
             this.panelBotones.Name = "panelBotones";
             this.panelBotones.Size = new System.Drawing.Size(297, 42);
             this.panelBotones.TabIndex = 18;
+            // 
+            // btnGuardarPDF
+            // 
+            this.btnGuardarPDF.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnGuardarPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(2)))), ((int)(((byte)(123)))));
+            this.btnGuardarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnGuardarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarPDF.Location = new System.Drawing.Point(107, 6);
+            this.btnGuardarPDF.Name = "btnGuardarPDF";
+            this.btnGuardarPDF.Size = new System.Drawing.Size(86, 28);
+            this.btnGuardarPDF.TabIndex = 9;
+            this.btnGuardarPDF.Text = "Exportar";
+            this.btnGuardarPDF.UseVisualStyleBackColor = false;
+            this.btnGuardarPDF.Click += new System.EventHandler(this.btnGuardarPDF_Click);
             // 
             // btnCerrar
             // 
@@ -201,6 +217,7 @@
             // grupoTipoSorteo
             // 
             this.grupoTipoSorteo.Controls.Add(this.radioPersonalizado);
+            this.grupoTipoSorteo.Controls.Add(this.radioDiaPorSemana);
             this.grupoTipoSorteo.Controls.Add(this.radioMes);
             this.grupoTipoSorteo.Controls.Add(this.radioDiaSemana);
             this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -228,7 +245,7 @@
             // radioMes
             // 
             this.radioMes.AutoSize = true;
-            this.radioMes.Location = new System.Drawing.Point(32, 67);
+            this.radioMes.Location = new System.Drawing.Point(32, 53);
             this.radioMes.Name = "radioMes";
             this.radioMes.Size = new System.Drawing.Size(101, 20);
             this.radioMes.TabIndex = 0;
@@ -287,20 +304,16 @@
             this.labelFechaSorteo.TabIndex = 24;
             this.labelFechaSorteo.Text = "Fecha de Sorteo";
             // 
-            // btnGuardarPDF
+            // radioDiaPorSemana
             // 
-            this.btnGuardarPDF.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnGuardarPDF.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(2)))), ((int)(((byte)(123)))));
-            this.btnGuardarPDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnGuardarPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarPDF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarPDF.Location = new System.Drawing.Point(107, 6);
-            this.btnGuardarPDF.Name = "btnGuardarPDF";
-            this.btnGuardarPDF.Size = new System.Drawing.Size(86, 28);
-            this.btnGuardarPDF.TabIndex = 9;
-            this.btnGuardarPDF.Text = "Exportar";
-            this.btnGuardarPDF.UseVisualStyleBackColor = false;
-            this.btnGuardarPDF.Click += new System.EventHandler(this.btnGuardarPDF_Click);
+            this.radioDiaPorSemana.AutoSize = true;
+            this.radioDiaPorSemana.Location = new System.Drawing.Point(32, 79);
+            this.radioDiaPorSemana.Name = "radioDiaPorSemana";
+            this.radioDiaPorSemana.Size = new System.Drawing.Size(124, 20);
+            this.radioDiaPorSemana.TabIndex = 0;
+            this.radioDiaPorSemana.Text = "Dia por Semana";
+            this.radioDiaPorSemana.UseVisualStyleBackColor = true;
+            this.radioDiaPorSemana.CheckedChanged += new System.EventHandler(this.radioDiaPorSemana_CheckedChanged);
             // 
             // SorteoFechas
             // 
@@ -359,5 +372,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerFechaSorteo;
         private System.Windows.Forms.Label labelFechaSorteo;
         private System.Windows.Forms.Button btnGuardarPDF;
+        private System.Windows.Forms.RadioButton radioDiaPorSemana;
     }
 }
