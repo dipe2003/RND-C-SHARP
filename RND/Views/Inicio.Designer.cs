@@ -29,6 +29,8 @@
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
+            this.panelMinimizado = new System.Windows.Forms.Panel();
+            this.pictureBoxAccesoMenu = new System.Windows.Forms.PictureBox();
             this.panelLateralIzquierdo = new System.Windows.Forms.Panel();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonAyuda = new System.Windows.Forms.Button();
@@ -38,6 +40,8 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.labelRND = new System.Windows.Forms.Label();
             this.panelContenido = new System.Windows.Forms.Panel();
+            this.panelMinimizado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).BeginInit();
             this.panelLateralIzquierdo.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
@@ -79,6 +83,28 @@
             // 
             this.ContentPanel.Size = new System.Drawing.Size(125, 150);
             // 
+            // panelMinimizado
+            // 
+            this.panelMinimizado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
+            this.panelMinimizado.Controls.Add(this.pictureBoxAccesoMenu);
+            this.panelMinimizado.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMinimizado.Location = new System.Drawing.Point(0, 0);
+            this.panelMinimizado.Name = "panelMinimizado";
+            this.panelMinimizado.Size = new System.Drawing.Size(51, 536);
+            this.panelMinimizado.TabIndex = 2;
+            // 
+            // pictureBoxAccesoMenu
+            // 
+            this.pictureBoxAccesoMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxAccesoMenu.Image = global::RND.Properties.Resources.dado_random;
+            this.pictureBoxAccesoMenu.Location = new System.Drawing.Point(6, 46);
+            this.pictureBoxAccesoMenu.Name = "pictureBoxAccesoMenu";
+            this.pictureBoxAccesoMenu.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxAccesoMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccesoMenu.TabIndex = 1;
+            this.pictureBoxAccesoMenu.TabStop = false;
+            this.pictureBoxAccesoMenu.Click += new System.EventHandler(this.pictureBoxAccesoMenu_Click);
+            // 
             // panelLateralIzquierdo
             // 
             this.panelLateralIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
@@ -88,10 +114,10 @@
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoNumeros);
             this.panelLateralIzquierdo.Controls.Add(this.panelLogo);
             this.panelLateralIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLateralIzquierdo.Location = new System.Drawing.Point(0, 0);
+            this.panelLateralIzquierdo.Location = new System.Drawing.Point(51, 0);
             this.panelLateralIzquierdo.Name = "panelLateralIzquierdo";
-            this.panelLateralIzquierdo.Size = new System.Drawing.Size(200, 536);
-            this.panelLateralIzquierdo.TabIndex = 0;
+            this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 536);
+            this.panelLateralIzquierdo.TabIndex = 3;
             // 
             // buttonSalir
             // 
@@ -131,6 +157,7 @@
             this.buttonAyuda.Text = "Ayuda";
             this.buttonAyuda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonAyuda.UseVisualStyleBackColor = false;
+            this.buttonAyuda.Click += new System.EventHandler(this.buttonAyuda_Click);
             // 
             // buttonSorteoFechas
             // 
@@ -180,7 +207,7 @@
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 115);
+            this.panelLogo.Size = new System.Drawing.Size(0, 115);
             this.panelLogo.TabIndex = 2;
             // 
             // pictureBoxLogo
@@ -209,24 +236,27 @@
             // panelContenido
             // 
             this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenido.Location = new System.Drawing.Point(200, 0);
+            this.panelContenido.Location = new System.Drawing.Point(51, 0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(637, 536);
-            this.panelContenido.TabIndex = 1;
+            this.panelContenido.Size = new System.Drawing.Size(643, 536);
+            this.panelContenido.TabIndex = 4;
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(837, 536);
+            this.ClientSize = new System.Drawing.Size(694, 536);
             this.Controls.Add(this.panelContenido);
             this.Controls.Add(this.panelLateralIzquierdo);
+            this.Controls.Add(this.panelMinimizado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.panelMinimizado.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).EndInit();
             this.panelLateralIzquierdo.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
@@ -241,15 +271,17 @@
         private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
         private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
+        private System.Windows.Forms.Panel panelMinimizado;
         private System.Windows.Forms.Panel panelLateralIzquierdo;
-        private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.Panel panelContenido;
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Button buttonAyuda;
         private System.Windows.Forms.Button buttonSorteoFechas;
         private System.Windows.Forms.Button buttonSorteoNumeros;
+        private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Label labelRND;
+        private System.Windows.Forms.Panel panelContenido;
+        private System.Windows.Forms.PictureBox pictureBoxAccesoMenu;
     }
 }
 
