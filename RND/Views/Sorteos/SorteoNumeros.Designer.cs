@@ -55,11 +55,16 @@
             this.dataGridNumeros = new System.Windows.Forms.DataGridView();
             this.dataGridVerificacion = new System.Windows.Forms.DataGridView();
             this.groupBoxOpciones = new System.Windows.Forms.GroupBox();
+            this.groupBoxExportar = new System.Windows.Forms.GroupBox();
+            this.radioButtonEportarTodo = new System.Windows.Forms.RadioButton();
+            this.radioButtonExportarSoloSorteo = new System.Windows.Forms.RadioButton();
+            this.radioButtonExportarVerificacionSeparada = new System.Windows.Forms.RadioButton();
             this.panelBotones.SuspendLayout();
             this.grupoTipoSorteo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNumeros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).BeginInit();
             this.groupBoxOpciones.SuspendLayout();
+            this.groupBoxExportar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBotones
@@ -68,7 +73,7 @@
             this.panelBotones.Controls.Add(this.btnGuardarPDF);
             this.panelBotones.Controls.Add(this.btnCerrar);
             this.panelBotones.Controls.Add(this.btnGenerar);
-            this.panelBotones.Location = new System.Drawing.Point(255, 487);
+            this.panelBotones.Location = new System.Drawing.Point(261, 487);
             this.panelBotones.Margin = new System.Windows.Forms.Padding(2);
             this.panelBotones.Name = "panelBotones";
             this.panelBotones.Size = new System.Drawing.Size(370, 40);
@@ -129,9 +134,9 @@
             this.grupoTipoSorteo.Controls.Add(this.radioGenerica);
             this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grupoTipoSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grupoTipoSorteo.Location = new System.Drawing.Point(13, 348);
+            this.grupoTipoSorteo.Location = new System.Drawing.Point(13, 284);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(227, 179);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(238, 159);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
             this.grupoTipoSorteo.Text = "Sorteos";
@@ -139,7 +144,7 @@
             // radioLado
             // 
             this.radioLado.AutoSize = true;
-            this.radioLado.Location = new System.Drawing.Point(21, 98);
+            this.radioLado.Location = new System.Drawing.Point(21, 91);
             this.radioLado.Name = "radioLado";
             this.radioLado.Size = new System.Drawing.Size(149, 20);
             this.radioLado.TabIndex = 1;
@@ -150,7 +155,7 @@
             // radioHaccp
             // 
             this.radioHaccp.AutoSize = true;
-            this.radioHaccp.Location = new System.Drawing.Point(21, 127);
+            this.radioHaccp.Location = new System.Drawing.Point(21, 113);
             this.radioHaccp.Name = "radioHaccp";
             this.radioHaccp.Size = new System.Drawing.Size(72, 20);
             this.radioHaccp.TabIndex = 0;
@@ -162,7 +167,7 @@
             // 
             this.radioPersonalizado.AutoSize = true;
             this.radioPersonalizado.Checked = true;
-            this.radioPersonalizado.Location = new System.Drawing.Point(21, 150);
+            this.radioPersonalizado.Location = new System.Drawing.Point(21, 136);
             this.radioPersonalizado.Name = "radioPersonalizado";
             this.radioPersonalizado.Size = new System.Drawing.Size(113, 20);
             this.radioPersonalizado.TabIndex = 0;
@@ -174,7 +179,7 @@
             // radioUE
             // 
             this.radioUE.AutoSize = true;
-            this.radioUE.Location = new System.Drawing.Point(21, 74);
+            this.radioUE.Location = new System.Drawing.Point(21, 67);
             this.radioUE.Name = "radioUE";
             this.radioUE.Size = new System.Drawing.Size(54, 20);
             this.radioUE.TabIndex = 0;
@@ -185,7 +190,7 @@
             // radioCloracion
             // 
             this.radioCloracion.AutoSize = true;
-            this.radioCloracion.Location = new System.Drawing.Point(21, 50);
+            this.radioCloracion.Location = new System.Drawing.Point(21, 43);
             this.radioCloracion.Name = "radioCloracion";
             this.radioCloracion.Size = new System.Drawing.Size(147, 20);
             this.radioCloracion.TabIndex = 0;
@@ -196,7 +201,7 @@
             // radioGenerica
             // 
             this.radioGenerica.AutoSize = true;
-            this.radioGenerica.Location = new System.Drawing.Point(21, 26);
+            this.radioGenerica.Location = new System.Drawing.Point(21, 19);
             this.radioGenerica.Name = "radioGenerica";
             this.radioGenerica.Size = new System.Drawing.Size(117, 20);
             this.radioGenerica.TabIndex = 0;
@@ -214,7 +219,7 @@
             // chkVerificacion
             // 
             this.chkVerificacion.AutoSize = true;
-            this.chkVerificacion.Location = new System.Drawing.Point(80, 272);
+            this.chkVerificacion.Location = new System.Drawing.Point(87, 222);
             this.chkVerificacion.Name = "chkVerificacion";
             this.chkVerificacion.Size = new System.Drawing.Size(134, 20);
             this.chkVerificacion.TabIndex = 5;
@@ -225,7 +230,7 @@
             // chkOrdenados
             // 
             this.chkOrdenados.AutoSize = true;
-            this.chkOrdenados.Location = new System.Drawing.Point(80, 247);
+            this.chkOrdenados.Location = new System.Drawing.Point(87, 202);
             this.chkOrdenados.Name = "chkOrdenados";
             this.chkOrdenados.Size = new System.Drawing.Size(76, 20);
             this.chkOrdenados.TabIndex = 5;
@@ -245,7 +250,7 @@
             // chkRango
             // 
             this.chkRango.AutoSize = true;
-            this.chkRango.Location = new System.Drawing.Point(80, 199);
+            this.chkRango.Location = new System.Drawing.Point(87, 161);
             this.chkRango.Name = "chkRango";
             this.chkRango.Size = new System.Drawing.Size(111, 20);
             this.chkRango.TabIndex = 4;
@@ -257,7 +262,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(5, 58);
+            this.label3.Location = new System.Drawing.Point(5, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 16);
             this.label3.TabIndex = 0;
@@ -266,7 +271,7 @@
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
-            this.chkDuplicados.Location = new System.Drawing.Point(80, 222);
+            this.chkDuplicados.Location = new System.Drawing.Point(87, 181);
             this.chkDuplicados.Name = "chkDuplicados";
             this.chkDuplicados.Size = new System.Drawing.Size(144, 20);
             this.chkDuplicados.TabIndex = 4;
@@ -277,7 +282,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 94);
+            this.label4.Location = new System.Drawing.Point(5, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 0;
@@ -286,7 +291,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 167);
+            this.label7.Location = new System.Drawing.Point(5, 138);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 16);
             this.label7.TabIndex = 0;
@@ -295,7 +300,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 131);
+            this.label5.Location = new System.Drawing.Point(5, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 0;
@@ -304,7 +309,7 @@
             // txtCantVerificacion
             // 
             this.txtCantVerificacion.Enabled = false;
-            this.txtCantVerificacion.Location = new System.Drawing.Point(86, 163);
+            this.txtCantVerificacion.Location = new System.Drawing.Point(86, 134);
             this.txtCantVerificacion.Name = "txtCantVerificacion";
             this.txtCantVerificacion.Size = new System.Drawing.Size(133, 22);
             this.txtCantVerificacion.TabIndex = 3;
@@ -312,21 +317,21 @@
             // txtRango
             // 
             this.txtRango.Enabled = false;
-            this.txtRango.Location = new System.Drawing.Point(86, 127);
+            this.txtRango.Location = new System.Drawing.Point(86, 106);
             this.txtRango.Name = "txtRango";
             this.txtRango.Size = new System.Drawing.Size(133, 22);
             this.txtRango.TabIndex = 3;
             // 
             // txtTope
             // 
-            this.txtTope.Location = new System.Drawing.Point(86, 54);
+            this.txtTope.Location = new System.Drawing.Point(86, 48);
             this.txtTope.Name = "txtTope";
             this.txtTope.Size = new System.Drawing.Size(133, 22);
             this.txtTope.TabIndex = 2;
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(86, 90);
+            this.txtCantidad.Location = new System.Drawing.Point(86, 77);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(133, 22);
             this.txtCantidad.TabIndex = 3;
@@ -354,7 +359,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(439, 12);
+            this.label8.Location = new System.Drawing.Point(445, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 16);
             this.label8.TabIndex = 1;
@@ -364,7 +369,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(252, 12);
+            this.label6.Location = new System.Drawing.Point(258, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 16);
             this.label6.TabIndex = 14;
@@ -375,7 +380,7 @@
             this.dataGridNumeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridNumeros.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridNumeros.Location = new System.Drawing.Point(255, 36);
+            this.dataGridNumeros.Location = new System.Drawing.Point(261, 36);
             this.dataGridNumeros.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridNumeros.Name = "dataGridNumeros";
             this.dataGridNumeros.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
@@ -388,7 +393,7 @@
             this.dataGridVerificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridVerificacion.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridVerificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridVerificacion.Location = new System.Drawing.Point(442, 36);
+            this.dataGridVerificacion.Location = new System.Drawing.Point(448, 36);
             this.dataGridVerificacion.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridVerificacion.Name = "dataGridVerificacion";
             this.dataGridVerificacion.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
@@ -417,10 +422,58 @@
             this.groupBoxOpciones.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxOpciones.Name = "groupBoxOpciones";
             this.groupBoxOpciones.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxOpciones.Size = new System.Drawing.Size(228, 307);
+            this.groupBoxOpciones.Size = new System.Drawing.Size(239, 246);
             this.groupBoxOpciones.TabIndex = 28;
             this.groupBoxOpciones.TabStop = false;
             this.groupBoxOpciones.Text = "Opciones";
+            // 
+            // groupBoxExportar
+            // 
+            this.groupBoxExportar.Controls.Add(this.radioButtonExportarVerificacionSeparada);
+            this.groupBoxExportar.Controls.Add(this.radioButtonExportarSoloSorteo);
+            this.groupBoxExportar.Controls.Add(this.radioButtonEportarTodo);
+            this.groupBoxExportar.Enabled = false;
+            this.groupBoxExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.groupBoxExportar.Location = new System.Drawing.Point(12, 446);
+            this.groupBoxExportar.Name = "groupBoxExportar";
+            this.groupBoxExportar.Size = new System.Drawing.Size(239, 81);
+            this.groupBoxExportar.TabIndex = 29;
+            this.groupBoxExportar.TabStop = false;
+            this.groupBoxExportar.Text = "Exportar";
+            // 
+            // radioButtonEportarTodo
+            // 
+            this.radioButtonEportarTodo.AutoSize = true;
+            this.radioButtonEportarTodo.Location = new System.Drawing.Point(22, 22);
+            this.radioButtonEportarTodo.Name = "radioButtonEportarTodo";
+            this.radioButtonEportarTodo.Size = new System.Drawing.Size(59, 20);
+            this.radioButtonEportarTodo.TabIndex = 0;
+            this.radioButtonEportarTodo.TabStop = true;
+            this.radioButtonEportarTodo.Text = "Todo";
+            this.radioButtonEportarTodo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonExportarSoloSorteo
+            // 
+            this.radioButtonExportarSoloSorteo.AutoSize = true;
+            this.radioButtonExportarSoloSorteo.Checked = true;
+            this.radioButtonExportarSoloSorteo.Location = new System.Drawing.Point(85, 22);
+            this.radioButtonExportarSoloSorteo.Name = "radioButtonExportarSoloSorteo";
+            this.radioButtonExportarSoloSorteo.Size = new System.Drawing.Size(97, 20);
+            this.radioButtonExportarSoloSorteo.TabIndex = 1;
+            this.radioButtonExportarSoloSorteo.TabStop = true;
+            this.radioButtonExportarSoloSorteo.Text = "Solo Sorteo";
+            this.radioButtonExportarSoloSorteo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonExportarVerificacionSeparada
+            // 
+            this.radioButtonExportarVerificacionSeparada.AutoSize = true;
+            this.radioButtonExportarVerificacionSeparada.Location = new System.Drawing.Point(22, 51);
+            this.radioButtonExportarVerificacionSeparada.Name = "radioButtonExportarVerificacionSeparada";
+            this.radioButtonExportarVerificacionSeparada.Size = new System.Drawing.Size(160, 20);
+            this.radioButtonExportarVerificacionSeparada.TabIndex = 2;
+            this.radioButtonExportarVerificacionSeparada.TabStop = true;
+            this.radioButtonExportarVerificacionSeparada.Text = "Verificacion Separada";
+            this.radioButtonExportarVerificacionSeparada.UseVisualStyleBackColor = true;
             // 
             // SorteoNumeros
             // 
@@ -429,6 +482,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(640, 530);
+            this.Controls.Add(this.groupBoxExportar);
             this.Controls.Add(this.groupBoxOpciones);
             this.Controls.Add(this.dataGridVerificacion);
             this.Controls.Add(this.grupoTipoSorteo);
@@ -454,6 +508,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridVerificacion)).EndInit();
             this.groupBoxOpciones.ResumeLayout(false);
             this.groupBoxOpciones.PerformLayout();
+            this.groupBoxExportar.ResumeLayout(false);
+            this.groupBoxExportar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,5 +549,9 @@
         private System.Windows.Forms.DataGridView dataGridNumeros;
         private System.Windows.Forms.DataGridView dataGridVerificacion;
         private System.Windows.Forms.GroupBox groupBoxOpciones;
+        private System.Windows.Forms.GroupBox groupBoxExportar;
+        private System.Windows.Forms.RadioButton radioButtonExportarVerificacionSeparada;
+        private System.Windows.Forms.RadioButton radioButtonExportarSoloSorteo;
+        private System.Windows.Forms.RadioButton radioButtonEportarTodo;
     }
 }

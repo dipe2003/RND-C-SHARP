@@ -29,7 +29,7 @@ namespace RND.Clases.PdfText {
 
         public void GuardarSorteoNumeros(string nombreArchivo, string tituloSorteo, string fechaSorteo,
                                      string inicio, string tope, string rango, List<int> sorteoGenerado,
-                                     List<int> sorteoVerificacion) {
+                                     List<int> sorteoVerificacion, bool verificacionSeparada) {
 
             try {
                 PdfWriter writer = PdfWriter.GetInstance(documento, new FileStream(nombreArchivo, FileMode.Create));
@@ -88,8 +88,12 @@ namespace RND.Clases.PdfText {
                 tabla.CompleteRow();
                 documento.Add(tabla);
 
-                // tabla verificación
+                // tabla verificación                
                 if(sorteoVerificacion != null) {
+                    if(verificacionSeparada) {
+                        documento.NewPage();
+                        documento.Add(CrearEncabezado(tituloSorteo));
+                    }
                     elementos = sorteoVerificacion.Count;
                     if(elementos > 0) {
                         columnas = elementos <= 3 ? columnas = elementos : (int)(elementos / 3);

@@ -302,8 +302,11 @@ namespace RND.Views.Sorteos {
             IncluirVerificacion = (sender as CheckBox).Checked;
             if(!IncluirVerificacion) {
                 this.txtCantVerificacion.Enabled = false;
+                groupBoxExportar.Enabled = false;
+                radioButtonExportarSoloSorteo.Checked = true;
             } else {
                 this.txtCantVerificacion.Enabled = true;
+                groupBoxExportar.Enabled = true;
             }
         }
         #endregion
@@ -376,15 +379,15 @@ namespace RND.Views.Sorteos {
                     string destino = dialogoDestino.FileName;
                     List<int> verificacion = new List<int>();
                     if(SorteoGenerico is Personalizado) {
-                        verificacion = chkVerificacion.Checked ? (SorteoGenerico as Personalizado).ResultadoVerificacion : verificacion;
+                        verificacion = chkVerificacion.Checked && (radioButtonEportarTodo.Checked || radioButtonExportarVerificacionSeparada.Checked) ? (SorteoGenerico as Personalizado).ResultadoVerificacion : verificacion;
                     } else if(SorteoGenerico is Haccp){
-                        verificacion = (SorteoGenerico as Haccp).ResultadoVerificacion;
+                        verificacion = !radioButtonExportarSoloSorteo.Checked ? (SorteoGenerico as Haccp).ResultadoVerificacion : verificacion;
                     }
                     ControladorPDF pdf = new ControladorPDF();
                     string rango = chkRango.Checked ? rango = Rango.ToString() : rango = "N/A";
                     pdf.GuardarSorteoNumeros(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
                         SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), rango,
-                        SorteoGenerico.Resultado, verificacion);
+                        SorteoGenerico.Resultado, verificacion, radioButtonExportarVerificacionSeparada.Checked);
                 }
             } else {
                 System.Windows.Forms.MessageBox.Show("No se ha realizado ningún sorteo.", "?", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
