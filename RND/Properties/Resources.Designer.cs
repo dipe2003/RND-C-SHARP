@@ -93,9 +93,9 @@ namespace RND.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap help_button_bg {
+        internal static System.Drawing.Bitmap help_icon_48 {
             get {
-                object obj = ResourceManager.GetObject("help_button_bg", resourceCulture);
+                object obj = ResourceManager.GetObject("help_icon_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

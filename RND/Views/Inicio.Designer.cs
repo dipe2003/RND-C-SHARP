@@ -30,10 +30,10 @@
             this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.panelMinimizado = new System.Windows.Forms.Panel();
+            this.pictureBoxSalir = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAyuda = new System.Windows.Forms.PictureBox();
             this.pictureBoxAccesoMenu = new System.Windows.Forms.PictureBox();
             this.panelLateralIzquierdo = new System.Windows.Forms.Panel();
-            this.buttonSalir = new System.Windows.Forms.Button();
-            this.buttonAyuda = new System.Windows.Forms.Button();
             this.buttonSorteoFechas = new System.Windows.Forms.Button();
             this.buttonSorteoNumeros = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -41,6 +41,8 @@
             this.labelRND = new System.Windows.Forms.Label();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.panelMinimizado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAyuda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).BeginInit();
             this.panelLateralIzquierdo.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -86,12 +88,38 @@
             // panelMinimizado
             // 
             this.panelMinimizado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
+            this.panelMinimizado.Controls.Add(this.pictureBoxSalir);
+            this.panelMinimizado.Controls.Add(this.pictureBoxAyuda);
             this.panelMinimizado.Controls.Add(this.pictureBoxAccesoMenu);
             this.panelMinimizado.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMinimizado.Location = new System.Drawing.Point(0, 0);
             this.panelMinimizado.Name = "panelMinimizado";
             this.panelMinimizado.Size = new System.Drawing.Size(51, 536);
             this.panelMinimizado.TabIndex = 2;
+            // 
+            // pictureBoxSalir
+            // 
+            this.pictureBoxSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxSalir.Image = global::RND.Properties.Resources.exit_button_bg;
+            this.pictureBoxSalir.Location = new System.Drawing.Point(6, 489);
+            this.pictureBoxSalir.Name = "pictureBoxSalir";
+            this.pictureBoxSalir.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSalir.TabIndex = 1;
+            this.pictureBoxSalir.TabStop = false;
+            this.pictureBoxSalir.Click += new System.EventHandler(this.buttonSalir_Click);
+            // 
+            // pictureBoxAyuda
+            // 
+            this.pictureBoxAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxAyuda.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAyuda.Image")));
+            this.pictureBoxAyuda.Location = new System.Drawing.Point(6, 432);
+            this.pictureBoxAyuda.Name = "pictureBoxAyuda";
+            this.pictureBoxAyuda.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxAyuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAyuda.TabIndex = 1;
+            this.pictureBoxAyuda.TabStop = false;
+            this.pictureBoxAyuda.Click += new System.EventHandler(this.buttonAyuda_Click);
             // 
             // pictureBoxAccesoMenu
             // 
@@ -108,8 +136,6 @@
             // panelLateralIzquierdo
             // 
             this.panelLateralIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
-            this.panelLateralIzquierdo.Controls.Add(this.buttonSalir);
-            this.panelLateralIzquierdo.Controls.Add(this.buttonAyuda);
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoFechas);
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoNumeros);
             this.panelLateralIzquierdo.Controls.Add(this.panelLogo);
@@ -118,46 +144,6 @@
             this.panelLateralIzquierdo.Name = "panelLateralIzquierdo";
             this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 536);
             this.panelLateralIzquierdo.TabIndex = 3;
-            // 
-            // buttonSalir
-            // 
-            this.buttonSalir.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSalir.FlatAppearance.BorderSize = 0;
-            this.buttonSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSalir.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalir.ForeColor = System.Drawing.Color.White;
-            this.buttonSalir.Image = global::RND.Properties.Resources.exit_button_bg;
-            this.buttonSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSalir.Location = new System.Drawing.Point(12, 473);
-            this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(182, 53);
-            this.buttonSalir.TabIndex = 3;
-            this.buttonSalir.Text = "Salir";
-            this.buttonSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSalir.UseVisualStyleBackColor = false;
-            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
-            // 
-            // buttonAyuda
-            // 
-            this.buttonAyuda.BackColor = System.Drawing.Color.Transparent;
-            this.buttonAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAyuda.FlatAppearance.BorderSize = 0;
-            this.buttonAyuda.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAyuda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAyuda.ForeColor = System.Drawing.Color.White;
-            this.buttonAyuda.Image = global::RND.Properties.Resources.help_button_bg;
-            this.buttonAyuda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAyuda.Location = new System.Drawing.Point(12, 410);
-            this.buttonAyuda.Name = "buttonAyuda";
-            this.buttonAyuda.Size = new System.Drawing.Size(182, 53);
-            this.buttonAyuda.TabIndex = 3;
-            this.buttonAyuda.Text = "Ayuda";
-            this.buttonAyuda.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonAyuda.UseVisualStyleBackColor = false;
-            this.buttonAyuda.Click += new System.EventHandler(this.buttonAyuda_Click);
             // 
             // buttonSorteoFechas
             // 
@@ -189,7 +175,7 @@
             this.buttonSorteoNumeros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSorteoNumeros.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSorteoNumeros.ForeColor = System.Drawing.Color.White;
-            this.buttonSorteoNumeros.Image = global::RND.Properties.Resources.rnd_number_button_bg;
+            this.buttonSorteoNumeros.Image = ((System.Drawing.Image)(resources.GetObject("buttonSorteoNumeros.Image")));
             this.buttonSorteoNumeros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSorteoNumeros.Location = new System.Drawing.Point(9, 177);
             this.buttonSorteoNumeros.Name = "buttonSorteoNumeros";
@@ -256,6 +242,8 @@
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelMinimizado.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAyuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).EndInit();
             this.panelLateralIzquierdo.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
@@ -273,8 +261,6 @@
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private System.Windows.Forms.Panel panelMinimizado;
         private System.Windows.Forms.Panel panelLateralIzquierdo;
-        private System.Windows.Forms.Button buttonSalir;
-        private System.Windows.Forms.Button buttonAyuda;
         private System.Windows.Forms.Button buttonSorteoFechas;
         private System.Windows.Forms.Button buttonSorteoNumeros;
         private System.Windows.Forms.Panel panelLogo;
@@ -282,6 +268,8 @@
         private System.Windows.Forms.Label labelRND;
         private System.Windows.Forms.Panel panelContenido;
         private System.Windows.Forms.PictureBox pictureBoxAccesoMenu;
+        private System.Windows.Forms.PictureBox pictureBoxAyuda;
+        private System.Windows.Forms.PictureBox pictureBoxSalir;
     }
 }
 

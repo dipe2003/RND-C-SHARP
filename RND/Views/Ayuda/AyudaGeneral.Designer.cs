@@ -32,10 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxSorteoNumeros = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBoxAccesoMenu = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSorteoNumeros)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox6
@@ -127,23 +125,11 @@
             this.label3.TabIndex = 34;
             this.label3.Text = "Cómo funciona un generador de números aleatorios?";
             // 
-            // pictureBoxAccesoMenu
-            // 
-            this.pictureBoxAccesoMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
-            this.pictureBoxAccesoMenu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBoxAccesoMenu.Image = global::RND.Properties.Resources.dado_random;
-            this.pictureBoxAccesoMenu.Location = new System.Drawing.Point(381, 472);
-            this.pictureBoxAccesoMenu.Name = "pictureBoxAccesoMenu";
-            this.pictureBoxAccesoMenu.Size = new System.Drawing.Size(42, 35);
-            this.pictureBoxAccesoMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccesoMenu.TabIndex = 42;
-            this.pictureBoxAccesoMenu.TabStop = false;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(94, 491);
+            this.label4.Location = new System.Drawing.Point(142, 491);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(281, 16);
             this.label4.TabIndex = 34;
@@ -155,7 +141,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(640, 530);
-            this.Controls.Add(this.pictureBoxAccesoMenu);
             this.Controls.Add(this.richTextBox6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -169,7 +154,6 @@
             this.Name = "AyudaGeneral";
             this.Text = "AyudaGeneral";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSorteoNumeros)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,7 +168,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxSorteoNumeros;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBoxAccesoMenu;
         private System.Windows.Forms.Label label4;
     }
 }

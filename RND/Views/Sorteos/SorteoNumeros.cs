@@ -198,9 +198,6 @@ namespace RND.Views.Sorteos {
         private void RadioLado_CheckedChanged(object sender, EventArgs e) {
             if(radioLado.Checked) {
                 this.SorteoPredefinido = EnumSorteo.LADO;
-                // habiilitar/deshabilitar controles
-                // campos de ingreso de texto
-                CambiarHabilitacionCuadroTexto();
 
                 // radio buttons
                 CambiarEstadoRadioButtons();
@@ -215,6 +212,10 @@ namespace RND.Views.Sorteos {
                 Tope = 2;
                 this.txtCantidad.Text = "1";
                 Cantidad = 1;
+
+                // habiilitar/deshabilitar controles
+                // campos de ingreso de texto
+                CambiarHabilitacionCuadroTexto(cantidad: false);
             }
         }
 

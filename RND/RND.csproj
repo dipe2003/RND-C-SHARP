@@ -26,7 +26,7 @@
     <ProductName>RND</ProductName>
     <PublisherName>Diego Perez</PublisherName>
     <SuiteName>RND</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -93,6 +93,11 @@
     <Compile Include="Clases\Personalizado.cs" />
     <Compile Include="Clases\Sorteo.cs" />
     <Compile Include="Clases\VistaTabla.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Ayuda\AyudaGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,14 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Views\Sorteos\SorteoFechas.resx">
       <DependentUpon>SorteoFechas.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,15 +183,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dices.ico" />
+    <None Include="Resources\rnd number button bg.png" />
+    <None Include="Resources\rnd date button bg.png" />
+    <None Include="Resources\help icon 48.png" />
     <None Include="Resources\sorteo ayuda general bg.jpg" />
     <None Include="Resources\sorteo fecha bg.jpg" />
     <None Include="Resources\sorteo numeros bg.jpg" />
     <None Include="Resources\exit button bg.png" />
-    <None Include="Resources\help button bg.png" />
-    <None Include="Resources\rnd number button bg.png" />
-    <None Include="Resources\rnd date button bg.png" />
-    <None Include="Resources\rnd number button background.png" />
-    <None Include="Resources\rnd date button background.png" />
     <None Include="Resources\dado_random.png" />
     <None Include="Resources\MarfrigLogo.png" />
     <None Include="Resources\Dices.ico" />

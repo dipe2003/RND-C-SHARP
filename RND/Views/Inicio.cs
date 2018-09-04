@@ -65,7 +65,6 @@ namespace RND {
                     ManejadorMenu.AgregarFormularioEnPanel(panelContenido, formulario);
                     break;
             }
-            ManejadorMenu.CambiarPanelMenu(panelLateralIzquierdo, panelContenido);
         }
     }
 }
