@@ -103,6 +103,16 @@ namespace RND.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_about {
+            get {
+                object obj = ResourceManager.GetObject("logo_about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MarfrigLogo {
             get {
                 object obj = ResourceManager.GetObject("MarfrigLogo", resourceCulture);

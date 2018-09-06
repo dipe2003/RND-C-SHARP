@@ -26,7 +26,7 @@
     <ProductName>RND</ProductName>
     <PublisherName>Diego Perez</PublisherName>
     <SuiteName>RND</SuiteName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dices.ico" />
+    <None Include="Resources\logo about.jpg" />
     <None Include="Resources\rnd number button bg.png" />
     <None Include="Resources\rnd date button bg.png" />
     <None Include="Resources\help icon 48.png" />
