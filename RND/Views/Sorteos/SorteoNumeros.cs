@@ -49,6 +49,7 @@ namespace RND.Views.Sorteos {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnGenerar_Click(object sender, EventArgs e) {
+            this.Cursor = Cursors.WaitCursor;
             // obtener los parametros numericos y continuar si son correctos.
             FechaSorteo = dateTimePickerFechaSorteo.Value;
             if(ObtenerParametrosNumericos()) {
@@ -120,6 +121,8 @@ namespace RND.Views.Sorteos {
                         }
                     } catch(Exception ex) {
                         MostrarMensajeError(ex);
+                    } finally {
+                        this.Cursor = Cursors.Default;
                     }
                 }
             }
@@ -377,6 +380,7 @@ namespace RND.Views.Sorteos {
                 DialogResult resultado = dialogoDestino.ShowDialog();
 
                 if(resultado == DialogResult.OK) {
+                    this.Cursor = Cursors.WaitCursor;
                     string destino = dialogoDestino.FileName;
                     List<int> verificacion = new List<int>();
                     if(SorteoGenerico is Personalizado) {
@@ -393,6 +397,7 @@ namespace RND.Views.Sorteos {
             } else {
                 System.Windows.Forms.MessageBox.Show("No se ha realizado ningún sorteo.", "?", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
             }
+            this.Cursor = Cursors.Default;
         }
     }
 }

@@ -337,6 +337,7 @@ namespace RND.Views {
                 DialogResult resultado = dialogoDestino.ShowDialog();
 
                 if(resultado == DialogResult.OK) {
+                    this.Cursor = Cursors.WaitCursor;
                     string strFechaInicio = FechaInicio.ToShortDateString();
                     string strFechaTope = FechaTope.ToShortDateString();
                     string strTituloSorteo = SorteoPredefinido.ToString();
@@ -356,6 +357,7 @@ namespace RND.Views {
             } else {
                 System.Windows.Forms.MessageBox.Show("No se ha realizado ningún sorteo.", "?", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
             }
+            this.Cursor = Cursors.Default;
         }
     }
 }
