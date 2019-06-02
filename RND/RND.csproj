@@ -26,8 +26,8 @@
     <ProductName>RND</ProductName>
     <PublisherName>Diego Perez</PublisherName>
     <SuiteName>RND</SuiteName>
-    <ApplicationRevision>5</ApplicationRevision>
-    <ApplicationVersion>1.5.0.%2a</ApplicationVersion>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

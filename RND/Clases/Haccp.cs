@@ -10,6 +10,8 @@ namespace RND.Clases {
         public int Cantidad { get; set; }
         public List<int> ResultadoVerificacion { get; }
 
+        private double restoRango;
+
         // constructores
         public Haccp() {
             this.ResultadoVerificacion = new List<int>();
@@ -17,7 +19,9 @@ namespace RND.Clases {
 
         // metodos
         private int CalcularFrecuencia() {
-            return (int)(Math.Round(Tope / (double)Cantidad, 0, MidpointRounding.ToEven));
+            double tmpRango = Tope / (double)Cantidad;
+            restoRango = tmpRango - (int)tmpRango;
+            return (int) tmpRango;
         }
 
         override
@@ -28,12 +32,21 @@ namespace RND.Clases {
             Rango = CalcularFrecuencia();
             int inicio;
             int rangoAnterior = 0;
+            // el restoRango (la parte decimal del calculo de la frecuencia) se multiplica por Cantidad para calcular cuantos numeros de menos quedan para cubrir el tope.
+            int sumaRango = (int) (restoRango * Cantidad);
             for(int i = 1; i <= Cantidad; i++) {
                 //inicio = (i - 1) * (int)Rango + 1;
                 inicio = rangoAnterior+1;
+                
                 //int topeRango = i * (int)Rango;
                 int topeRango = i == 2 ? rangoAnterior + (int)Rango + 1 : rangoAnterior + (int)Rango;
-                if(Tope > topeRango) {
+
+                // mientras la iteracion sea menor que sumaRango se suma 1 al tope de rango                
+                if (i <= sumaRango) {
+                    topeRango++;
+                }
+
+                if (Tope > topeRango) {
                     Resultado.Add(sortearNumero(inicio, topeRango));
                 } else {
                     Resultado.Add(sortearNumero(inicio, Tope));
