@@ -51,7 +51,5 @@ namespace RND.Views {
             }
             return "";
         }
-
-
     }
 }

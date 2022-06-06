@@ -40,11 +40,11 @@
             // 
             this.richTextBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox6.Location = new System.Drawing.Point(34, 147);
+            this.richTextBox6.Location = new System.Drawing.Point(34, 165);
             this.richTextBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.ReadOnly = true;
-            this.richTextBox6.Size = new System.Drawing.Size(389, 91);
+            this.richTextBox6.Size = new System.Drawing.Size(499, 77);
             this.richTextBox6.TabIndex = 38;
             this.richTextBox6.Text = resources.GetString("richTextBox6.Text");
             // 
@@ -52,9 +52,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 127);
+            this.label7.Location = new System.Drawing.Point(17, 145);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(176, 16);
+            this.label7.Size = new System.Drawing.Size(175, 16);
             this.label7.TabIndex = 34;
             this.label7.Text = "Qué significa \"Aleatorio\"?";
             // 
@@ -62,9 +62,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 38);
+            this.label2.Location = new System.Drawing.Point(17, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 16);
+            this.label2.Size = new System.Drawing.Size(98, 16);
             this.label2.TabIndex = 28;
             this.label2.Text = "Qué ese RND?";
             // 
@@ -72,11 +72,11 @@
             // 
             this.richTextBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox8.Location = new System.Drawing.Point(34, 274);
+            this.richTextBox8.Location = new System.Drawing.Point(34, 301);
             this.richTextBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.ReadOnly = true;
-            this.richTextBox8.Size = new System.Drawing.Size(389, 190);
+            this.richTextBox8.Size = new System.Drawing.Size(499, 166);
             this.richTextBox8.TabIndex = 40;
             this.richTextBox8.Text = resources.GetString("richTextBox8.Text");
             // 
@@ -84,11 +84,11 @@
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(34, 58);
+            this.richTextBox1.Location = new System.Drawing.Point(34, 70);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(389, 56);
+            this.richTextBox1.Size = new System.Drawing.Size(499, 42);
             this.richTextBox1.TabIndex = 41;
             this.richTextBox1.Text = "Es una aplicación que permite generar números o fechas de forma aleatoria dentro " +
     "de un conjunto de parámetros establecidos previamente.";
@@ -107,10 +107,10 @@
             // 
             this.pictureBoxSorteoNumeros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxSorteoNumeros.Image = global::RND.Properties.Resources.sorteo_ayuda_general_bg;
-            this.pictureBoxSorteoNumeros.Location = new System.Drawing.Point(451, 32);
+            this.pictureBoxSorteoNumeros.Location = new System.Drawing.Point(575, 32);
             this.pictureBoxSorteoNumeros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxSorteoNumeros.Name = "pictureBoxSorteoNumeros";
-            this.pictureBoxSorteoNumeros.Size = new System.Drawing.Size(164, 475);
+            this.pictureBoxSorteoNumeros.Size = new System.Drawing.Size(197, 475);
             this.pictureBoxSorteoNumeros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSorteoNumeros.TabIndex = 26;
             this.pictureBoxSorteoNumeros.TabStop = false;
@@ -119,9 +119,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 254);
+            this.label3.Location = new System.Drawing.Point(14, 281);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(356, 16);
+            this.label3.Size = new System.Drawing.Size(355, 16);
             this.label3.TabIndex = 34;
             this.label3.Text = "Cómo funciona un generador de números aleatorios?";
             // 
@@ -129,9 +129,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(142, 491);
+            this.label4.Location = new System.Drawing.Point(253, 491);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(281, 16);
+            this.label4.Size = new System.Drawing.Size(280, 16);
             this.label4.TabIndex = 34;
             this.label4.Text = "Utiliza el botón de Inicio para comenzar...";
             // 
@@ -140,7 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(640, 530);
+            this.ClientSize = new System.Drawing.Size(800, 530);
             this.Controls.Add(this.richTextBox6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

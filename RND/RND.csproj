@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,9 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RND</RootNamespace>
     <AssemblyName>RND</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publicar\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,8 +30,8 @@
     <ProductName>RND</ProductName>
     <PublisherName>Diego Perez</PublisherName>
     <SuiteName>RND</SuiteName>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.5.1.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -42,6 +46,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,6 +56,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\Dices.ico</ApplicationIcon>
@@ -67,12 +73,28 @@
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.4.4\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -82,6 +104,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\Bolillero.cs" />
     <Compile Include="Clases\EnumMesSpanish.cs" />
     <Compile Include="Clases\EnumDiaSpanish.cs" />
     <Compile Include="Clases\EnumSorteo.cs" />
@@ -116,6 +139,7 @@
     <Compile Include="Views\Ayuda\AyudaSorteoNumeros.Designer.cs">
       <DependentUpon>AyudaSorteoNumeros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IActualizable.cs" />
     <Compile Include="Views\Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +155,36 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\ManejadorMenu.cs" />
+    <Compile Include="Views\Picos\EditarPico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Picos\EditarPico.Designer.cs">
+      <DependentUpon>EditarPico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Picos\NuevoPico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Picos\NuevoPico.Designer.cs">
+      <DependentUpon>NuevoPico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sectores\EditarSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sectores\EditarSector.Designer.cs">
+      <DependentUpon>EditarSector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sectores\ListadoSectoresPicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sectores\ListadoSectoresPicos.Designer.cs">
+      <DependentUpon>ListadoSectoresPicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sectores\NuevoSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sectores\NuevoSector.Designer.cs">
+      <DependentUpon>NuevoSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sorteos\SorteoFechas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +196,12 @@
     </Compile>
     <Compile Include="Views\Sorteos\SorteoNumeros.Designer.cs">
       <DependentUpon>SorteoNumeros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sorteos\SorteoPicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sorteos\SorteoPicos.Designer.cs">
+      <DependentUpon>SorteoPicos.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Views\Ayuda\AyudaGeneral.resx">
       <DependentUpon>AyudaGeneral.cs</DependentUpon>
@@ -163,11 +223,29 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Picos\EditarPico.resx">
+      <DependentUpon>EditarPico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Picos\NuevoPico.resx">
+      <DependentUpon>NuevoPico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sectores\EditarSector.resx">
+      <DependentUpon>EditarSector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sectores\ListadoSectoresPicos.resx">
+      <DependentUpon>ListadoSectoresPicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sectores\NuevoSector.resx">
+      <DependentUpon>NuevoSector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sorteos\SorteoFechas.resx">
       <DependentUpon>SorteoFechas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sorteos\SorteoNumeros.resx">
       <DependentUpon>SorteoNumeros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sorteos\SorteoPicos.resx">
+      <DependentUpon>SorteoPicos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -183,6 +261,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dices.ico" />
+    <None Include="Resources\MarfrigLogo.png" />
+    <None Include="Resources\Water Tower_48px.png" />
     <None Include="Resources\logo about.jpg" />
     <None Include="Resources\rnd number button bg.png" />
     <None Include="Resources\rnd date button bg.png" />
@@ -192,7 +272,6 @@
     <None Include="Resources\sorteo numeros bg.jpg" />
     <None Include="Resources\exit button bg.png" />
     <None Include="Resources\dado_random.png" />
-    <None Include="Resources\MarfrigLogo.png" />
     <None Include="Resources\Dices.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -224,7 +303,28 @@
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PicosSectores\PicosSectores.csproj">
+      <Project>{a2adabde-d151-4555-915b-033bdc3d7650}</Project>
+      <Name>PicosSectores</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

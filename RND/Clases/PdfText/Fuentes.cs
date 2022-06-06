@@ -32,5 +32,7 @@ namespace RND.Clases.PdfText
 		public static BaseColor AZUL_INSTITUCIONAL = new BaseColor(44,86,151);
 		public static Font CELDA_TITULO = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD, BaseColor.WHITE);
 		public static Font CELDA_CONTENIDO = new Font(Font.FontFamily.HELVETICA, 9, Font.NORMAL, BaseColor.BLACK);
+
+		public static BaseColor AZUL_INSTITUCIONAL_2021 = new BaseColor(2, 31, 89);
 	}
 }

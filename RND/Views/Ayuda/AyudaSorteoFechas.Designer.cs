@@ -53,7 +53,7 @@
             this.richTextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.ReadOnly = true;
-            this.richTextBox4.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox4.Size = new System.Drawing.Size(276, 36);
             this.richTextBox4.TabIndex = 25;
             this.richTextBox4.Text = "Cantidad de fechas aleatorios a obtener.";
             // 
@@ -61,11 +61,11 @@
             // 
             this.richTextBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox7.Location = new System.Drawing.Point(230, 219);
+            this.richTextBox7.Location = new System.Drawing.Point(328, 219);
             this.richTextBox7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox7.Name = "richTextBox7";
             this.richTextBox7.ReadOnly = true;
-            this.richTextBox7.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox7.Size = new System.Drawing.Size(264, 36);
             this.richTextBox7.TabIndex = 19;
             this.richTextBox7.Text = "No comprueba que las fechas generadas sean únicas.";
             // 
@@ -77,7 +77,7 @@
             this.richTextBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.ReadOnly = true;
-            this.richTextBox6.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox6.Size = new System.Drawing.Size(276, 36);
             this.richTextBox6.TabIndex = 18;
             this.richTextBox6.Text = "Ordena de forma ascendente las fechas generadas.";
             // 
@@ -85,9 +85,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(227, 199);
+            this.label8.Location = new System.Drawing.Point(325, 199);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 16);
+            this.label8.Size = new System.Drawing.Size(134, 16);
             this.label8.TabIndex = 16;
             this.label8.Text = "Permitir duplicados";
             // 
@@ -97,7 +97,7 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(10, 199);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 16);
+            this.label7.Size = new System.Drawing.Size(62, 16);
             this.label7.TabIndex = 15;
             this.label7.Text = "Ordenar";
             // 
@@ -105,11 +105,11 @@
             // 
             this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(230, 84);
+            this.richTextBox2.Location = new System.Drawing.Point(328, 84);
             this.richTextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox2.Size = new System.Drawing.Size(264, 36);
             this.richTextBox2.TabIndex = 24;
             this.richTextBox2.Text = "Fecha en que finaliza el sorteo.";
             // 
@@ -119,7 +119,7 @@
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(10, 132);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 16);
+            this.label4.Size = new System.Drawing.Size(69, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Cantidad";
             // 
@@ -127,9 +127,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(227, 64);
+            this.label3.Location = new System.Drawing.Point(325, 64);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.Size = new System.Drawing.Size(81, 16);
             this.label3.TabIndex = 10;
             this.label3.Text = "Fecha Tope";
             // 
@@ -139,7 +139,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(10, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.Size = new System.Drawing.Size(86, 16);
             this.label2.TabIndex = 9;
             this.label2.Text = "Fecha Inicio";
             // 
@@ -151,7 +151,7 @@
             this.richTextBox8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox8.Name = "richTextBox8";
             this.richTextBox8.ReadOnly = true;
-            this.richTextBox8.Size = new System.Drawing.Size(424, 88);
+            this.richTextBox8.Size = new System.Drawing.Size(579, 78);
             this.richTextBox8.TabIndex = 21;
             this.richTextBox8.Text = resources.GetString("richTextBox8.Text");
             // 
@@ -173,7 +173,7 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox1.Size = new System.Drawing.Size(276, 36);
             this.richTextBox1.TabIndex = 23;
             this.richTextBox1.Text = "Fecha desde el que inicia el sorteo.";
             // 
@@ -191,10 +191,10 @@
             // 
             this.pictureBoxSorteoNumeros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxSorteoNumeros.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSorteoNumeros.Image")));
-            this.pictureBoxSorteoNumeros.Location = new System.Drawing.Point(473, 30);
+            this.pictureBoxSorteoNumeros.Location = new System.Drawing.Point(613, 30);
             this.pictureBoxSorteoNumeros.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBoxSorteoNumeros.Name = "pictureBoxSorteoNumeros";
-            this.pictureBoxSorteoNumeros.Size = new System.Drawing.Size(140, 475);
+            this.pictureBoxSorteoNumeros.Size = new System.Drawing.Size(162, 475);
             this.pictureBoxSorteoNumeros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxSorteoNumeros.TabIndex = 6;
             this.pictureBoxSorteoNumeros.TabStop = false;
@@ -203,9 +203,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(227, 132);
+            this.label6.Location = new System.Drawing.Point(325, 132);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
+            this.label6.Size = new System.Drawing.Size(116, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Incluir Domingos";
             // 
@@ -213,11 +213,11 @@
             // 
             this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.Location = new System.Drawing.Point(230, 152);
+            this.richTextBox3.Location = new System.Drawing.Point(328, 152);
             this.richTextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.ReadOnly = true;
-            this.richTextBox3.Size = new System.Drawing.Size(207, 36);
+            this.richTextBox3.Size = new System.Drawing.Size(264, 36);
             this.richTextBox3.TabIndex = 17;
             this.richTextBox3.Text = "Considera los domingos como días válidos para sortear.";
             // 
@@ -227,7 +227,7 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(10, 399);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 16);
+            this.label5.Size = new System.Drawing.Size(118, 16);
             this.label5.TabIndex = 15;
             this.label5.Text = "Dias por Semana";
             // 
@@ -239,7 +239,7 @@
             this.richTextBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.ReadOnly = true;
-            this.richTextBox5.Size = new System.Drawing.Size(424, 86);
+            this.richTextBox5.Size = new System.Drawing.Size(579, 86);
             this.richTextBox5.TabIndex = 18;
             this.richTextBox5.Text = resources.GetString("richTextBox5.Text");
             // 
@@ -248,7 +248,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(640, 530);
+            this.ClientSize = new System.Drawing.Size(800, 530);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.richTextBox7);
             this.Controls.Add(this.richTextBox5);

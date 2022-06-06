@@ -29,6 +29,7 @@
             this.pictureBoxAyuda = new System.Windows.Forms.PictureBox();
             this.pictureBoxAccesoMenu = new System.Windows.Forms.PictureBox();
             this.panelLateralIzquierdo = new System.Windows.Forms.Panel();
+            this.buttonPicos = new System.Windows.Forms.Button();
             this.buttonSorteoFechas = new System.Windows.Forms.Button();
             this.buttonSorteoNumeros = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -42,7 +43,7 @@
             this.panelLateralIzquierdo.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
-            this.SuspendLayout();           
+            this.SuspendLayout();
             // 
             // panelMinimizado
             // 
@@ -53,7 +54,7 @@
             this.panelMinimizado.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMinimizado.Location = new System.Drawing.Point(0, 0);
             this.panelMinimizado.Name = "panelMinimizado";
-            this.panelMinimizado.Size = new System.Drawing.Size(51, 536);
+            this.panelMinimizado.Size = new System.Drawing.Size(51, 531);
             this.panelMinimizado.TabIndex = 2;
             // 
             // pictureBoxSalir
@@ -95,14 +96,35 @@
             // panelLateralIzquierdo
             // 
             this.panelLateralIzquierdo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
+            this.panelLateralIzquierdo.Controls.Add(this.buttonPicos);
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoFechas);
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoNumeros);
             this.panelLateralIzquierdo.Controls.Add(this.panelLogo);
             this.panelLateralIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLateralIzquierdo.Location = new System.Drawing.Point(51, 0);
             this.panelLateralIzquierdo.Name = "panelLateralIzquierdo";
-            this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 536);
+            this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 531);
             this.panelLateralIzquierdo.TabIndex = 3;
+            // 
+            // buttonPicos
+            // 
+            this.buttonPicos.BackColor = System.Drawing.Color.Transparent;
+            this.buttonPicos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonPicos.FlatAppearance.BorderSize = 0;
+            this.buttonPicos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonPicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPicos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPicos.ForeColor = System.Drawing.Color.White;
+            this.buttonPicos.Image = global::RND.Properties.Resources.Water_Tower_48px;
+            this.buttonPicos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPicos.Location = new System.Drawing.Point(9, 295);
+            this.buttonPicos.Name = "buttonPicos";
+            this.buttonPicos.Size = new System.Drawing.Size(182, 53);
+            this.buttonPicos.TabIndex = 3;
+            this.buttonPicos.Text = "Picos de Agua";
+            this.buttonPicos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonPicos.UseVisualStyleBackColor = false;
+            this.buttonPicos.Click += new System.EventHandler(this.buttonPicos_Click);
             // 
             // buttonSorteoFechas
             // 
@@ -169,11 +191,11 @@
             // 
             this.labelRND.AutoSize = true;
             this.labelRND.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelRND.Font = new System.Drawing.Font("Exotc350 Bd BT", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRND.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRND.ForeColor = System.Drawing.Color.White;
             this.labelRND.Location = new System.Drawing.Point(98, 37);
             this.labelRND.Name = "labelRND";
-            this.labelRND.Size = new System.Drawing.Size(77, 35);
+            this.labelRND.Size = new System.Drawing.Size(80, 36);
             this.labelRND.TabIndex = 0;
             this.labelRND.Text = "RND";
             this.labelRND.Click += new System.EventHandler(this.labelRND_Click);
@@ -183,7 +205,7 @@
             this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenido.Location = new System.Drawing.Point(51, 0);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(643, 536);
+            this.panelContenido.Size = new System.Drawing.Size(803, 531);
             this.panelContenido.TabIndex = 4;
             // 
             // Inicio
@@ -191,7 +213,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(694, 536);
+            this.ClientSize = new System.Drawing.Size(854, 531);
             this.Controls.Add(this.panelContenido);
             this.Controls.Add(this.panelLateralIzquierdo);
             this.Controls.Add(this.panelMinimizado);
@@ -224,6 +246,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAccesoMenu;
         private System.Windows.Forms.PictureBox pictureBoxAyuda;
         private System.Windows.Forms.PictureBox pictureBoxSalir;
+        private System.Windows.Forms.Button buttonPicos;
     }
 }
 

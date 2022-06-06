@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32428.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RND", "RND\RND.csproj", "{EDF96069-7E90-4819-BC92-BD0B5C96B26F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicosSectores", "PicosSectores\PicosSectores.csproj", "{A2ADABDE-D151-4555-915B-033BDC3D7650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EDF96069-7E90-4819-BC92-BD0B5C96B26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDF96069-7E90-4819-BC92-BD0B5C96B26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDF96069-7E90-4819-BC92-BD0B5C96B26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2ADABDE-D151-4555-915B-033BDC3D7650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2ADABDE-D151-4555-915B-033BDC3D7650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2ADABDE-D151-4555-915B-033BDC3D7650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2ADABDE-D151-4555-915B-033BDC3D7650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

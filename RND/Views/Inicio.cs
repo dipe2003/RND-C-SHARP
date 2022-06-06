@@ -66,5 +66,11 @@ namespace RND {
                     break;
             }
         }
+
+        private void buttonPicos_Click(object sender, EventArgs e) {
+            Form nuevo = new SorteoPicos();
+            ManejadorMenu.AgregarFormularioEnPanel(panelContenido, nuevo);
+            ManejadorMenu.CambiarPanelMenu(panelLateralIzquierdo, panelContenido);
+        }
     }
 }
