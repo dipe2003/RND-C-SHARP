@@ -72,7 +72,14 @@ namespace RND.Views.Sorteos {
                            
                             picos.Where(p => IdSectoresSeleccionados.Contains(p.Sector.Id))
                                  .ToList<Pico>().ForEach(p => {
-                                     SorteoGenerico.ContenidoBolillero.Add(p.Id);
+                                     // en los casos que el sector solo contenga un pico, se agrega directamente para que no quede fuera del resultado del sorteo.
+                                     // para esto se comprueba, luego se agrega al resultado de forma directa y se quita del total de cantidad a sortear.
+                                     if (sectores.Find(s => s.Id == p.Sector.Id).Picos.Count() == 1) {
+                                         SorteoGenerico.Resultado.Add(p.Id);
+                                         SorteoGenerico.Cantidad -= 1;
+                                     } else { 
+                                        SorteoGenerico.ContenidoBolillero.Add(p.Id);
+                                     }
                                  });
                             SorteoGenerico.Tope = SorteoGenerico.ContenidoBolillero.Count;
                             SorteoGenerico.SortearNumeros();
@@ -242,7 +249,7 @@ namespace RND.Views.Sorteos {
         public void ActualizarContenido() {
             FechaSorteo = DateTime.Today;
             IdSectoresSeleccionados = new List<int>();
-            sectores = cSectores.ListarSectores();
+            sectores = cSectores.ListarSectores(true);
             picos = cPicos.ListarPicos(true);
             VistaTabla.LlenarTabla(sectores.ToList<IElementoBasico>(), "Id", "Nombre", dataGridSectores);
         }
