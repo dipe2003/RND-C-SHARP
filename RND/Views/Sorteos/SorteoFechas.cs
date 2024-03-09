@@ -258,6 +258,7 @@ namespace RND.Views {
 
         private void btnCerrar_Click(object sender, EventArgs e) {
             this.Close();
+            ManejadorMenu.SetFormularioPorDefecto();
         }
 
         private void CambiarEstadoRadioButtons(bool duplicados = false, bool ordenados = false, bool domingos = false) {

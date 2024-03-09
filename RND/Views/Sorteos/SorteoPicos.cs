@@ -44,6 +44,7 @@ namespace RND.Views.Sorteos {
          */
         private void BtnCerrar_Click(object sender, EventArgs e) {
             this.Close();
+            ManejadorMenu.SetFormularioPorDefecto();
         }
 
         /// <summary>

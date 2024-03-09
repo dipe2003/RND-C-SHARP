@@ -12,6 +12,8 @@ namespace RND {
         public Inicio() {
             InitializeComponent();
             Form formulario = new AyudaGeneral();
+            ManejadorMenu.formularioPorDefecto = formulario;
+            ManejadorMenu.panelPorDefecto = panelContenido;
             ManejadorMenu.AgregarFormularioEnPanel(panelContenido, formulario);
         }
 
@@ -72,5 +74,6 @@ namespace RND {
             ManejadorMenu.AgregarFormularioEnPanel(panelContenido, nuevo);
             ManejadorMenu.CambiarPanelMenu(panelLateralIzquierdo, panelContenido);
         }
+
     }
 }

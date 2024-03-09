@@ -41,6 +41,7 @@ namespace RND.Views.Sorteos {
          */
         private void BtnCerrar_Click(object sender, EventArgs e) {
             this.Close();
+            ManejadorMenu.SetFormularioPorDefecto();
         }
 
         /// <summary>
@@ -240,24 +241,7 @@ namespace RND.Views.Sorteos {
             }
         }
 
-        private void RadioCloracion_CheckedChanged(object sender, EventArgs e) {
-            if(this.radioCloracion.Checked) {
-                this.SorteoPredefinido = EnumSorteo.CLORACION;
-                // habiilitar/deshabilitar controles
-                // campos de ingreso de texto
-                CambiarHabilitacionCuadroTexto(tope: true, cantidad: true);
-
-                // radio buttons
-                CambiarEstadoRadioButtons();
-                CambiarHabilitacionRadioButtons();
-
-                // valores predefinidos
-                VaciarCuadrosTexto();
-                this.txtInicio.Text = "0";
-                Inicio = 0;
-            }
-        }
-
+        
         private void RadioGenerica_CheckedChanged(object sender, EventArgs e) {
             if(this.radioGenerica.Checked) {
                 this.SorteoPredefinido = EnumSorteo.GENERICA;

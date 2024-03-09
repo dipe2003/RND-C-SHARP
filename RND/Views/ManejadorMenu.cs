@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace RND.Views {
     static class ManejadorMenu {
 
+        public static Form formularioPorDefecto;
+        public static Panel panelPorDefecto;
+
         /// <summary>
         /// Agrega el formulario indicado en el panel seleccionado.
         /// Si existe otro formulario en el panel primero es removido.
@@ -20,6 +23,8 @@ namespace RND.Views {
             panel.Controls.Add(formulario);
             formulario.Show();
         }
+
+        public static void SetFormularioPorDefecto() => AgregarFormularioEnPanel(panelPorDefecto, formularioPorDefecto);
 
         /// <summary>
         /// Pide confirmacion y cierra la aplicacion si corresponde.

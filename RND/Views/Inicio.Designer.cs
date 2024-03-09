@@ -36,6 +36,7 @@
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.labelRND = new System.Windows.Forms.Label();
             this.panelContenido = new System.Windows.Forms.Panel();
+            this.labelInicio = new System.Windows.Forms.Label();
             this.panelMinimizado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAyuda)).BeginInit();
@@ -48,22 +49,25 @@
             // panelMinimizado
             // 
             this.panelMinimizado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(4)))), ((int)(((byte)(72)))));
+            this.panelMinimizado.Controls.Add(this.labelInicio);
             this.panelMinimizado.Controls.Add(this.pictureBoxSalir);
             this.panelMinimizado.Controls.Add(this.pictureBoxAyuda);
             this.panelMinimizado.Controls.Add(this.pictureBoxAccesoMenu);
             this.panelMinimizado.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMinimizado.Location = new System.Drawing.Point(0, 0);
+            this.panelMinimizado.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panelMinimizado.Name = "panelMinimizado";
-            this.panelMinimizado.Size = new System.Drawing.Size(51, 531);
+            this.panelMinimizado.Size = new System.Drawing.Size(102, 1062);
             this.panelMinimizado.TabIndex = 2;
             // 
             // pictureBoxSalir
             // 
             this.pictureBoxSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSalir.Image = global::RND.Properties.Resources.exit_button_bg;
-            this.pictureBoxSalir.Location = new System.Drawing.Point(6, 489);
+            this.pictureBoxSalir.Location = new System.Drawing.Point(12, 978);
+            this.pictureBoxSalir.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBoxSalir.Name = "pictureBoxSalir";
-            this.pictureBoxSalir.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxSalir.Size = new System.Drawing.Size(84, 70);
             this.pictureBoxSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSalir.TabIndex = 1;
             this.pictureBoxSalir.TabStop = false;
@@ -73,9 +77,10 @@
             // 
             this.pictureBoxAyuda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxAyuda.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAyuda.Image")));
-            this.pictureBoxAyuda.Location = new System.Drawing.Point(6, 432);
+            this.pictureBoxAyuda.Location = new System.Drawing.Point(12, 864);
+            this.pictureBoxAyuda.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBoxAyuda.Name = "pictureBoxAyuda";
-            this.pictureBoxAyuda.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxAyuda.Size = new System.Drawing.Size(84, 70);
             this.pictureBoxAyuda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxAyuda.TabIndex = 1;
             this.pictureBoxAyuda.TabStop = false;
@@ -85,9 +90,10 @@
             // 
             this.pictureBoxAccesoMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxAccesoMenu.Image = global::RND.Properties.Resources.dado_random;
-            this.pictureBoxAccesoMenu.Location = new System.Drawing.Point(6, 46);
+            this.pictureBoxAccesoMenu.Location = new System.Drawing.Point(12, 92);
+            this.pictureBoxAccesoMenu.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBoxAccesoMenu.Name = "pictureBoxAccesoMenu";
-            this.pictureBoxAccesoMenu.Size = new System.Drawing.Size(42, 35);
+            this.pictureBoxAccesoMenu.Size = new System.Drawing.Size(84, 70);
             this.pictureBoxAccesoMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxAccesoMenu.TabIndex = 1;
             this.pictureBoxAccesoMenu.TabStop = false;
@@ -101,9 +107,10 @@
             this.panelLateralIzquierdo.Controls.Add(this.buttonSorteoNumeros);
             this.panelLateralIzquierdo.Controls.Add(this.panelLogo);
             this.panelLateralIzquierdo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLateralIzquierdo.Location = new System.Drawing.Point(51, 0);
+            this.panelLateralIzquierdo.Location = new System.Drawing.Point(102, 0);
+            this.panelLateralIzquierdo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panelLateralIzquierdo.Name = "panelLateralIzquierdo";
-            this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 531);
+            this.panelLateralIzquierdo.Size = new System.Drawing.Size(0, 1062);
             this.panelLateralIzquierdo.TabIndex = 3;
             // 
             // buttonPicos
@@ -117,9 +124,10 @@
             this.buttonPicos.ForeColor = System.Drawing.Color.White;
             this.buttonPicos.Image = global::RND.Properties.Resources.Water_Tower_48px;
             this.buttonPicos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPicos.Location = new System.Drawing.Point(9, 295);
+            this.buttonPicos.Location = new System.Drawing.Point(18, 590);
+            this.buttonPicos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonPicos.Name = "buttonPicos";
-            this.buttonPicos.Size = new System.Drawing.Size(182, 53);
+            this.buttonPicos.Size = new System.Drawing.Size(364, 106);
             this.buttonPicos.TabIndex = 3;
             this.buttonPicos.Text = "Picos de Agua";
             this.buttonPicos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -137,9 +145,10 @@
             this.buttonSorteoFechas.ForeColor = System.Drawing.Color.White;
             this.buttonSorteoFechas.Image = global::RND.Properties.Resources.rnd_date_button_bg;
             this.buttonSorteoFechas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSorteoFechas.Location = new System.Drawing.Point(9, 236);
+            this.buttonSorteoFechas.Location = new System.Drawing.Point(18, 472);
+            this.buttonSorteoFechas.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonSorteoFechas.Name = "buttonSorteoFechas";
-            this.buttonSorteoFechas.Size = new System.Drawing.Size(182, 53);
+            this.buttonSorteoFechas.Size = new System.Drawing.Size(364, 106);
             this.buttonSorteoFechas.TabIndex = 3;
             this.buttonSorteoFechas.Text = "Fechas";
             this.buttonSorteoFechas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -158,9 +167,10 @@
             this.buttonSorteoNumeros.ForeColor = System.Drawing.Color.White;
             this.buttonSorteoNumeros.Image = ((System.Drawing.Image)(resources.GetObject("buttonSorteoNumeros.Image")));
             this.buttonSorteoNumeros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSorteoNumeros.Location = new System.Drawing.Point(9, 177);
+            this.buttonSorteoNumeros.Location = new System.Drawing.Point(18, 354);
+            this.buttonSorteoNumeros.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonSorteoNumeros.Name = "buttonSorteoNumeros";
-            this.buttonSorteoNumeros.Size = new System.Drawing.Size(182, 53);
+            this.buttonSorteoNumeros.Size = new System.Drawing.Size(364, 106);
             this.buttonSorteoNumeros.TabIndex = 3;
             this.buttonSorteoNumeros.Text = "Números";
             this.buttonSorteoNumeros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -173,16 +183,18 @@
             this.panelLogo.Controls.Add(this.labelRND);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(0, 115);
+            this.panelLogo.Size = new System.Drawing.Size(0, 230);
             this.panelLogo.TabIndex = 2;
             // 
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Image = global::RND.Properties.Resources.dado_random;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(9, 24);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(18, 48);
+            this.pictureBoxLogo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(91, 76);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(182, 152);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 1;
             this.pictureBoxLogo.TabStop = false;
@@ -193,9 +205,10 @@
             this.labelRND.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelRND.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRND.ForeColor = System.Drawing.Color.White;
-            this.labelRND.Location = new System.Drawing.Point(98, 37);
+            this.labelRND.Location = new System.Drawing.Point(196, 74);
+            this.labelRND.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelRND.Name = "labelRND";
-            this.labelRND.Size = new System.Drawing.Size(80, 36);
+            this.labelRND.Size = new System.Drawing.Size(159, 69);
             this.labelRND.TabIndex = 0;
             this.labelRND.Text = "RND";
             this.labelRND.Click += new System.EventHandler(this.labelRND_Click);
@@ -203,26 +216,39 @@
             // panelContenido
             // 
             this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenido.Location = new System.Drawing.Point(51, 0);
+            this.panelContenido.Location = new System.Drawing.Point(102, 0);
+            this.panelContenido.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(803, 531);
+            this.panelContenido.Size = new System.Drawing.Size(1606, 1062);
             this.panelContenido.TabIndex = 4;
+            // 
+            // labelInicio
+            // 
+            this.labelInicio.AutoSize = true;
+            this.labelInicio.ForeColor = System.Drawing.Color.White;
+            this.labelInicio.Location = new System.Drawing.Point(29, 184);
+            this.labelInicio.Name = "labelInicio";
+            this.labelInicio.Size = new System.Drawing.Size(62, 25);
+            this.labelInicio.TabIndex = 2;
+            this.labelInicio.Text = "Inicio";
             // 
             // Inicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(854, 531);
+            this.ClientSize = new System.Drawing.Size(1708, 1062);
             this.Controls.Add(this.panelContenido);
             this.Controls.Add(this.panelLateralIzquierdo);
             this.Controls.Add(this.panelMinimizado);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MaximizeBox = false;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelMinimizado.ResumeLayout(false);
+            this.panelMinimizado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAyuda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccesoMenu)).EndInit();
@@ -247,6 +273,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAyuda;
         private System.Windows.Forms.PictureBox pictureBoxSalir;
         private System.Windows.Forms.Button buttonPicos;
+        private System.Windows.Forms.Label labelInicio;
     }
 }
 
