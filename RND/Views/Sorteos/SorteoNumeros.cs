@@ -353,14 +353,17 @@ namespace RND.Views.Sorteos {
         #endregion
 
         private void ButtonGuardarPDF_Click(object sender, EventArgs e) {
-            if(SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {
-                SaveFileDialog dialogoDestino = new SaveFileDialog();
-                dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
+            if(SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {             
                 StringBuilder strNombre = new StringBuilder();
                 strNombre.Append(SorteoPredefinido.ToString())
                 .Append(" ")
                 .Append(FechaSorteo.ToShortDateString().Replace('/', '.'));
-                dialogoDestino.FileName = strNombre.ToString();
+
+                SaveFileDialog dialogoDestino = new SaveFileDialog {
+                    Filter = "Archivo PDF (Portable Document Format)|*.pdf",
+                    FileName = strNombre.ToString()
+                };
+
                 DialogResult resultado = dialogoDestino.ShowDialog();
 
                 if(resultado == DialogResult.OK) {
@@ -373,9 +376,8 @@ namespace RND.Views.Sorteos {
                         verificacion = !radioButtonExportarSoloSorteo.Checked ? (SorteoGenerico as Haccp).ResultadoVerificacion : verificacion;
                     }
                     ControladorPDF pdf = new ControladorPDF();
-                    string rango = chkRango.Checked ? rango = Rango.ToString() : rango = "N/A";
                     pdf.GuardarSorteoNumeros(destino, "Sorteo: " + SorteoPredefinido.ToString(), FechaSorteo.ToShortDateString(),
-                        SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), rango,
+                        SorteoGenerico.Inicio.ToString(), SorteoGenerico.Tope.ToString(), Rango.ToString(),
                         SorteoGenerico.Resultado, verificacion, radioButtonExportarVerificacionSeparada.Checked);
                 }
             } else {

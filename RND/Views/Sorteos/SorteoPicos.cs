@@ -218,14 +218,16 @@ namespace RND.Views.Sorteos {
         #endregion
 
         private void ButtonGuardarPDF_Click(object sender, EventArgs e) {
-            if (SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {
-                SaveFileDialog dialogoDestino = new SaveFileDialog();
-                dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
+            if (SorteoGenerico != null && SorteoGenerico.Resultado.Any()) {       
                 StringBuilder strNombre = new StringBuilder();
                 strNombre.Append("Sorteo Picos de Agua")
                 .Append(" ")
                 .Append(FechaSorteo.ToShortDateString().Replace('/', '.'));
-                dialogoDestino.FileName = strNombre.ToString();
+                SaveFileDialog dialogoDestino = new SaveFileDialog {
+                    Filter = "Archivo PDF (Portable Document Format)|*.pdf",
+                    FileName = strNombre.ToString()
+                };
+                
                 DialogResult resultado = dialogoDestino.ShowDialog();
 
                 if (resultado == DialogResult.OK) {

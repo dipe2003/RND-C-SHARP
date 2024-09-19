@@ -19,7 +19,7 @@ namespace RND.Clases.PdfText {
     /// Description of ControladorPDF.
     /// </summary>
     public class ControladorPDF {
-        private Document documento;
+        private readonly Document documento;
 
         public ControladorPDF() {
             documento = new Document();
@@ -75,7 +75,7 @@ namespace RND.Clases.PdfText {
 
                 // tabla sorteo
                 int elementos = sorteoGenerado.Count;
-                int columnas = elementos <= 3 ? columnas=elementos : (int)(elementos/3);
+                int columnas = elementos <= 3 ? columnas = elementos : (int)(elementos / 3);
                 columnas = columnas >= 15 ? columnas = 15 : columnas;
                 tabla = CrearTablaResultado(columnas);
 
@@ -83,20 +83,20 @@ namespace RND.Clases.PdfText {
                 tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados", columnas));
 
                 // FILAS -1 (restantes)
-                foreach(int numero in sorteoGenerado) {
+                foreach (int numero in sorteoGenerado) {
                     tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
                 }
                 tabla.CompleteRow();
                 documento.Add(tabla);
 
                 // tabla verificación                
-                if(sorteoVerificacion != null) {
-                    if(verificacionSeparada) {
+                if (sorteoVerificacion != null) {
+                    if (verificacionSeparada) {
                         documento.NewPage();
                         documento.Add(CrearEncabezado(tituloSorteo));
                     }
                     elementos = sorteoVerificacion.Count;
-                    if(elementos > 0) {
+                    if (elementos > 0) {
                         columnas = elementos <= 3 ? columnas = elementos : (int)(elementos / 3);
                         columnas = columnas >= 15 ? columnas = 15 : columnas;
                         tabla = CrearTablaResultado(columnas);
@@ -105,7 +105,7 @@ namespace RND.Clases.PdfText {
                         tabla.AddCell(CrearCeldaTitulo("Numeros Sorteados para Verificación", columnas));
 
                         // FILAS -1 (restantes)
-                        foreach(int numero in sorteoVerificacion) {
+                        foreach (int numero in sorteoVerificacion) {
                             tabla.AddCell(CrearCeldaContenidoTabla(numero.ToString()));
                         }
                         tabla.CompleteRow();
@@ -114,10 +114,10 @@ namespace RND.Clases.PdfText {
                 }
                 documento.Close();
 
-            } catch(IOException ex) {
+            } catch (IOException ex) {
                 System.Console.Out.WriteLine("IO Error: " + ex.Message);
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            } catch(DocumentException ex) {
+            } catch (DocumentException) {
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
             System.Windows.Forms.MessageBox.Show("El sorteo se guardo", "Correcto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
@@ -161,7 +161,7 @@ namespace RND.Clases.PdfText {
                 tabla.AddCell(CrearCeldaVacia(0));
 
                 tabla.AddCell(CrearCeldaTitulo("Incluye Domingos?"));
-                string rangoContenido= incluyeDomingos ? "Si" : "No";
+                string rangoContenido = incluyeDomingos ? "Si" : "No";
                 tabla.AddCell(CrearCeldaContenido(rangoContenido));
                 tabla.CompleteRow();
                 tabla.SpacingAfter = 10;
@@ -170,7 +170,7 @@ namespace RND.Clases.PdfText {
 
                 // tabla sorteo
                 int elementos = sorteoGenerado.Count;
-                int columnas = elementos <= 3 ? columnas=elementos : (int)(elementos/3);
+                int columnas = elementos <= 3 ? columnas = elementos : (int)(elementos / 3);
                 columnas = columnas >= 15 ? columnas = 15 : columnas;
                 tabla = CrearTablaResultado(columnas);
 
@@ -178,17 +178,17 @@ namespace RND.Clases.PdfText {
                 tabla.AddCell(CrearCeldaTitulo("Fechas Sorteadas", columnas));
 
                 // FILAS -1 (restantes)
-                foreach(string sorteado in sorteoGenerado) {
+                foreach (string sorteado in sorteoGenerado) {
                     tabla.AddCell(CrearCeldaContenidoTabla(sorteado));
                 }
                 tabla.CompleteRow();
                 documento.Add(tabla);
                 documento.Close();
 
-            } catch(IOException ex) {
+            } catch (IOException ex) {
                 System.Console.Out.WriteLine("IO Error: " + ex.Message);
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            } catch(DocumentException ex) {
+            } catch (DocumentException) {
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
             System.Windows.Forms.MessageBox.Show("El sorteo se guardo", "Correcto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
@@ -254,49 +254,51 @@ namespace RND.Clases.PdfText {
             } catch (IOException ex) {
                 System.Console.Out.WriteLine("IO Error: " + ex.Message);
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            } catch (DocumentException ex) {
+            } catch (DocumentException) {
                 System.Windows.Forms.MessageBox.Show("No se pudo guardar el sorteo.", "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
             System.Windows.Forms.MessageBox.Show("El sorteo se guardo", "Correcto", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);
 
         }
 
-        private PdfPCell CrearCeldaTitulo(string textoTitulo, int colspan = 0) {
-            PdfPCell celda = new PdfPCell(new Phrase(textoTitulo, Fuentes.CELDA_TITULO));
-            celda.Colspan = colspan;
-            celda.PaddingBottom = 5;
-            celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-            celda.BackgroundColor = BaseColor.GRAY;
-            return celda;
-        }
+        private PdfPCell CrearCeldaTitulo(string textoTitulo, int colspan = 0) =>
+               new PdfPCell {
+                   Colspan = colspan,
+                   PaddingBottom = 5,
+                   VerticalAlignment = Element.ALIGN_MIDDLE,
+                   BackgroundColor = BaseColor.GRAY,
+                   Phrase = new Phrase(textoTitulo, Fuentes.CELDA_TITULO)
+               };
 
-        private PdfPCell CrearCeldaContenido(string textoContenido, int colspan = 0) {
-            PdfPCell celda = new PdfPCell(new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO));
-            celda.Colspan = colspan;
-            celda.PaddingBottom = 5;
-            celda.BorderWidthTop = 0;
-            celda.BorderWidthRight = 0;
-            celda.HorizontalAlignment = Element.ALIGN_CENTER;
-            return celda;
-        }
 
-        private PdfPCell CrearCeldaContenidoTabla(string textoContenido) {
-            PdfPCell celda = new PdfPCell(new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO));
-            celda.PaddingBottom = 5;
-            celda.HorizontalAlignment = Element.ALIGN_CENTER;
-            return celda;
-        }
+        private PdfPCell CrearCeldaContenido(string textoContenido, int colspan = 0) =>
+                new PdfPCell {
+                    Colspan = colspan,
+                    PaddingBottom = 5,
+                    BorderWidthTop = 0,
+                    BorderWidthRight = 0,
+                    HorizontalAlignment = Element.ALIGN_CENTER,
+                    Phrase = new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO)
+                };
 
-        private PdfPCell CrearCeldaVacia(int colspan) {
-            PdfPCell celda = new PdfPCell(new Phrase("  ", Fuentes.CELDA_CONTENIDO));
-            celda.Colspan = colspan;
-            celda.BorderWidthTop = 0;
-            celda.BorderWidthRight = 0;
-            celda.BorderWidthBottom = 0;
-            celda.BorderWidthLeft = 0;
-            celda.HorizontalAlignment = Element.ALIGN_CENTER;
-            return celda;
-        }
+
+        private PdfPCell CrearCeldaContenidoTabla(string textoContenido) =>
+          new PdfPCell {
+              PaddingBottom = 5,
+              HorizontalAlignment = Element.ALIGN_CENTER,
+              Phrase = new Phrase(textoContenido, Fuentes.CELDA_CONTENIDO)
+          };
+
+        private PdfPCell CrearCeldaVacia(int colspan) =>
+            new PdfPCell {
+                Colspan = colspan,
+                BorderWidthTop = 0,
+                BorderWidthRight = 0,
+                BorderWidthBottom = 0,
+                BorderWidthLeft = 0,
+                HorizontalAlignment = Element.ALIGN_CENTER,
+                Phrase = new Phrase("  ", Fuentes.CELDA_CONTENIDO)
+            };
 
 
         /// <summary>
@@ -305,10 +307,11 @@ namespace RND.Clases.PdfText {
         /// <param name="tituloImpresion"></param>
         /// <returns></returns>
         private PdfPTable CrearEncabezado(string tituloImpresion) {
-            PdfPTable tablaEncabezado = new PdfPTable(2);
-            tablaEncabezado.WidthPercentage = 100f;
+            PdfPTable tablaEncabezado = new PdfPTable(2) {
+                WidthPercentage = 100f
+            };
+           
             tablaEncabezado.SetWidths(new int[] { 30, 70 });
-
             tablaEncabezado.AddCell(CrearLogo());
             tablaEncabezado.AddCell(CrearDatosEmpresa());
             tablaEncabezado.AddCell(CrearTituloImpresion(tituloImpresion));
@@ -322,12 +325,13 @@ namespace RND.Clases.PdfText {
         /// </summary>
         /// <returns></returns>
         private PdfPTable CrearTablaInformacion() {
-            PdfPTable tabla = new PdfPTable(5);
+            PdfPTable tabla = new PdfPTable(5) {
+                WidthPercentage = 100
+            };
             tabla.DefaultCell.BorderWidthBottom = 0;
             tabla.DefaultCell.BorderWidthTop = 0;
             tabla.DefaultCell.BorderWidthRight = 0;
-            tabla.DefaultCell.BorderWidthLeft = 0;
-            tabla.WidthPercentage = 100;
+            tabla.DefaultCell.BorderWidthLeft = 0;           
             tabla.SetWidths(new int[] { 25, 15, 15, 25, 15 });
             return tabla;
         }
@@ -338,9 +342,10 @@ namespace RND.Clases.PdfText {
         /// </summary>
         /// <returns></returns>
         private PdfPTable CrearTablaResultado(int totalColumnas) {
-            PdfPTable tabla = new PdfPTable(totalColumnas);
-            tabla.WidthPercentage = 100;
-            tabla.HeaderRows = 1;
+            PdfPTable tabla = new PdfPTable(totalColumnas) {
+                WidthPercentage = 100,
+                HeaderRows = 1
+            };
             tabla.DefaultCell.BorderWidthBottom = 1;
             tabla.DefaultCell.BorderWidthTop = 1;
             tabla.DefaultCell.BorderWidthRight = 1;
@@ -362,9 +367,9 @@ namespace RND.Clases.PdfText {
             Chunk chLogo = new Chunk(logo, 0, 0, true);
             frase.Add(chLogo);
 
-            PdfPCell celda = new PdfPCell(frase);
-            celda.BorderWidth = 0;
-            return celda;
+            return new PdfPCell(frase) {
+                BorderWidth = 0
+            };
         }
 
         /// <summary>
@@ -372,8 +377,7 @@ namespace RND.Clases.PdfText {
         /// </summary>
         /// <returns></returns>
         private PdfPCell CrearDatosEmpresa() {
-            Phrase frase = new Phrase();
-            frase = new Phrase(new Chunk("Unidad Productiva San José", Fuentes.ENCABEZADO_TEXTO_NORMAL));
+            Phrase frase = new Phrase(new Chunk("Unidad Productiva San José", Fuentes.ENCABEZADO_TEXTO_NORMAL));
             frase.Add(Chunk.NEWLINE);
             frase.Add(new Chunk("INALER S.A. - EST. 55", Fuentes.ENCABEZADO_RESALTADO));
             frase.Add(Chunk.NEWLINE);
@@ -381,10 +385,10 @@ namespace RND.Clases.PdfText {
             frase.Add(Chunk.NEWLINE);
             frase.Add(new Chunk("Tel: (+598) 4342 2525 | (+598) 4342 2420", Fuentes.ENCABEZADO_TEXTO_NORMAL));
 
-            PdfPCell celda = new PdfPCell(frase);
-            celda.HorizontalAlignment = Element.ALIGN_LEFT;
-            celda.BorderWidth = 0;
-            return celda;
+            return new PdfPCell(frase) {
+                HorizontalAlignment = Element.ALIGN_LEFT,
+                BorderWidth = 0
+            };
         }
 
         /// <summary>
@@ -392,16 +396,15 @@ namespace RND.Clases.PdfText {
         /// </summary>
         /// <param name="titulo"></param>
         /// <returns></returns>
-        private PdfPCell CrearTituloImpresion(string titulo) {
-            PdfPCell celda = new PdfPCell(new Phrase(titulo.ToUpper(), Fuentes.ENCABEZADO_TITULO));
-            celda.Colspan = 2;
-            celda.BackgroundColor = Fuentes.AZUL_INSTITUCIONAL_2021;
-            celda.BorderWidth = 0;
-            celda.VerticalAlignment = Element.ALIGN_MIDDLE;
-            celda.PaddingBottom = 5;
-
-            return celda;
-        }
+        private PdfPCell CrearTituloImpresion(string titulo) =>
+            new PdfPCell() {
+                Colspan = 2,
+                BackgroundColor = Fuentes.AZUL_INSTITUCIONAL_2021,
+                BorderWidth = 0,
+                VerticalAlignment = Element.ALIGN_MIDDLE,
+                PaddingBottom = 5,
+                Phrase = new Phrase(titulo.ToUpper(), Fuentes.ENCABEZADO_TITULO)
+            };
 
     }
 }
