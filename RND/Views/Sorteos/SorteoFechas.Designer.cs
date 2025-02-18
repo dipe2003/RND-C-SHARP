@@ -38,6 +38,7 @@
             this.radioPersonalizado = new System.Windows.Forms.RadioButton();
             this.radioDiaPorSemana = new System.Windows.Forms.RadioButton();
             this.radioMes = new System.Windows.Forms.RadioButton();
+            this.radioDiaPorMes = new System.Windows.Forms.RadioButton();
             this.radioDiaSemana = new System.Windows.Forms.RadioButton();
             this.groupBoxOpciones = new System.Windows.Forms.GroupBox();
             this.dateTimePickerFechaSorteo = new System.Windows.Forms.DateTimePicker();
@@ -110,7 +111,7 @@
             // chkDomingos
             // 
             this.chkDomingos.AutoSize = true;
-            this.chkDomingos.Location = new System.Drawing.Point(33, 215);
+            this.chkDomingos.Location = new System.Drawing.Point(32, 232);
             this.chkDomingos.Name = "chkDomingos";
             this.chkDomingos.Size = new System.Drawing.Size(125, 20);
             this.chkDomingos.TabIndex = 19;
@@ -141,7 +142,7 @@
             // chkOrdenados
             // 
             this.chkOrdenados.AutoSize = true;
-            this.chkOrdenados.Location = new System.Drawing.Point(33, 278);
+            this.chkOrdenados.Location = new System.Drawing.Point(32, 290);
             this.chkOrdenados.Name = "chkOrdenados";
             this.chkOrdenados.Size = new System.Drawing.Size(142, 20);
             this.chkOrdenados.TabIndex = 23;
@@ -152,7 +153,7 @@
             // chkDuplicados
             // 
             this.chkDuplicados.AutoSize = true;
-            this.chkDuplicados.Location = new System.Drawing.Point(33, 246);
+            this.chkDuplicados.Location = new System.Drawing.Point(32, 261);
             this.chkDuplicados.Name = "chkDuplicados";
             this.chkDuplicados.Size = new System.Drawing.Size(143, 20);
             this.chkDuplicados.TabIndex = 22;
@@ -165,12 +166,13 @@
             this.grupoTipoSorteo.Controls.Add(this.radioPersonalizado);
             this.grupoTipoSorteo.Controls.Add(this.radioDiaPorSemana);
             this.grupoTipoSorteo.Controls.Add(this.radioMes);
+            this.grupoTipoSorteo.Controls.Add(this.radioDiaPorMes);
             this.grupoTipoSorteo.Controls.Add(this.radioDiaSemana);
             this.grupoTipoSorteo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grupoTipoSorteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grupoTipoSorteo.Location = new System.Drawing.Point(12, 377);
+            this.grupoTipoSorteo.Location = new System.Drawing.Point(12, 359);
             this.grupoTipoSorteo.Name = "grupoTipoSorteo";
-            this.grupoTipoSorteo.Size = new System.Drawing.Size(298, 149);
+            this.grupoTipoSorteo.Size = new System.Drawing.Size(298, 167);
             this.grupoTipoSorteo.TabIndex = 0;
             this.grupoTipoSorteo.TabStop = false;
             this.grupoTipoSorteo.Text = "Sorteos";
@@ -179,7 +181,7 @@
             // 
             this.radioPersonalizado.AutoSize = true;
             this.radioPersonalizado.Checked = true;
-            this.radioPersonalizado.Location = new System.Drawing.Point(32, 107);
+            this.radioPersonalizado.Location = new System.Drawing.Point(32, 125);
             this.radioPersonalizado.Name = "radioPersonalizado";
             this.radioPersonalizado.Size = new System.Drawing.Size(112, 20);
             this.radioPersonalizado.TabIndex = 0;
@@ -191,7 +193,7 @@
             // radioDiaPorSemana
             // 
             this.radioDiaPorSemana.AutoSize = true;
-            this.radioDiaPorSemana.Location = new System.Drawing.Point(32, 79);
+            this.radioDiaPorSemana.Location = new System.Drawing.Point(32, 102);
             this.radioDiaPorSemana.Name = "radioDiaPorSemana";
             this.radioDiaPorSemana.Size = new System.Drawing.Size(123, 20);
             this.radioDiaPorSemana.TabIndex = 0;
@@ -202,7 +204,7 @@
             // radioMes
             // 
             this.radioMes.AutoSize = true;
-            this.radioMes.Location = new System.Drawing.Point(32, 53);
+            this.radioMes.Location = new System.Drawing.Point(32, 79);
             this.radioMes.Name = "radioMes";
             this.radioMes.Size = new System.Drawing.Size(100, 20);
             this.radioMes.TabIndex = 0;
@@ -210,10 +212,21 @@
             this.radioMes.UseVisualStyleBackColor = true;
             this.radioMes.CheckedChanged += new System.EventHandler(this.radioMes_CheckedChanged);
             // 
+            // radioDiaPorMes
+            // 
+            this.radioDiaPorMes.AutoSize = true;
+            this.radioDiaPorMes.Location = new System.Drawing.Point(32, 56);
+            this.radioDiaPorMes.Name = "radioDiaPorMes";
+            this.radioDiaPorMes.Size = new System.Drawing.Size(98, 20);
+            this.radioDiaPorMes.TabIndex = 0;
+            this.radioDiaPorMes.Text = "Dia por Mes";
+            this.radioDiaPorMes.UseVisualStyleBackColor = true;
+            this.radioDiaPorMes.CheckedChanged += new System.EventHandler(this.radioDiaPorMes_CheckedChanged);
+            // 
             // radioDiaSemana
             // 
             this.radioDiaSemana.AutoSize = true;
-            this.radioDiaSemana.Location = new System.Drawing.Point(32, 27);
+            this.radioDiaSemana.Location = new System.Drawing.Point(32, 33);
             this.radioDiaSemana.Name = "radioDiaSemana";
             this.radioDiaSemana.Size = new System.Drawing.Size(133, 20);
             this.radioDiaSemana.TabIndex = 0;
@@ -237,7 +250,7 @@
             this.groupBoxOpciones.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxOpciones.Name = "groupBoxOpciones";
             this.groupBoxOpciones.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxOpciones.Size = new System.Drawing.Size(299, 336);
+            this.groupBoxOpciones.Size = new System.Drawing.Size(299, 318);
             this.groupBoxOpciones.TabIndex = 26;
             this.groupBoxOpciones.TabStop = false;
             this.groupBoxOpciones.Text = "Opciones";
@@ -373,5 +386,6 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnGuardarPDF;
         private System.Windows.Forms.Panel panelBotones;
+        private System.Windows.Forms.RadioButton radioDiaPorMes;
     }
 }

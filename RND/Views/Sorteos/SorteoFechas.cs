@@ -11,7 +11,7 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace RND.Views {
-    public partial class SorteoFechas:Form {
+    public partial class SorteoFechas : Form {
         public SorteoFechas() {
             InitializeComponent();
             FechaSorteo = DateTime.Today;
@@ -42,13 +42,13 @@ namespace RND.Views {
         /// </summary>
         private bool ObtenerParametrosNumericos() {
             try {
-                if(this.txtCantidad.Enabled) Cantidad = int.Parse(this.txtCantidad.Text);
+                if (this.txtCantidad.Enabled) Cantidad = int.Parse(this.txtCantidad.Text);
                 FechaInicio = this.fechaInicio.Value;
                 FechaTope = this.fechaTope.Value;
-            } catch(Exception ex) when(ex is FormatException || ex is NullReferenceException) {
+            } catch (Exception ex) when (ex is FormatException || ex is NullReferenceException) {
                 MostrarMensajeError(ex);
                 return false;
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 MostrarMensajeError(ex);
                 return false;
             }
@@ -72,7 +72,7 @@ namespace RND.Views {
         /// <returns></returns>
         private bool ComprobarLimiteSorteo(int cantidad, DateTime fechaInicio, DateTime fechaTope) {
             int diferencia = fechaTope.Subtract(fechaInicio).Days;
-            if(cantidad >= diferencia) {
+            if (cantidad >= diferencia) {
                 return false;
             }
             return true;
@@ -89,10 +89,10 @@ namespace RND.Views {
         private DateTime RandomDay(DateTime fechaInicio, DateTime fechaTope, bool incluirDomingo) {
             int range = (fechaTope - fechaInicio).Days;
             DateTime dia = fechaInicio.AddDays(rand.Next(range));
-            if(!incluirDomingo) {
-                while(dia.DayOfWeek.Equals(DayOfWeek.Sunday)) {
+            if (!incluirDomingo) {
+                while (dia.DayOfWeek.Equals(DayOfWeek.Sunday)) {
                     dia = fechaInicio.AddDays(rand.Next(range));
-                } while(dia.DayOfWeek.Equals(DayOfWeek.Sunday)) ;
+                } while (dia.DayOfWeek.Equals(DayOfWeek.Sunday)) ;
             }
             return dia;
         }
@@ -104,7 +104,7 @@ namespace RND.Views {
         /// <param name="ordenados"></param>
         /// <param name="contenedor"></param>
         private void MostrarResultado(List<DateTime> Resultado, bool ordenados) {
-            if(ordenados) {
+            if (ordenados) {
                 Resultado.Sort();
             }
             FechasSorteadas = ConvertirLista(Resultado);
@@ -114,7 +114,7 @@ namespace RND.Views {
 
         private List<string> ConvertirLista(List<DateTime> listaOrigen) {
             List<string> lista = new List<string>();
-            foreach(DateTime fecha in listaOrigen) {
+            foreach (DateTime fecha in listaOrigen) {
                 lista.Add(fecha.ToShortDateString());
             }
             return lista;
@@ -124,15 +124,15 @@ namespace RND.Views {
         /// Genera una lista de fechas al azar.
         /// </summary>
         private void SortearPersonalizado() {
-            if(ObtenerParametrosNumericos()) {
-                if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
+            if (ObtenerParametrosNumericos()) {
+                if (!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope)) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
                     List<DateTime> Resultado = new List<DateTime>();
-                    for(int i = 0; i < Cantidad; i++) {
+                    for (int i = 0; i < Cantidad; i++) {
                         DateTime sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
-                        if(!PermitirDuplicados) {
-                            while(Resultado.Contains(sorteo)) {
+                        if (!PermitirDuplicados) {
+                            while (Resultado.Contains(sorteo)) {
                                 sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
                             }
                         }
@@ -147,21 +147,21 @@ namespace RND.Views {
         /// Genera una lista de fechas al azar dentro de las semanas seleccionadas.
         /// </summary>
         private void SortearDiasPorSemana() {
-            if(ObtenerParametrosNumericos()) {
-                if(!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope) && Cantidad > 3) {
+            if (ObtenerParametrosNumericos()) {
+                if (!ComprobarLimiteSorteo(Cantidad, FechaInicio, FechaTope) && Cantidad > 3) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en el rango seleccionado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }else if(FechaInicio.DayOfWeek != DayOfWeek.Sunday || FechaTope.DayOfWeek != DayOfWeek.Saturday) {
+                } else if (FechaInicio.DayOfWeek != DayOfWeek.Sunday || FechaTope.DayOfWeek != DayOfWeek.Saturday) {
                     MessageBox.Show("No se pueden sortear " + Cantidad.ToString() + " dias en las semanas Selccionadas. \n" +
-                        "Cada semana debe comenzar en Domingo y finalizar en Sábado." , "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        "Cada semana debe comenzar en Domingo y finalizar en Sábado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
                     List<DateTime> Resultado = new List<DateTime>();
                     Dictionary<int, List<DateTime>> SemanasDisponibles = ObtenerSemanasDisponibles(FechaInicio, FechaTope);
 
-                    for(int i = 0; i < SemanasDisponibles.Count; i++) {
-                        for(int a = 0; a < Cantidad; a++) {
+                    for (int i = 0; i < SemanasDisponibles.Count; i++) {
+                        for (int a = 0; a < Cantidad; a++) {
                             DateTime sorteo = RandomDay(SemanasDisponibles.ElementAt(i).Value.First(), SemanasDisponibles.ElementAt(i).Value.Last(), IncluirDomingos);
-                            if(!PermitirDuplicados) {
-                                while(Resultado.Contains(sorteo)) {
+                            if (!PermitirDuplicados) {
+                                while (Resultado.Contains(sorteo)) {
                                     sorteo = RandomDay(SemanasDisponibles.ElementAt(i).Value.First(), SemanasDisponibles.ElementAt(i).Value.Last(), IncluirDomingos);
                                 }
                             }
@@ -171,6 +171,21 @@ namespace RND.Views {
                     MostrarResultado(Resultado, ResultadoOrdenado);
                 }
             }
+        }
+
+        /// <summary>
+        /// Genera una lista de fechas de cada mes al azar dentro del mismo año.
+        /// </summary>
+        private void SortearDiaMes() {
+            List<DateTime> Resultado = new List<DateTime>();
+            for (int i = 0; i < Cantidad; i++) {
+                DateTime sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
+                while (Resultado.Any(f=>f.Month == sorteo.Month)){
+                    sorteo = RandomDay(FechaInicio, FechaTope, IncluirDomingos);
+                }
+                Resultado.Add(sorteo);
+            }
+            MostrarResultado(Resultado, ResultadoOrdenado);
         }
 
         /// <summary>
@@ -194,11 +209,11 @@ namespace RND.Views {
             int semanaTope = ObtenerNumeroSemana(fechaHasta);
             int totalDias = fechaHasta.Subtract(FechaInicio).Days;
 
-            for(int i = semanaInicio; i <= semanaTope; i++) {
+            for (int i = semanaInicio; i <= semanaTope; i++) {
                 List<DateTime> diasSemana = new List<DateTime>();
-                for(int j = 0; j <= totalDias; j++) {
+                for (int j = 0; j <= totalDias; j++) {
                     DateTime fechaAnalizada = fechaDesde.AddDays(j);
-                    if(ObtenerNumeroSemana(fechaAnalizada) == i) {
+                    if (ObtenerNumeroSemana(fechaAnalizada) == i) {
                         diasSemana.Add(fechaAnalizada);
                     }
                 }
@@ -213,8 +228,8 @@ namespace RND.Views {
         private void SortearDiaSemana() {
             Sorteo sorteo = new Personalizado { Inicio = 0, Tope = 6, Cantidad = 1 };
             sorteo.SortearNumeros();
-            if(!IncluirDomingos) {
-                while(sorteo.Resultado.Contains(0)) {
+            if (!IncluirDomingos) {
+                while (sorteo.Resultado.Contains(0)) {
                     sorteo.Resultado.Clear();
                     sorteo.SortearNumeros();
                 }
@@ -237,8 +252,8 @@ namespace RND.Views {
         #endregion
 
         private void btnSortear_Click(object sender, EventArgs e) {
-            if(FechasSorteadas.Any()) FechasSorteadas.Clear();
-            switch(SorteoPredefinido) {
+            if (FechasSorteadas.Any()) FechasSorteadas.Clear();
+            switch (SorteoPredefinido) {
                 case EnumSorteo.DIA_SEMANA:
                     SortearDiaSemana();
                     break;
@@ -251,7 +266,12 @@ namespace RND.Views {
                 case EnumSorteo.DIAS_POR_SEMANA:
                     SortearDiasPorSemana();
                     break;
+                case EnumSorteo.DIA_MES:
+                    SortearDiaMes();
+                    break;
+
                 default:
+                    
                     break;
             }
         }
@@ -310,6 +330,21 @@ namespace RND.Views {
             CambiarEstadoRadioButtons(duplicados: false, ordenados: true, domingos: false);
         }
 
+        private void radioDiaPorMes_CheckedChanged(object sender, EventArgs e) {
+            this.SorteoPredefinido = EnumSorteo.DIA_MES;
+
+            Cantidad = 12;
+            FechaInicio = new DateTime(DateTime.Today.Year, 1, 1);
+            FechaTope = new DateTime(DateTime.Today.Year, 12, 31);
+
+            // desactivar controles para sorteo seleccionado
+            CambiarHabilitacionControles(inicio: false, tope: false, cantidad: false);
+            CambiarEstadoRadioButtons(duplicados: false, ordenados: true, domingos: false);
+
+            // completar con valores
+            txtCantidad.Text = Cantidad.ToString();
+        }
+
         #endregion
 
         #region Opciones
@@ -324,10 +359,11 @@ namespace RND.Views {
         private void chkOrdenados_CheckedChanged(object sender, EventArgs e) {
             ResultadoOrdenado = (sender as CheckBox).Checked;
         }
+
         #endregion
 
         private void btnGuardarPDF_Click(object sender, EventArgs e) {
-            if(FechasSorteadas != null && FechasSorteadas.Any()) {
+            if (FechasSorteadas != null && FechasSorteadas.Any()) {
                 SaveFileDialog dialogoDestino = new SaveFileDialog();
                 dialogoDestino.Filter = "Archivo PDF (Portable Document Format)|*.pdf";
                 StringBuilder strNombre = new StringBuilder();
@@ -337,18 +373,18 @@ namespace RND.Views {
                 dialogoDestino.FileName = strNombre.ToString();
                 DialogResult resultado = dialogoDestino.ShowDialog();
 
-                if(resultado == DialogResult.OK) {
+                if (resultado == DialogResult.OK) {
                     this.Cursor = Cursors.WaitCursor;
                     string strFechaInicio = FechaInicio.ToShortDateString();
                     string strFechaTope = FechaTope.ToShortDateString();
                     string strTituloSorteo = SorteoPredefinido.ToString();
                     // Ajustar titulos segun tipo de sorteo
-                    if(SorteoPredefinido == EnumSorteo.DIA_SEMANA || SorteoPredefinido == EnumSorteo.MES_ANIO) {
+                    if (SorteoPredefinido == EnumSorteo.DIA_SEMANA || SorteoPredefinido == EnumSorteo.MES_ANIO) {
                         strFechaInicio = "---";
                         strFechaTope = "---";
                         strTituloSorteo = SorteoPredefinido != EnumSorteo.MES_ANIO ? "DIA DE LA SEMANA" : "MES DEL AÑO";
-                    } else { 
-                        strTituloSorteo = "DIAS POR SEMANA";
+                    } else {
+                        strTituloSorteo = SorteoPredefinido == EnumSorteo.DIA_MES ? "FECHAS POR MES" : "DIAS POR SEMANA";
                     }
                     string destino = dialogoDestino.FileName;
                     ControladorPDF pdf = new ControladorPDF();
@@ -360,5 +396,7 @@ namespace RND.Views {
             }
             this.Cursor = Cursors.Default;
         }
+
+
     }
 }
